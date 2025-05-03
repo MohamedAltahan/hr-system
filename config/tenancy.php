@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Stancl\Tenancy\Database\Models\Domain;
 
 return [
-    'tenant_model' => Modules\Admin\Tenant\Models\Tenant::class,
+    'tenant_model' => Modules\Central\Tenant\Models\Tenant::class,
     'id_generator' => null,
     // 'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
 
@@ -19,7 +19,7 @@ return [
     'central_domains' => [
         '127.0.0.1',
         'localhost',
-        'erp',
+        'hr',
     ],
 
     /**
@@ -52,7 +52,7 @@ return [
          * Tenant database names are created like this:
          * prefix + tenant_id + suffix.
          */
-        'prefix' => 'erp-',
+        'prefix' => 'hr-',
         'suffix' => '',
 
         /**
@@ -63,13 +63,13 @@ return [
             'mysql' => Stancl\Tenancy\TenantDatabaseManagers\MySQLDatabaseManager::class,
             'pgsql' => Stancl\Tenancy\TenantDatabaseManagers\PostgreSQLDatabaseManager::class,
 
-        /**
+            /**
          * Use this database manager for MySQL to have a DB user created for each tenant database.
          * You can customize the grants given to these users by changing the $grants property.
          */
             // 'mysql' => Stancl\Tenancy\TenantDatabaseManagers\PermissionControlledMySQLDatabaseManager::class,
 
-        /**
+            /**
          * Disable the pgsql manager above, and enable the one below if you
          * want to separate tenant DBs by schemas rather than databases.
          */
@@ -89,7 +89,7 @@ return [
      * You can clear cache selectively by specifying the tag.
      */
     'cache' => [
-        'tag_base' => 'erp', // This tag_base, followed by the tenant_id, will form a tag that will be applied on each cache call.
+        'tag_base' => 'hr', // This tag_base, followed by the tenant_id, will form a tag that will be applied on each cache call.
     ],
 
     /**

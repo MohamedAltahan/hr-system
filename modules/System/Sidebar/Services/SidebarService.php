@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Erp\Sidebar\Services;
+namespace Modules\System\Sidebar\Services;
 
 use Modules\Common\Filters\Common\JsonNameSearch;
-use Modules\Erp\Sidebar\Models\Sidebar;
+use Modules\System\Sidebar\Models\Sidebar;
 
 class SidebarService
 {

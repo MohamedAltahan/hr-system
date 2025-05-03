@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\User\Models;
+namespace Modules\System\User\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +12,7 @@ use Modules\Common\Traits\HasLocalizedName;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Translatable\HasTranslations;
 
-// use Modules\Erp\User\Database\Factories\UserFactory;
+// use Modules\System\User\Database\Factories\UserFactory;
 
 class User extends Authenticatable
 {
@@ -22,11 +22,10 @@ class User extends Authenticatable
     use HasLocalizedName;
     use HasTranslations;
 
-    protected $translatable = ['description', 'address'];
+    protected $translatable = ['name', 'description', 'address'];
 
     protected $fillable = [
-        'name_ar',
-        'name_en',
+        'name',
         'username',
         'branch_id',
         'phone',

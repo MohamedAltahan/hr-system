@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Erp\Permission\Http\Requests;
+namespace Modules\System\Permission\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Modules\Erp\Permission\Models\Permission;
+use Modules\System\Permission\Models\Permission;
 
 class RoleRequest extends FormRequest
 {

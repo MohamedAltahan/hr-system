@@ -1,7 +1,7 @@
 <?php
 
-use Modules\Erp\Permission\Models\Permission;
-use Modules\Erp\Permission\Models\Role;
+use Modules\System\Permission\Models\Permission;
+use Modules\System\Permission\Models\Role;
 
 return [
 

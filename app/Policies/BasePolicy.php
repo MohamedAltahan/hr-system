@@ -5,7 +5,7 @@ namespace App\Policies;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 abstract class BasePolicy
 {

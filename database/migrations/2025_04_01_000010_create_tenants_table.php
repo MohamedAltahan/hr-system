@@ -17,12 +17,13 @@ class CreateTenantsTable extends Migration
             $table->id();
             $table->string('company_name')->nullable()->unique();
             $table->string('domain')->unique()->comment('domain or subdomain name');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->nullable();
             $table->boolean('is_active')->default(1);
             $table->string('version')->nullable();
             $table->foreignId('plan_id')->nullable()->constrained('plans')->onDelete('cascade')->onUpdate('cascade');
             $table->json('data')->nullable()->comment('any additional tenant data');
-            $table->string('creating_status')->nullable();
+            $table->string('creating_status')->nullable()->comment('0 failed, 1 created, 2 in progress, ');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

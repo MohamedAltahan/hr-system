@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\Response;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 class UserPolicy extends BasePolicy
 {

@@ -8,7 +8,7 @@ return [
 
     'connections' => [
 
-        'erp' => [
+        'hr' => [
             'driver' => 'mysql',
             'url' => env('TENANT_DATABASE_URL'),
             'host' => env('TENANT_DB_HOST', '127.0.0.1'),

@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Erp\User\Services;
+namespace Modules\System\User\Services;
 
 use Modules\Common\Enums\ImageQuality;
 use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Filters\Common\JsonNameSearch;
 use Modules\Common\Traits\UploadFile;
-use Modules\Erp\User\Http\Requests\UserRequest;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Http\Requests\UserRequest;
+use Modules\System\User\Models\User;
 
 class UserService
 {

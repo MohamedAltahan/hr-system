@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\AccountLink;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 class AccountLinkPolicy extends BasePolicy
 {

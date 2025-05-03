@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Branch\Providers;
+namespace Modules\System\Branch\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 

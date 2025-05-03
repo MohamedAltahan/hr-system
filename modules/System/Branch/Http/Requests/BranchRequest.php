@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Branch\Http\Requests;
+namespace Modules\System\Branch\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;

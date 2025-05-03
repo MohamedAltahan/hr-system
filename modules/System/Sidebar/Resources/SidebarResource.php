@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Sidebar\Resources;
+namespace Modules\System\Sidebar\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

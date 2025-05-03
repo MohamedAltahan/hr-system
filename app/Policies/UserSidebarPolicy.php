@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use Modules\Erp\User\Models\User;
-use Modules\Erp\User\Models\UserSidebar;
+use Modules\System\User\Models\User;
+use Modules\System\User\Models\UserSidebar;
 
 class UserSidebarPolicy extends BasePolicy
 {

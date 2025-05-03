@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Permission\Models;
+namespace Modules\System\Permission\Models;
 
 use Modules\Common\Traits\HasTranslations;
 use Spatie\Permission\Models\Permission as SpatiePermission;

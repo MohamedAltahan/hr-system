@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Branch\Http\Controllers;
+namespace Modules\System\Branch\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -8,10 +8,10 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\Erp\Branch\Http\Requests\BranchRequest;
-use Modules\Erp\Branch\Http\Resources\BranchResource;
-use Modules\Erp\Branch\Models\Branch;
-use Modules\Erp\Branch\Services\BranchService;
+use Modules\System\Branch\Http\Requests\BranchRequest;
+use Modules\System\Branch\Http\Resources\BranchResource;
+use Modules\System\Branch\Models\Branch;
+use Modules\System\Branch\Services\BranchService;
 
 class BranchController extends ApiController
 {

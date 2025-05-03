@@ -1,27 +1,23 @@
 <?php
 
-namespace Modules\Erp\Auth\Services;
+namespace Modules\System\Auth\Services;
 
 use Illuminate\Support\Facades\Auth;
 use Modules\Common\Enums\GuardEnum;
-use Modules\Erp\Auth\Http\Requests\LoginRequest;
+use Modules\System\Auth\Http\Requests\LoginRequest;
+use Modules\System\User\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthService
 {
     public static function login(LoginRequest $request)
     {
-        $guard = Auth::guard(GuardEnum::ERPSESSION->value);
+        $user = User::where('username', $request->username)->first();
 
-        if ($guard->attempt([
-            'username' => $request->username,
-            'password' => $request->password,
-        ])) {
-
-            $user = $guard->user();
-
-            return $user;
-        } else {
+        if (!$user || !Hash::check($request->password, $user->password)) {
             return false;
         }
+
+        return $user;
     }
 }

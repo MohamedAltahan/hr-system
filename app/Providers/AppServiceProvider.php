@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Policies\BranchPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use Modules\Erp\Branch\Models\Branch;
+use Modules\System\Branch\Models\Branch;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
         Gate::policy(Branch::class, BranchPolicy::class);
     }
 }

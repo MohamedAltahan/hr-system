@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 class AssignRolePolicy extends BasePolicy
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Auth\Providers;
+namespace Modules\System\Auth\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;

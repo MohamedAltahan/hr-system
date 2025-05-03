@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Erp\Auth\Models;
+namespace Modules\System\Auth\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-// use Modules\Erp\Auth\Database\Factories\AuthFactory;
+// use Modules\System\Auth\Database\Factories\AuthFactory;
 
 class Auth extends Model
 {

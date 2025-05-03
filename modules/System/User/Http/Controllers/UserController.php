@@ -1,14 +1,14 @@
 <?php
 
-namespace Modules\Erp\User\Http\Controllers;
+namespace Modules\System\User\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\Erp\User\Http\Requests\UserRequest;
-use Modules\Erp\User\Http\Resources\UserResource;
-use Modules\Erp\User\Models\User;
-use Modules\Erp\User\Services\UserService;
+use Modules\System\User\Http\Requests\UserRequest;
+use Modules\System\User\Http\Resources\UserResource;
+use Modules\System\User\Models\User;
+use Modules\System\User\Services\UserService;
 
 class UserController extends ApiController
 {

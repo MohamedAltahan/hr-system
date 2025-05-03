@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Erp\Sidebar\Http\Controllers;
+namespace Modules\System\Sidebar\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\Erp\Sidebar\Http\Requests\SidebarRequest;
-use Modules\Erp\Sidebar\Resources\SidebarResource;
-use Modules\Erp\Sidebar\Services\SidebarService;
+use Modules\System\Sidebar\Http\Requests\SidebarRequest;
+use Modules\System\Sidebar\Resources\SidebarResource;
+use Modules\System\Sidebar\Services\SidebarService;
 
 class SidebarController extends ApiController
 {

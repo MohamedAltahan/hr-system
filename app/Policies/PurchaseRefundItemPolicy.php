@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\PurchaseRefundItem;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 class PurchaseRefundItemPolicy extends BasePolicy
 {

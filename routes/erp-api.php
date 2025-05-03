@@ -7,7 +7,8 @@ use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
 foreach (ModuleRegistry::erp() as $module) {
-    $path = base_path("Modules/Erp/{$module}/routes/api.php");
+
+    $path = base_path("Modules/System/{$module}/routes/api.php");
     if (file_exists($path)) {
         Route::group([
             'middleware' => [

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Sidebar\Models;
+namespace Modules\System\Sidebar\Models;
 
 use Modules\Common\Models\BaseModel;
 

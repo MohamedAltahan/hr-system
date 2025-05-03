@@ -14,15 +14,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name_ar')->nullable();
-            $table->string('name_en')->nullable();
-            $table->foreignId('account_code')->nullable()->constrained('account_trees', 'account_code')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('main_account_code')->nullable()->constrained('account_trees', 'account_code')->onDelete('cascade')->onUpdate('cascade');
+            $table->json('name');
             $table->foreignId('branch_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
             $table->string('username')->unique();
             $table->string('email')->unique()->nullable();
             $table->string('phone')->unique()->nullable();
-            $table->unsignedTinyInteger('role')->default(UserRoleEnum::User)->comment('1: SuperAdmin, 2: Admin, 3: User');
+            $table->unsignedTinyInteger('role')->default(UserRoleEnum::User)->comment('1: SuperAdmin, 2: Admin, 3: User, 4:owner');
             $table->json('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -31,8 +28,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
-            $table->fullText(['name_en', 'name_ar']); // fulltext index
-
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

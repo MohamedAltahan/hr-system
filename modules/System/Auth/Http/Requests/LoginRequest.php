@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Auth\Http\Requests;
+namespace Modules\System\Auth\Http\Requests;
 
 use Modules\Common\Http\Requests\ApiRequest;
 

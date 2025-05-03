@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Erp\Permission\Http\Controllers;
+namespace Modules\System\Permission\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
-use Modules\Erp\Permission\Http\Requests\RoleRequest;
-use Modules\Erp\Permission\Models\Role;
-use Modules\Erp\Permission\Resources\RoleResource;
-use Modules\Erp\Permission\Services\RoleService;
+use Modules\System\Permission\Http\Requests\RoleRequest;
+use Modules\System\Permission\Models\Role;
+use Modules\System\Permission\Resources\RoleResource;
+use Modules\System\Permission\Services\RoleService;
 
 class RoleController extends ApiController
 {

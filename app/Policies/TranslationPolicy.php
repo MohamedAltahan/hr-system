@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Translation;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 class TranslationPolicy extends BasePolicy
 {

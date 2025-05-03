@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Auth\Providers;
+namespace Modules\System\Auth\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;

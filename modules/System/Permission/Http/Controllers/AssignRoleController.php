@@ -1,14 +1,13 @@
 <?php
 
-namespace Modules\Erp\Permission\Http\Controllers;
+namespace Modules\System\Permission\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\Erp\Permission\Http\Requests\assignRoleRequest;
-use Modules\Erp\Permission\Resources\RoleResource;
-use Modules\Erp\Permission\Services\AssignRoleService;
-use Modules\Erp\User\Models\User;
+use Modules\System\Permission\Http\Requests\assignRoleRequest;
+use Modules\System\Permission\Resources\RoleResource;
+use Modules\System\Permission\Services\AssignRoleService;
 
 class AssignRoleController extends ApiController
 {
@@ -32,7 +31,7 @@ class AssignRoleController extends ApiController
 
     public function show($id)
     {
-        $userRoles =  $this->assignRoleService->getUserRoles($id);
+        $userRoles = $this->assignRoleService->getUserRoles($id);
 
         return $this->sendResponse(
             RoleResource::collection($userRoles),

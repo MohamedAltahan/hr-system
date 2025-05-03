@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\PurchaseItem;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 class PurchaseItemPolicy extends BasePolicy
 {

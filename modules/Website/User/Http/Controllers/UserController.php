@@ -2,7 +2,7 @@
 
 namespace Modules\Website\User\Http\Controllers;
 
-use Modules\Admin\Tenant\Models\Tenant;
+use Modules\Central\Tenant\Models\Tenant;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
@@ -39,7 +39,7 @@ class UserController extends ApiController
         $user = $this->userService->create($request);
 
         $tenant = Tenant::create([
-            'tenancy_db_name' => 'erp-'.$request->domain,
+            'tenancy_db_name' => 'hr-' . $request->domain,
             'user_id' => $user->id,
             'company_name' => $request->company_name,
             'domain' => $request->domain,

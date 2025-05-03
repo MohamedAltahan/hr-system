@@ -10,7 +10,7 @@ use Modules\Common\Traits\Filterable;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Translatable\HasTranslations;
 
-// use Modules\Erp\User\Database\Factories\UserFactory;
+// use Modules\System\User\Database\Factories\UserFactory;
 
 class User extends Authenticatable
 {

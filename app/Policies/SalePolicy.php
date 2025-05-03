@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Sale;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 class SalePolicy extends BasePolicy
 {

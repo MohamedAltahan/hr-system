@@ -13,6 +13,8 @@ enum GuardEnum: string
     case ERPSESSION = 'erp_session';
     case ERP = 'erp';
 
+    case TENANTUSER = 'tenant-users';
+
     public function middleware(): string
     {
         return 'auth:'.$this->value;

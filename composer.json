@@ -36,8 +36,8 @@
             "app/Helpers/helpers.php"
         ],
         "psr-4": {
-            "Modules\\Erp\\": "modules/Erp/",
-            "Modules\\Admin\\": "modules/Admin/",
+            "Modules\\System\\": "modules/System/",
+            "Modules\\Central\\": "modules/Central/",
             "Modules\\Website\\": "modules/Website/",
             "Modules\\Common\\": "modules/Common/",
             "App\\": "app/",

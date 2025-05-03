@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Branch\Providers;
+namespace Modules\System\Branch\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;

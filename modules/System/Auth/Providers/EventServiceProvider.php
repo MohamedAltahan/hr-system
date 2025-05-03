@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Auth\Providers;
+namespace Modules\System\Auth\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 

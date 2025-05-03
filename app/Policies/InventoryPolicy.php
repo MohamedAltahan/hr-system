@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Inventory;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 class InventoryPolicy extends BasePolicy
 {

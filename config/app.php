@@ -2,7 +2,9 @@
 
 return [
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'version' => env('APP_VERSION', '1.0.0'),
+
+    'name' => env('APP_NAME', 'hr'),
 
     'env' => env('APP_ENV', 'production'),
 

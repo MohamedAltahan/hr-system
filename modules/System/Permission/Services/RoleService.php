@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Erp\Permission\Services;
+namespace Modules\System\Permission\Services;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-use Modules\Erp\Permission\Models\Role;
+use Modules\System\Permission\Models\Role;
 
 class RoleService
 {

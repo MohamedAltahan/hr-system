@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Permission\Services;
+namespace Modules\System\Permission\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\Permission\Models;
+namespace Modules\System\Permission\Models;
 
 use Barryvdh\LaravelIdeHelper\Eloquent;
 use Modules\Common\Traits\Filterable;

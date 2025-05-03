@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use Modules\Erp\Branch\Models\Branch;
-use Modules\Erp\User\Models\User;
+use Modules\System\Branch\Models\Branch;
+use Modules\System\User\Models\User;
 
 class BranchPolicy
 {

@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use Modules\Erp\User\Models\User;
 use Modules\Notification\Models\Notification;
+use Modules\System\User\Models\User;
 
 class NotificationPolicy extends BasePolicy
 {

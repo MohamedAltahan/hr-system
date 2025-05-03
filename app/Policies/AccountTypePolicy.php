@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\AccountType;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 class AccountTypePolicy extends BasePolicy
 {

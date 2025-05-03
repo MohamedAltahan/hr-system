@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Erp\Permission\Services;
+namespace Modules\System\Permission\Services;
 
-use Modules\Erp\Permission\Models\Permission;
+use Modules\System\Permission\Models\Permission;
 
 class PermissionService
 {

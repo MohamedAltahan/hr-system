@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Erp\Branch\Services;
+namespace Modules\System\Branch\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\Common\Filters\Common\NameSearch;
-use Modules\Erp\Branch\Models\Branch;
+use Modules\System\Branch\Models\Branch;
 
 class BranchService
 {

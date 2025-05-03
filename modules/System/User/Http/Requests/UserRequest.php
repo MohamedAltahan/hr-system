@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Erp\User\Http\Requests;
+namespace Modules\System\User\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Modules\Common\Enums\UserRoleEnum;

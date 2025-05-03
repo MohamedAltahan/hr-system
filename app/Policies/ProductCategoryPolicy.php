@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\ProductCategory;
-use Modules\Erp\User\Models\User;
+use Modules\System\User\Models\User;
 
 class ProductCategoryPolicy extends BasePolicy
 {

@@ -3,61 +3,27 @@
 return [
 
     'defaults' => [
-        'guard' => 'erp',
-        'passwords' => 'erp',
+        'guard' => 'tenant-users',
+        'passwords' => 'tenant',
     ],
 
     'guards' => [
-        'admin_session' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-        'admin' => [
+        'tenant-users' => [
             'driver' => 'sanctum',
-            'provider' => 'admins',
-        ],
-
-        'website_session' => [
-            'driver' => 'session',
-            'provider' => 'website-users',
-        ],
-        'website' => [
-            'driver' => 'sanctum',
-            'provider' => 'website-users',
-        ],
-
-        'erp_session' => [
-            'driver' => 'session',
-            'provider' => 'erp-users',
-        ],
-        'erp' => [
-            'driver' => 'sanctum',
-            'provider' => 'erp-users',
+            'provider' => 'tenant',
         ],
     ],
 
     'providers' => [
-
-        'admins' => [
+        'tenant-users' => [
             'driver' => 'eloquent',
-            'model' => Modules\Admin\Admin\Models\Admin::class,
+            'model' => Modules\System\User\Models\User::class,
         ],
-
-        'erp-users' => [
-            'driver' => 'eloquent',
-            'model' => Modules\Erp\User\Models\User::class,
-        ],
-
-        'website-users' => [
-            'driver' => 'eloquent',
-            'model' => Modules\Website\User\Models\User::class,
-        ],
-
     ],
 
     'passwords' => [
         'users' => [
-            'provider' => 'website-users',
+            'provider' => 'tenant-users',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

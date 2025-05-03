@@ -14,12 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(
             [
-                // AccountTreeSeeder::class,
-                // BranchSeeder::class,
-                // UserSeeder::class,
-                AdminSeeder::class,
-                TenantPermissionSeeder::class,
-                TenantSidebarSeeder::class,
+                AdminCompanySeeder::class,
             ]
         );
     }

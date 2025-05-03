@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Erp\Permission\Http\Controllers;
+namespace Modules\System\Permission\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
-use Modules\Erp\Permission\Models\Permission;
-use Modules\Erp\Permission\Resources\PermissionResource;
-use Modules\Erp\Permission\Services\PermissionService;
+use Modules\System\Permission\Models\Permission;
+use Modules\System\Permission\Resources\PermissionResource;
+use Modules\System\Permission\Services\PermissionService;
 
 class PermissionController extends ApiController
 {

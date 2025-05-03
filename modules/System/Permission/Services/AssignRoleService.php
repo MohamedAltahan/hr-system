@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Erp\Permission\Services;
+namespace Modules\System\Permission\Services;
 
-use Modules\Erp\Permission\Models\Role;
-use Modules\Erp\User\Models\User;
+use Modules\System\Permission\Models\Role;
+use Modules\System\User\Models\User;
 
 class AssignRoleService
 {
@@ -18,6 +18,7 @@ class AssignRoleService
     public function getUserRoles($id)
     {
         $user = User::findOrFail($id);
+
         return $user->roles;
     }
 }
