@@ -3,7 +3,6 @@
 namespace Database\Seeders\TenantSeeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Central\TenantSidebar\Models\TenantSidebar;
 use Modules\System\Sidebar\Models\Sidebar;
 
 class SidebarSeeder extends Seeder

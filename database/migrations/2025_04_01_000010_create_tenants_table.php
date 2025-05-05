@@ -15,7 +15,9 @@ class CreateTenantsTable extends Migration
     {
         Schema::create('tenants', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name')->nullable()->unique();
+            $table->json('company_name');
+            $table->string('email')->nullable()->unique();
+            $table->string('phone')->nullable()->unique();
             $table->string('domain')->unique()->comment('domain or subdomain name');
             // $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->nullable();

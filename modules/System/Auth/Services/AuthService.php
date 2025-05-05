@@ -2,11 +2,9 @@
 
 namespace Modules\System\Auth\Services;
 
-use Illuminate\Support\Facades\Auth;
-use Modules\Common\Enums\GuardEnum;
+use Illuminate\Support\Facades\Hash;
 use Modules\System\Auth\Http\Requests\LoginRequest;
 use Modules\System\User\Models\User;
-use Illuminate\Support\Facades\Hash;
 
 class AuthService
 {
@@ -14,7 +12,7 @@ class AuthService
     {
         $user = User::where('username', $request->username)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             return false;
         }
 

@@ -12,8 +12,8 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        //for owner only
-        if (DB::getDatabaseName() == config('app.name') . '-admin') {
+        // for owner only
+        if (DB::getDatabaseName() == config('app.name').'-admin') {
             User::create([
                 'id' => 1,
                 'name' => ['en' => 'main branch', 'ar' => 'الفرع الرئيسي'],
@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('123456789'),
             ]);
         } else {
-            //super admin for all tenants
+            // super admin for all tenants
             User::create([
                 'id' => 1,
                 'name' => ['en' => 'main branch', 'ar' => 'الفرع الرئيسي'],

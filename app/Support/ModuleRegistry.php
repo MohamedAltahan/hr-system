@@ -13,6 +13,7 @@ class ModuleRegistry
             'User',
             'Sidebar',
             'Permission',
+            'tenant',
         ];
     }
 
