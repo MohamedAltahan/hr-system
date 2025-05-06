@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Modules\Central\Plan\Models\Plan;
+use Modules\System\Plan\Models\Plan;
 
 class PlanSeeder extends Seeder
 {

@@ -15,6 +15,7 @@ class ModuleRegistry
             'Permission',
             'Company',
             'Tenant',
+            'Plan',
         ];
     }
 
@@ -32,8 +33,6 @@ class ModuleRegistry
             'Auth',
             'TenantSidebar',
             'TenantPermission',
-            'Plan',
-
         ];
     }
 }
