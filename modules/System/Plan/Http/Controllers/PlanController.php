@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Central\Plan\Http\Controllers;
+namespace Modules\System\Plan\Http\Controllers;
 
-use Modules\Central\Plan\Http\Requests\PlanRequest;
-use Modules\Central\Plan\Resources\PlanResource;
-use Modules\Central\Plan\Services\PlanService;
+use Modules\System\Plan\Http\Requests\PlanRequest;
+use Modules\System\Plan\Resources\PlanResource;
+use Modules\System\Plan\Services\PlanService;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;

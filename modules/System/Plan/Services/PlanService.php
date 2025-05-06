@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Central\Plan\Services;
+namespace Modules\System\Plan\Services;
 
 use Illuminate\Support\Facades\DB;
-use Modules\Central\Plan\Models\Plan;
+use Modules\System\Plan\Models\Plan;
 use Modules\Central\TenantPermission\Models\TenantPermission;
 use Modules\Central\TenantSidebar\Models\TenantSidebar;
 use Modules\Common\Traits\Filterable;

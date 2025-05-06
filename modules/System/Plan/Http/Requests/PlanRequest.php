@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Central\Plan\Http\Requests;
+namespace Modules\System\Plan\Http\Requests;
 
 use Modules\Common\Http\Requests\ApiRequest;
 

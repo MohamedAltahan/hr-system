@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Central\Plan\Resources;
+namespace Modules\System\Plan\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;

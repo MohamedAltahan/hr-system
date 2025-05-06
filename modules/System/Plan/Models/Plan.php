@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Central\Plan\Models;
+namespace Modules\System\Plan\Models;
 
 use Modules\Common\Models\BaseModel;
 
