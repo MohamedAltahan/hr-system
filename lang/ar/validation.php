@@ -177,6 +177,7 @@ return [
     */
 
     'attributes' => [
+        "plan_id" => "الخطة",
         'company_name' => 'اسم الشركة',
         'branch_id' => 'الفرع',
         'name_ar' => 'الاسم بالعربية',

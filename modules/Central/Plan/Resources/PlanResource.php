@@ -19,11 +19,11 @@ class PlanResource extends JsonResource
             'price_after_discount' => $this->price_after_discount,
             'is_active' => $this->is_active,
             'features' => $this->features,
-            'interval' => $this->interval,
+            'duration_in_months' => $this->duration_in_months,
             'is_popular' => $this->is_popular,
-            'limits' => $this->limits,
-            'permissions' => $this->permissions,
-            'sidebar_items' => $this->sidebar_items,
+            'currency' => $this->currency,
+            'is_trial' => $this->is_trial,
+            'trial_days' => $this->trial_days,
         ];
     }
 }

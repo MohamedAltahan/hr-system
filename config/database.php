@@ -3,9 +3,10 @@
 use Illuminate\Support\Str;
 
 return [
+    //used to change default connection in validation rules to check in central database
+    'central_connection' => env('DB_CONNECTION', 'admin'),
 
     'default' => env('DB_CONNECTION', 'admin'),
-
     'connections' => [
 
         'hr' => [
@@ -101,7 +102,7 @@ return [
 
             'options' => [
                 'cluster' => env('REDIS_CLUSTER', 'redis'),
-                'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+                'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
                 'persistent' => env('REDIS_PERSISTENT', false),
             ],
 

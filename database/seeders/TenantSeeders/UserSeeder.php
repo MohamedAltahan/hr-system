@@ -12,11 +12,11 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        //for owner only
-        if (DB::getDatabaseName() == config('app.name') . '-admin') {
-            User::create([
+        // for owner only
+        if (DB::getDatabaseName() == config('app.name') . '_admin') {
+            User::firstOrcreate(['role' => UserRoleEnum::OWNER], [
                 'id' => 1,
-                'name' => ['en' => 'main branch', 'ar' => 'الفرع الرئيسي'],
+                'name' => ['en' => 'admin user', 'ar' => 'مستخدم ادمن'],
                 'username' => 'admin',
                 'branch_id' => 1,
                 'role' => UserRoleEnum::OWNER,
@@ -24,10 +24,10 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('123456789'),
             ]);
         } else {
-            //super admin for all tenants
-            User::create([
+            // super admin for all tenants
+            User::firstOrcreate(['role' => UserRoleEnum::SuperAdmin], [
                 'id' => 1,
-                'name' => ['en' => 'main branch', 'ar' => 'الفرع الرئيسي'],
+                'name' => ['en' => 'admin user', 'ar' => 'مستخدم ادمن'],
                 'username' => 'admin',
                 'branch_id' => 1,
                 'role' => UserRoleEnum::SuperAdmin,

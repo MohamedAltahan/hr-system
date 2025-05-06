@@ -1,51 +1,49 @@
 <?php
 
-namespace Modules\Website\User\Http\Controllers;
+namespace Modules\System\Tenant\Http\Controllers;
 
-use Modules\Central\Tenant\Models\Tenant;
 use Modules\Common\Enums\StatusCodeEnum;
+use Modules\Common\Enums\TenantCreateStatus;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\Website\User\Http\Requests\UserRequest;
-use Modules\Website\User\Http\Resources\UserResource;
+use Modules\System\CompanyRegister\Http\Requests\UserRequest;
+use Modules\System\Tenant\Http\Requests\TenantRequest;
+use Modules\System\Tenant\Http\Resources\TenantResource;
+use Modules\System\Tenant\Models\Tenant;
+use Modules\System\Tenant\Services\TenantService;
 use Modules\Website\User\Models\User;
-use Modules\Website\User\Services\UserService;
 
-class UserController extends ApiController
+
+class TenantController extends ApiController
 {
     use ApiResponse;
 
-    protected $userService;
-
-    public function __construct(UserService $userService)
+    public function __construct(protected TenantService $TenantService)
     {
         parent::__construct();
-        $this->userService = $userService;
     }
 
     public function index()
     {
-        $users = $this->userService->getPaginatedUsers($this->perPage);
+        $tenants = $this->TenantService->getPaginatedTenants($this->perPage);
 
         return $this->sendResponse(
-            UserResource::paginate($users),
+            TenantResource::paginate($tenants),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(UserRequest $request)
+    public function store(TenantRequest $request)
     {
-        $user = $this->userService->create($request);
-
         $tenant = Tenant::create([
-            'tenancy_db_name' => 'hr-' . $request->domain,
-            'user_id' => $user->id,
+            'tenancy_db_name' => config('app.name') . '_' . $request->domain,
+            'user_id' => null,
             'company_name' => $request->company_name,
             'domain' => $request->domain,
             'is_active' => 1,
-            'version' => 1,
-            'creating_status' => 1,
+            'version' => config('app.version'),
+            'creating_status' => TenantCreateStatus::CREATED,
             'plan_id' => $request->plan_id,
         ]);
 
@@ -54,7 +52,7 @@ class UserController extends ApiController
         ]);
 
         return $this->sendResponse(
-            UserResource::make($user),
+            TenantResource::make($tenant),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
@@ -62,34 +60,33 @@ class UserController extends ApiController
 
     public function show(int $id)
     {
-        $user = $this->userService->getUser($id);
+        $tenant = $this->TenantService->getTenant($id);
 
         return $this->sendResponse(
-            UserResource::make($user),
+            TenantResource::make($tenant),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(UserRequest $request, int $id)
+    public function update(TenantRequest $request, int $id)
     {
-        $user = $this->userService->update($request, $id);
-
+        $this->TenantService->update($request, $id);
         return $this->sendResponse(
-            UserResource::make($user),
+            [],
             __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function destroy(User $user)
+    public function destroy(Tenant $tenant)
     {
-        $deleted = $this->userService->destroy($user);
+        $deleted = $this->TenantService->destroy($tenant);
 
         if (! $deleted) {
             return $this->sendResponse(
                 [],
-                __('Super admin can not be deleted'),
+                __('Owner can not be deleted'),
                 StatusCodeEnum::Success->value
             );
         }

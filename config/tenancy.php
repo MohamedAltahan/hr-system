@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
+use Modules\System\Tenant\Models\Tenant;
 use Stancl\Tenancy\Database\Models\Domain;
 
 return [
-    'tenant_model' => Modules\Central\Tenant\Models\Tenant::class,
+    'tenant_model' => Tenant::class,
     'id_generator' => null,
     // 'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
 

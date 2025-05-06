@@ -3,7 +3,6 @@
 namespace Database\Seeders\TenantSeeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Modules\System\Branch\Models\Branch;
 
 class BranchSeeder extends Seeder

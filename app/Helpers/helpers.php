@@ -1,6 +1,9 @@
 <?php
 
 // Get auth user
+
+use Illuminate\Support\Carbon;
+
 if (! function_exists('user')) {
     function user($attribute = null, $guard = null): \Illuminate\Contracts\Auth\Authenticatable|string|null
     {
@@ -27,5 +30,36 @@ if (! function_exists('activeGuard')) {
         }
 
         return null;
+    }
+}
+
+if (!function_exists('formatDate')) {
+    function formatDate($date)
+    {
+        $formats = [
+            'default'            => 'Y-m-d',           //'2025-01-01'
+            'datetime_12hr'      => 'Y-m-d h:i A',     // 2025-01-01 11:00:00 AM
+            'time_12hr'          => 'h:i A',           // 12:00 AM
+            'datetime_24hr'      => 'Y-m-d H:i:s',     // 2025-01-01 23:00:00
+            'time_24hr'          => 'H:i',             // 24:00
+            'long'               => 'F Y j',           // 1 Jan 2025
+        ];
+
+        if (empty($date)) {
+            return '';
+        }
+
+        $carbon = is_numeric($date)
+            ? Carbon::createFromTimestamp($date)
+            : Carbon::parse($date);
+
+        $result = [];
+
+        foreach ($formats as $key => $format) {
+            $formatted = $carbon->translatedFormat($format);
+            $result[$key] = $formatted;
+        }
+
+        return $result;
     }
 }

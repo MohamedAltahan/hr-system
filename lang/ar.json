@@ -25,5 +25,8 @@
     "customer": "العميل",
     "inventory": "المخزون",
     "invoice": "الفاتورة",
-    "report": "التقارير"
+    "report": "التقارير",
+    "FAILED": "فشل",
+    "CREATED": "تم الإنشاء",
+    "PENDING": "قيد الانتظار"
 }

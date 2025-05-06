@@ -2,6 +2,8 @@
 
 return [
 
+    'owner_domain' => env('OWNER_DOMAIN', 'admin'),
+
     'version' => env('APP_VERSION', '1.0.0'),
 
     'name' => env('APP_NAME', 'hr'),

@@ -3,18 +3,19 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Central\Tenant\Models\Tenant;
+use Illuminate\Support\Facades\DB;
+use Modules\System\Tenant\Models\Tenant;
 use Modules\Common\Enums\TenantCreateStatus;
 
 class AdminCompanySeeder extends Seeder
 {
     public function run(): void
     {
-        $tenant = Tenant::updateOrCreate(
-            ['company_name' => 'admin'],
+        $tenant = Tenant::firstOrCreate(
+            ['domain' => 'admin'],
             [
-                'id' => 1,
-                'company_name' => 'admin',
+                'tenancy_db_name' => config('app.name') . '_' . 'admin',
+                'company_name' => ['ar' => 'ادمن', 'en' => 'admin'],
                 'domain' => 'admin',
                 'is_active' => 1,
                 'version' => config('app.version'),

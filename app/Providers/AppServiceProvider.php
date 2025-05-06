@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Policies\BranchPolicy;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Modules\System\Branch\Models\Branch;
@@ -27,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
+        Carbon::setLocale(app()->getLocale());
         Gate::policy(Branch::class, BranchPolicy::class);
     }
 }

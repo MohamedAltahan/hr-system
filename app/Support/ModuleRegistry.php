@@ -13,6 +13,8 @@ class ModuleRegistry
             'User',
             'Sidebar',
             'Permission',
+            'Company',
+            'Tenant',
         ];
     }
 
@@ -28,7 +30,6 @@ class ModuleRegistry
     {
         return [
             'Auth',
-            'Tenant',
             'TenantSidebar',
             'TenantPermission',
             'Plan',

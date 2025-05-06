@@ -29,5 +29,7 @@ class Plan extends BaseModel
         'permissions' => 'array',
         'sidebar_items' => 'array',
         'name' => 'array',
+        'description' => 'array',
+        'currency' => 'array',
     ];
 }

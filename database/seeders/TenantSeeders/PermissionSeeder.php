@@ -3,7 +3,6 @@
 namespace Database\Seeders\TenantSeeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Central\TenantPermission\Models\TenantPermission;
 use Modules\Common\Enums\GuardEnum;
 use Modules\System\Permission\Models\Permission;
 
@@ -42,7 +41,7 @@ class PermissionSeeder extends Seeder
     {
         $title = [];
         foreach (config('app.supported_languages') as $locale) {
-            $title[$locale] = trans("$key", [], $locale) . ' ' . trans("$value", [], $locale);
+            $title[$locale] = trans("$key", [], $locale).' '.trans("$value", [], $locale);
         }
 
         return $title;
