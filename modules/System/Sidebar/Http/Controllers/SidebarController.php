@@ -2,6 +2,7 @@
 
 namespace Modules\System\Sidebar\Http\Controllers;
 
+use Illuminate\Support\Facades\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
@@ -18,9 +19,9 @@ class SidebarController extends ApiController
         parent::__construct();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $sidebar = $this->sidebarService->getSidebar();
+        $sidebar = $this->sidebarService->getSidebar($request);
 
         return $this->sendResponse(
             SidebarResource::collection($sidebar),

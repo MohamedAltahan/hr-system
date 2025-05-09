@@ -17,7 +17,7 @@ class SidebarResource extends JsonResource
             'is_active' => $this->is_active,
             'order' => $this->order,
             'parent_id' => $this->parent_id,
-            'permission' => $this->permission ?? [],
+            'permission_name' => $this->permission_name,
             'children' => self::collection($this->children),
         ];
     }

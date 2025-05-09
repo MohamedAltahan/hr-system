@@ -15,7 +15,8 @@ class TenantDatabaseSeeder extends Seeder
     {
         $this->call(
             [
-                // PermissionSeeder::class,
+                PermissionSeeder::class,
+                SidebarSeeder::class,
                 BranchSeeder::class,
                 UserSeeder::class,
             ]

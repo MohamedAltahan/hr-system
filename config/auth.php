@@ -15,7 +15,7 @@ return [
     ],
 
     'providers' => [
-        'tenant-users' => [
+        'tenant' => [
             'driver' => 'eloquent',
             'model' => Modules\System\User\Models\User::class,
         ],
@@ -23,7 +23,7 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'tenant-users',
+            'provider' => 'tenant',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

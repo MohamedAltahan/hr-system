@@ -9,30 +9,38 @@ class SidebarSeeder extends Seeder
 {
     public function run(): void
     {
-        $sidebarItems = config('tenantSidebar');
+        $sidebarItems = config('sidebar');
 
         foreach ($sidebarItems as $sidebarItem) {
             // parent
-            $parent = Sidebar::updateOrCreate([
-                'name' => $sidebarItem['name'],
-                'slug' => $sidebarItem['slug'],
-                'route' => $sidebarItem['route'],
-                'parent_id' => null,
-                'icon' => $sidebarItem['icon'],
-                'is_active' => $sidebarItem['is_active'] ?? 1,
-                'order' => $sidebarItem['order'],
-            ]);
+            $parent = Sidebar::updateOrCreate(
+                ['slug' => $sidebarItem['slug'], 'parent_id' => null],
+                [
+                    'name' => $sidebarItem['name'],
+                    'slug' => $sidebarItem['slug'],
+                    'route' => $sidebarItem['route'],
+                    'parent_id' => null,
+                    'icon' => $sidebarItem['icon'],
+                    'permission_name' => $sidebarItem['permission_name'],
+                    'is_active' => $sidebarItem['is_active'] ?? 1,
+                    'order' => $sidebarItem['order'],
+                ]
+            );
             // children
             foreach ($sidebarItem['children'] as $child) {
-                Sidebar::updateOrCreate([
-                    'name' => $child['name'],
-                    'slug' => $child['slug'],
-                    'route' => $child['route'],
-                    'parent_id' => $parent->id,
-                    'icon' => $child['icon'],
-                    'is_active' => $child['is_active'] ?? 1,
-                    'order' => $child['order'],
-                ]);
+                Sidebar::updateOrCreate(
+                    ['slug' => $child['slug'], 'parent_id' => $parent->id],
+                    [
+                        'name' => $child['name'],
+                        'slug' => $child['slug'],
+                        'route' => $child['route'],
+                        'parent_id' => $parent->id,
+                        'icon' => $child['icon'],
+                        'permission_name' => $child['permission_name'],
+                        'is_active' => $child['is_active'] ?? 1,
+                        'order' => $child['order'],
+                    ]
+                );
             }
         }
     }

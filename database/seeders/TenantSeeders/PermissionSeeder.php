@@ -14,7 +14,7 @@ class PermissionSeeder extends Seeder
         //     ->flatMap(fn($values, $key) => collect($values)->map(fn($value) => "{$key}_{$value}"))
         //     ->unique(); //prevent duplicates
 
-        $permissions = collect(config('tenantPermissions'))
+        $permissions = collect(config('permissions'))
             ->flatMap(function ($values, $key) {
                 return collect($values)->map(function ($value) use ($key) {
                     return [
@@ -31,7 +31,7 @@ class PermissionSeeder extends Seeder
                 [
                     'name' => $permission['name'],
                     'title' => $permission['title'],
-                    'guard_name' => GuardEnum::ERP->value,
+                    'guard_name' => GuardEnum::TENANTUSER->value,
                 ]
             );
         }
@@ -41,7 +41,7 @@ class PermissionSeeder extends Seeder
     {
         $title = [];
         foreach (config('app.supported_languages') as $locale) {
-            $title[$locale] = trans("$key", [], $locale).' '.trans("$value", [], $locale);
+            $title[$locale] = trans("$key", [], $locale) . ' ' . trans("$value", [], $locale);
         }
 
         return $title;
