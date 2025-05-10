@@ -15,11 +15,23 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->json('name');
-            $table->foreignId('branch_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('branch_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('username')->unique();
             $table->string('email')->unique()->nullable();
             $table->string('phone')->unique()->nullable();
-            $table->unsignedTinyInteger('role')->default(UserRoleEnum::User)->comment('1: SuperAdmin, 2: Admin, 3: User, 4:owner');
+            $table->date('birthday')->nullable();
+            $table->string('national_id')->unique()->nullable();
+            $table->string('employee_number')->unique()->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->enum('social_status', ['single', 'married'])->nullable();
+            $table->date('hire_date')->nullable();
+            $table->foreignId('direct_manager_id')->nullable();
+            $table->foreign('direct_manager_id')->references('id')->on('users');
+            $table->foreignId('department_id')->nullable();
+            $table->foreign('department_id')->references('id')->on('departments');
+
+            $table->string('job_title')->nullable();
+            $table->string('role')->default(UserRoleEnum::EMPLOYEE);
             $table->json('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

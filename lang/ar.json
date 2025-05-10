@@ -11,6 +11,7 @@
     "Invalid username or password": "إسم المستخدم أو كلمة المرور غير صحيحة",
     "Data fetched successfully": "تم جلب البيانات بنجاح",
     "Super admin can not be deleted": "لا يمكن حذف المدير العام",
+    "Data not deleted because it is in use": "لا يمكن حذف البيانات لانها مستخدمة",
     "debit": "مدين",
     "credit": "دائن",
 
@@ -28,5 +29,8 @@
     "report": "التقارير",
     "FAILED": "فشل",
     "CREATED": "تم الإنشاء",
-    "PENDING": "قيد الانتظار"
+    "PENDING": "قيد الانتظار",
+    "male": "ذكر",
+    "female": "انثى",
+    "owner": "المالك"
 }

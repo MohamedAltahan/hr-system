@@ -18,6 +18,11 @@ class UserService
         return User::filter([JsonNameSearch::class])->paginate($perPage);
     }
 
+    public function getUser($id)
+    {
+        return User::with('branch')->find($id);
+    }
+
     public function create(UserRequest $request)
     {
         $userData = $request->validated();

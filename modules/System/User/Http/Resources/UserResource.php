@@ -15,12 +15,26 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'branch' => $this->branch->name,
             'username' => $this->username,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            // 'account' => AccountInResource::make($this->accountTree),
-            'avatar' => $this->avatar ? asset('storage/'.$this->avatar) : '',
-            'roles' => $this->role->name,
+            'email' => $this?->email,
+            'phone' => $this?->phone,
+            'birthday' => $this?->birthday,
+            'national_id' => $this?->national_id,
+            'employee_number' => $this?->employee_number,
+            'avatar' => $this->avatar ? asset('storage/' . $this->avatar) : '',
+            'roles' => $this->role->label(),
+
+            'gender' => __($this?->gender),
+            'social_status' => __($this?->social_status),
+
+            'hire_date' => $this?->hire_date,
+            'direct_manager_name' => $this?->directManager?->name,
+            'department_name' => $this?->department?->name,
+            'job_title' => $this?->job_title,
+            'address' => $this?->address,
+            'is_active' => $this->is_active,
+            'translations' => $this->getTranslations(),
         ];
     }
 }

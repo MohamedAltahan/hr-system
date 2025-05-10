@@ -3,6 +3,7 @@
 namespace Database\Seeders\TenantSeeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Modules\Common\Enums\GuardEnum;
 use Modules\System\Permission\Models\Permission;
 
@@ -10,11 +11,13 @@ class PermissionSeeder extends Seeder
 {
     public function run(): void
     {
+
         $modelsPermissions = $this->getModelsPermissions();
 
         $sidebarPermissions = $this->getSidebarPermissions();
 
         $permissions = $modelsPermissions->merge($sidebarPermissions);
+
 
         foreach ($permissions as $permission) {
             Permission::updateOrCreate(

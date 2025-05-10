@@ -4,11 +4,11 @@ namespace Modules\Common\Traits;
 
 use Spatie\Translatable\HasTranslations as SpatieHasTranslations;
 
-trait HasTranslations
+trait TranslateAttributes
 {
     use SpatieHasTranslations;
 
-    public function getTranslationsWithNonEmpty(?string $key = null, ?array $allowedLocales = null): ?array
+    public function translateAttributes(?string $key = null, ?array $allowedLocales = null): ?array
     {
         return collect($this->getTranslations($key, $allowedLocales))
             ->transform(function ($value, $lcale) {

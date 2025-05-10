@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'unique_json' => 'تم استخدام :attribute (:lang) من قبل.',
     'accepted' => 'يجب قبول :attribute.',
     'phone' => ':attribute يجب ان يحتوى على رقم جوال صحيح.',
     'active_url' => ':attribute لا يُمثّل رابطًا صحيحًا.',
@@ -177,6 +178,8 @@ return [
     */
 
     'attributes' => [
+        "en" => "الانجليزي",
+        "ar" => "العربي",
         "plan_id" => "الخطة",
         'company_name' => 'اسم الشركة',
         'branch_id' => 'الفرع',

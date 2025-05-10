@@ -2,10 +2,16 @@
 
 namespace Modules\Common\Enums;
 
-enum UserRoleEnum: int
+enum UserRoleEnum: string
 {
-    case SuperAdmin = 1;
-    case Admin = 2;
-    case User = 3;
-    case OWNER = 4;
+    case SuperAdmin = 'super_admin';
+    case Admin = 'admin';
+    case EMPLOYEE = 'employee';
+    case MANAGER = 'manager';
+    case OWNER = 'owner';
+
+    public function label(): string
+    {
+        return __("$this->value");
+    }
 }

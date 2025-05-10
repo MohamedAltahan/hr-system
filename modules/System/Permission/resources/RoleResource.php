@@ -14,10 +14,10 @@ class RoleResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'translation' => $this->getTranslationsWithNonEmpty(),
             'name' => $this->name,
             'guard_name' => $this->guard_name,
             'permissions' => PermissionResource::collection($this->permissions),
+            'translation' => $this->getTranslations(),
         ];
     }
 }

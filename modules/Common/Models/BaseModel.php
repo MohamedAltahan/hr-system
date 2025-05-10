@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Common\Traits\Filterable;
+use Modules\Common\Traits\TranslateAttributes;
 use Spatie\Translatable\HasTranslations;
 
 /**
@@ -17,4 +18,5 @@ class BaseModel extends Model
     use Filterable;
     use HasFactory;
     use HasTranslations;
+    use TranslateAttributes;
 }

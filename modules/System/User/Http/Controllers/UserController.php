@@ -46,8 +46,10 @@ class UserController extends ApiController
         );
     }
 
-    public function show(User $user)
+    public function show($id)
     {
+        $user = $this->userService->getUser($id);
+
         return $this->sendResponse(
             UserResource::make($user),
             __('Data fetched successfully'),

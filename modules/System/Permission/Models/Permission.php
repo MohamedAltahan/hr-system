@@ -2,8 +2,9 @@
 
 namespace Modules\System\Permission\Models;
 
-use Modules\Common\Traits\HasTranslations;
+
 use Spatie\Permission\Models\Permission as SpatiePermission;
+use Spatie\Translatable\HasTranslations;
 
 class Permission extends SpatiePermission
 {
