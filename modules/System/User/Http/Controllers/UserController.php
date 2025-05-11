@@ -14,14 +14,11 @@ class UserController extends ApiController
 {
     use ApiResponse;
 
-    protected $userService;
-
     public static ?string $model = User::class;
 
-    public function __construct(UserService $userService)
+    public function __construct(protected UserService $userService)
     {
         parent::__construct();
-        $this->userService = $userService;
     }
 
     public function index()
@@ -37,10 +34,10 @@ class UserController extends ApiController
 
     public function store(UserRequest $request)
     {
-        $this->userService->create($request);
+        $data = $this->userService->create($request);
 
         return $this->sendResponse(
-            [],
+            UserResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
@@ -68,9 +65,9 @@ class UserController extends ApiController
         );
     }
 
-    public function destroy(User $user)
+    public function destroy(int $id)
     {
-        $deleted = $this->userService->destroy($user);
+        $deleted = $this->userService->destroy($id);
 
         if (! $deleted) {
             return $this->sendResponse(

@@ -24,10 +24,8 @@ class UserResource extends JsonResource
             'employee_number' => $this?->employee_number,
             'avatar' => $this->avatar ? asset('storage/' . $this->avatar) : '',
             'roles' => $this->role->label(),
-
             'gender' => __($this?->gender),
             'social_status' => __($this?->social_status),
-
             'hire_date' => $this?->hire_date,
             'direct_manager_name' => $this?->directManager?->name,
             'department_name' => $this?->department?->name,

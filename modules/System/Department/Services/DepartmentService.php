@@ -16,14 +16,15 @@ class DepartmentService
         return Department::withCount('users')->with('manager')->filter([JsonNameSearch::class])->paginate($perPage);
     }
 
-    public function create(Request $request, Model $model): void
+    public function create(Request $request): Model
     {
         $Data = $request->validated();
-        $model::create($Data);
+        return Department::create($Data);
     }
 
-    public function update(Request $request, Model $model): void
+    public function update(Request $request, $id): void
     {
+        $model = Department::findOrFail($id);
         $data = $request->validated();
         $model->update($data);
     }

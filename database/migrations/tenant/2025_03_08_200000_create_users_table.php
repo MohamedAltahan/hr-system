@@ -29,7 +29,8 @@ return new class extends Migration
             $table->foreign('direct_manager_id')->references('id')->on('users');
             $table->foreignId('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('departments');
-
+            $table->foreignId('position_id')->nullable();
+            $table->foreign('position_id')->references('id')->on('positions');
             $table->string('job_title')->nullable();
             $table->string('role')->default(UserRoleEnum::EMPLOYEE);
             $table->json('address')->nullable();

@@ -35,7 +35,16 @@ class User extends Authenticatable
         'password',
         'address',
         'role',
-        'status',
+        'is_active',
+        'birth_date',
+        'hire_date',
+        'gender',
+        'social_status',
+        'national_id',
+        'employee_number',
+        'job_title',
+        'direct_manager_id',
+        'department_id',
     ];
 
     protected $casts = [

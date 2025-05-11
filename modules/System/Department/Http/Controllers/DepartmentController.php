@@ -38,27 +38,27 @@ class DepartmentController extends ApiController
 
     public function store(DepartmentRequest $request)
     {
-        $this->service->create($request, new Department);
+        $data =  $this->service->create($request, new Department);
 
         return $this->sendResponse(
-            [],
+            DepartmentResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
     }
 
-    public function show(Department $model)
+    public function show(Department $department)
     {
         return $this->sendResponse(
-            DepartmentResource::make($model),
+            DepartmentResource::make($department),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(DepartmentRequest $request, Department $model, DepartmentService $service)
+    public function update(DepartmentRequest $request, int $id)
     {
-        $service->update($request, $model);
+        $this->service->update($request, $id);
 
         return $this->sendResponse(
             [],
@@ -72,7 +72,7 @@ class DepartmentController extends ApiController
         $deleteStatus = $this->service->destroy($id);
 
         if (!$deleteStatus) {
-            return $this->sendError(
+            return $this->sendResponse(
                 [],
                 __('Data not deleted because it is in use'),
                 StatusCodeEnum::CONFlICT->value

@@ -26,20 +26,22 @@ class UserService
     public function create(UserRequest $request)
     {
         $userData = $request->validated();
-        $userData['avatar'] = $this->uploadFile('avatar', 'avatar', 'public', ImageQuality::Low->value);
-        User::create($userData);
+        $userData['avatar'] = $this->uploadFile('avatar', 'avatar', config('filesystems.default'), ImageQuality::Low->value);
+        return User::create($userData);
     }
 
     public function update(UserRequest $request, User $user)
     {
         $userData = $request->validated();
-        $userData['avatar'] = $this->fileUpdate('avatar', 'avatar', 'public', $user->avatar, ImageQuality::Low->value);
+        $userData['avatar'] = $this->fileUpdate('avatar', 'avatar', config('filesystems.default'), $user->avatar, ImageQuality::Low->value);
         $user->update($userData);
     }
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        if ($user->role == UserRoleEnum::SuperAdmin) {
+        $user = User::find($id);
+
+        if ($user->role == UserRoleEnum::SuperAdmin || $user->role == UserRoleEnum::OWNER) {
             return false;
         }
 

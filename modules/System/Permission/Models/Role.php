@@ -4,8 +4,9 @@ namespace Modules\System\Permission\Models;
 
 use Barryvdh\LaravelIdeHelper\Eloquent;
 use Modules\Common\Traits\Filterable;
-use Modules\Common\Traits\HasTranslations;
+
 use Spatie\Permission\Models\Role as SpatieRole;
+use Spatie\Translatable\HasTranslations;
 
 /**
  * App\Models\Role.

@@ -16,14 +16,15 @@ class PositionService
         return Position::filter([JsonNameSearch::class])->paginate($perPage);
     }
 
-    public function create(Request $request, Model $model): void
+    public function create(Request $request): Model
     {
         $Data = $request->validated();
-        $model::create($Data);
+        return Position::create($Data);
     }
 
-    public function update(Request $request, Model $model): void
+    public function update(Request $request, int $id): void
     {
+        $model = Position::findOrFail($id);
         $data = $request->validated();
         $model->update($data);
     }
@@ -31,7 +32,6 @@ class PositionService
     public function destroy(int $id): bool
     {
         $model = Position::findOrFail($id);
-
         $checkExists = User::where('position_id', $model->id)->first();
 
         if ($checkExists) {

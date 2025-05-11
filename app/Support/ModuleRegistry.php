@@ -17,7 +17,9 @@ class ModuleRegistry
             'Tenant',
             'Plan',
             'Department',
-            'Position'
+            'Position',
+            'Employee',
+
         ];
     }
 

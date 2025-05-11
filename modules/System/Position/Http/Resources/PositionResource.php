@@ -16,10 +16,6 @@ class PositionResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'description' => $this->description,
-            'employees_count' => $this->users_count,
-            'manager' => UserResource::make($this->manager),
-            'translations' => $this->translateAttributes(),
         ];
     }
 }

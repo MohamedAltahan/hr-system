@@ -26,7 +26,6 @@ class PositionController extends ApiController
 
     public function index()
     {
-
         $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
@@ -38,27 +37,27 @@ class PositionController extends ApiController
 
     public function store(PositionRequest $request)
     {
-        $this->service->create($request, new Position);
+        $data =  $this->service->create($request, new Position);
 
         return $this->sendResponse(
-            [],
+            PositionResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
     }
 
-    public function show(Position $model)
+    public function show(Position $Position)
     {
         return $this->sendResponse(
-            PositionResource::make($model),
+            PositionResource::make($Position),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(PositionRequest $request, Position $model, PositionService $service)
+    public function update(PositionRequest $request, int $id)
     {
-        $service->update($request, $model);
+        $this->service->update($request, $id);
 
         return $this->sendResponse(
             [],
@@ -72,12 +71,13 @@ class PositionController extends ApiController
         $deleteStatus = $this->service->destroy($id);
 
         if (!$deleteStatus) {
-            return $this->sendError(
+            return $this->sendResponse(
                 [],
                 __('Data not deleted because it is in use'),
                 StatusCodeEnum::CONFlICT->value
             );
         }
+
         return $this->sendResponse(
             [],
             __('Data deleted successfully'),

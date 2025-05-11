@@ -10,12 +10,11 @@ class PositionRequest extends ApiRequest
 {
     public function rules(): array
     {
-        $department_id = $this->route('department');
+        $position_id = $this->route('position');
 
         return [
             'name' => ['required', 'array', 'max:255'],
-            'name' => [new UniqueJson('departments', 'name', $department_id)],
-            'description' => 'nullable|array|max:300',
+            'name' => [new UniqueJson('positions', 'name', $position_id)],
         ];
     }
 }
