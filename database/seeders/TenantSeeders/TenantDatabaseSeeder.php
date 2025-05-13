@@ -18,6 +18,8 @@ class TenantDatabaseSeeder extends Seeder
                 PermissionSeeder::class,
                 SidebarSeeder::class,
                 BranchSeeder::class,
+                PositionSeeder::class,
+                JobTitleSeeder::class,
                 UserSeeder::class,
             ]
         );

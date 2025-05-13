@@ -25,14 +25,21 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->enum('social_status', ['single', 'married'])->nullable();
             $table->date('hire_date')->nullable();
+
             $table->foreignId('direct_manager_id')->nullable();
             $table->foreign('direct_manager_id')->references('id')->on('users');
+
             $table->foreignId('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('departments');
+
             $table->foreignId('position_id')->nullable();
             $table->foreign('position_id')->references('id')->on('positions');
-            $table->string('job_title')->nullable();
-            $table->string('role')->default(UserRoleEnum::EMPLOYEE);
+
+            $table->foreignId('job_title_id')->nullable();
+            $table->foreign('job_title_id')->references('id')->on('job_titles');
+
+
+            $table->string('role');
             $table->json('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

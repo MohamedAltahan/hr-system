@@ -19,6 +19,7 @@ class ModuleRegistry
             'Department',
             'Position',
             'Employee',
+            'JobTitle'
 
         ];
     }

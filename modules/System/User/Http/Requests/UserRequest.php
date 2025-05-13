@@ -29,7 +29,7 @@ class UserRequest extends ApiRequest
             'social_status' => 'nullable|in:single,married',
             'national_id' => 'nullable|string|max:30',
             'employee_number' => 'nullable|string|max:30',
-            'job_title' => 'nullable|string|max:30',
+            'job_title_id' => 'nullable|exists:job_titles,id',
             'direct_manager_id' => 'nullable|exists:users,id',
             'department_id' => 'nullable|exists:departments,id',
 

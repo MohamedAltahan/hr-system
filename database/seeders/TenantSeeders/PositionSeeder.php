@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Modules\Common\Enums\UserRoleEnum;
 use Modules\System\User\Models\User;
 
-class UserSeeder extends Seeder
+class PositionSeeder extends Seeder
 {
     public function run(): void
     {

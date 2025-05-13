@@ -2,9 +2,11 @@
 
 namespace Modules\Common\Http\Controllers;
 
+
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Modules\Common\Traits\ApiResponse;
 
@@ -23,6 +25,8 @@ class ApiController extends Controller
     {
         $this->perPage = request()->input('per_page', 10);
 
+
+        dd(auth('tenant-users')->user());
         // if (static::$model) {
         //     $this->authorizeResource(static::$model, Str::snake(class_basename(static::$model)));
         // }

@@ -3,6 +3,7 @@
 namespace Modules\System\Branch\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Enums\UserRoleEnum;
