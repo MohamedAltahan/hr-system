@@ -22,6 +22,7 @@ return [
         'localhost',
         'hr',
         'alkholoudhr.com',
+        'www.alkholoudhr.com',
     ],
 
     /**
