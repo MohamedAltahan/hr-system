@@ -8,7 +8,7 @@ foreach (config('tenancy.central_domains') as $domain) {
     Route::domain($domain)->group(
         function () {
             foreach (ModuleRegistry::admin() as $module) {
-                $path = base_path("Modules/Central/{$module}/routes/api.php");
+                $path = base_path("modules/Central/{$module}/routes/api.php");
                 if (file_exists($path)) {
                     Route::group([
                         'prefix' => 'admin',
