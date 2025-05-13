@@ -21,8 +21,10 @@ return [
         '127.0.0.1',
         'localhost',
         'hr',
+        'alkholoudhr',
         'alkholoudhr.com',
         'www.alkholoudhr.com',
+        'https://alkholoudhr.com/'
     ],
 
     /**
