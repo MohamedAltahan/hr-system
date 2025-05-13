@@ -25,8 +25,6 @@ class ApiController extends Controller
     {
         $this->perPage = request()->input('per_page', 10);
 
-
-        dd(auth('tenant-users')->user());
         // if (static::$model) {
         //     $this->authorizeResource(static::$model, Str::snake(class_basename(static::$model)));
         // }
