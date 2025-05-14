@@ -2,11 +2,9 @@
 
 namespace Modules\System\Tenant\Services;
 
-use Modules\Common\Filters\Common\JsonNameSearch;
 use Modules\Common\Traits\UploadFile;
 use Modules\System\Tenant\Http\Requests\TenantRequest;
 use Modules\System\Tenant\Models\Tenant;
-use Modules\Common\Traits\Filterable;
 
 class TenantService
 {

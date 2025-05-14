@@ -3,7 +3,6 @@
 namespace Database\Seeders\TenantSeeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Modules\Common\Enums\GuardEnum;
 use Modules\System\Permission\Models\Permission;
 
@@ -17,7 +16,6 @@ class PermissionSeeder extends Seeder
         $sidebarPermissions = $this->getSidebarPermissions();
 
         $permissions = $modelsPermissions->merge($sidebarPermissions);
-
 
         foreach ($permissions as $permission) {
             Permission::updateOrCreate(
@@ -36,7 +34,7 @@ class PermissionSeeder extends Seeder
     {
         $title = [];
         foreach (config('app.supported_languages') as $locale) {
-            $title[$locale] = trans("$key", [], $locale) . ' ' . trans("$value", [], $locale);
+            $title[$locale] = trans("$key", [], $locale).' '.trans("$value", [], $locale);
         }
 
         return $title;
@@ -50,7 +48,7 @@ class PermissionSeeder extends Seeder
                     return [
                         'name' => "{$key}_{$value}",
                         'title' => $this->translatePermissionTitle($key, $value),
-                        'group' => 'model'
+                        'group' => 'model',
                     ];
                 });
             })
@@ -68,11 +66,12 @@ class PermissionSeeder extends Seeder
             ];
 
             $children = collect($item['children'] ?? [])
-                ->map(fn($entry) => [
+                ->map(fn ($entry) => [
                     'name' => $entry['permission_name'],
                     'title' => $entry['name'],
                     'group' => 'sidebar',
                 ]);
+
             return collect([$parent])->merge($children);
         });
     }

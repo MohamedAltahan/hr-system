@@ -2,11 +2,9 @@
 
 namespace Modules\Common\Http\Controllers;
 
-
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Modules\Common\Traits\ApiResponse;
 

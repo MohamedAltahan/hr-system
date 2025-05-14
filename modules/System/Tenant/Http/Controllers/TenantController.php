@@ -6,13 +6,10 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Enums\TenantCreateStatus;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\CompanyRegister\Http\Requests\UserRequest;
 use Modules\System\Tenant\Http\Requests\TenantRequest;
 use Modules\System\Tenant\Http\Resources\TenantResource;
 use Modules\System\Tenant\Models\Tenant;
 use Modules\System\Tenant\Services\TenantService;
-use Modules\Website\User\Models\User;
-
 
 class TenantController extends ApiController
 {
@@ -37,7 +34,7 @@ class TenantController extends ApiController
     public function store(TenantRequest $request)
     {
         $tenant = Tenant::create([
-            'tenancy_db_name' => config('app.name') . '_' . $request->domain,
+            'tenancy_db_name' => config('app.name').'_'.$request->domain,
             'user_id' => null,
             'company_name' => $request->company_name,
             'domain' => $request->domain,
@@ -72,6 +69,7 @@ class TenantController extends ApiController
     public function update(TenantRequest $request, int $id)
     {
         $this->TenantService->update($request, $id);
+
         return $this->sendResponse(
             [],
             __('Data updated successfully'),

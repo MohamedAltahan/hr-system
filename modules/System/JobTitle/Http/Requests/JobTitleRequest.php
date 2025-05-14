@@ -2,7 +2,6 @@
 
 namespace Modules\System\JobTitle\Http\Requests;
 
-
 use Modules\Common\Http\Requests\ApiRequest;
 use Modules\Common\Rules\UniqueJson;
 

@@ -5,7 +5,6 @@ namespace Modules\System\Position\Services;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\Common\Filters\Common\JsonNameSearch;
-use Modules\Common\Filters\Common\NameSearch;
 use Modules\System\Position\Models\Position;
 use Modules\System\User\Models\User;
 
@@ -19,6 +18,7 @@ class PositionService
     public function create(Request $request): Model
     {
         $Data = $request->validated();
+
         return Position::create($Data);
     }
 

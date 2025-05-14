@@ -2,12 +2,12 @@
 
 namespace Modules\System\Plan\Http\Controllers;
 
-use Modules\System\Plan\Http\Requests\PlanRequest;
-use Modules\System\Plan\Resources\PlanResource;
-use Modules\System\Plan\Services\PlanService;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
+use Modules\System\Plan\Http\Requests\PlanRequest;
+use Modules\System\Plan\Resources\PlanResource;
+use Modules\System\Plan\Services\PlanService;
 
 class PlanController extends ApiController
 {

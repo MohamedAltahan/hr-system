@@ -5,7 +5,6 @@ namespace Modules\System\Department\Services;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\Common\Filters\Common\JsonNameSearch;
-use Modules\Common\Filters\Common\NameSearch;
 use Modules\System\Department\Models\Department;
 use Modules\System\User\Models\User;
 
@@ -19,6 +18,7 @@ class DepartmentService
     public function create(Request $request): Model
     {
         $Data = $request->validated();
+
         return Department::create($Data);
     }
 

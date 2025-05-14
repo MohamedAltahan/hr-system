@@ -14,13 +14,13 @@ class SidebarService
 
         $sidebarItems = Sidebar::with('children')->whereNull('parent_id')->filter([JsonNameSearch::class])->get();
 
-        $allowedSidebarItems =  $sidebarItems->filter(function ($parent) use ($user) {
+        $allowedSidebarItems = $sidebarItems->filter(function ($parent) use ($user) {
 
             $parent->children = $parent->children->filter(function ($child) use ($user) {
-                return  $user->can($child->permission_name);
+                return $user->can($child->permission_name);
             })->values();
 
-            return  $parent->children->isNotEmpty();
+            return $parent->children->isNotEmpty();
         })->values();
 
         return $allowedSidebarItems;

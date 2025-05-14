@@ -5,7 +5,6 @@ namespace Modules\System\Permission\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
 
-
 class PermissionResource extends JsonResource
 {
     use HasPagination;

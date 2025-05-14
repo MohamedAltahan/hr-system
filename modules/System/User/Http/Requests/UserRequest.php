@@ -3,7 +3,6 @@
 namespace Modules\System\User\Http\Requests;
 
 use Illuminate\Validation\Rule;
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Http\Requests\ApiRequest;
 
 class UserRequest extends ApiRequest
@@ -19,7 +18,6 @@ class UserRequest extends ApiRequest
             'phone' => ['required', 'string', 'max:20', Rule::unique('users', 'phone')->ignore($user_id)],
             'branch_id' => 'integer|required|exists:branches,id',
             'email' => ['nullable', 'email', 'max:50', Rule::unique('users', 'email')->ignore($user_id)],
-            'role' => ['required', Rule::in(UserRoleEnum::cases())],
             'address' => 'nullable|array|max:300',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:3000',
             'is_active' => 'boolean|nullable', // if not entered it will be true
@@ -32,8 +30,6 @@ class UserRequest extends ApiRequest
             'job_title_id' => 'nullable|exists:job_titles,id',
             'direct_manager_id' => 'nullable|exists:users,id',
             'department_id' => 'nullable|exists:departments,id',
-
-
         ];
     }
 }

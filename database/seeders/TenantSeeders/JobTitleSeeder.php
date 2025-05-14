@@ -13,7 +13,7 @@ class JobTitleSeeder extends Seeder
     public function run(): void
     {
         // for owner only
-        if (DB::getDatabaseName() == config('app.name') . '_admin') {
+        if (DB::getDatabaseName() == config('app.name').'_admin') {
             User::firstOrcreate(
                 ['role' => 'owner'],
                 [

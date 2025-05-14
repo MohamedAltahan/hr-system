@@ -7,7 +7,6 @@ use Modules\Common\Http\Controllers\ApiController;
 use Modules\System\Permission\Http\Requests\RoleRequest;
 use Modules\System\Permission\Http\Resources\RoleResource;
 use Modules\System\Permission\Models\Role;
-
 use Modules\System\Permission\Services\RoleService;
 
 class RoleController extends ApiController

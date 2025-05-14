@@ -2,10 +2,7 @@
 
 namespace Modules\System\Position\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Modules\Common\Enums\StatusCodeEnum;
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Position\Http\Requests\PositionRequest;
@@ -37,7 +34,7 @@ class PositionController extends ApiController
 
     public function store(PositionRequest $request)
     {
-        $data =  $this->service->create($request, new Position);
+        $data = $this->service->create($request, new Position);
 
         return $this->sendResponse(
             PositionResource::make($data),
@@ -70,7 +67,7 @@ class PositionController extends ApiController
     {
         $deleteStatus = $this->service->destroy($id);
 
-        if (!$deleteStatus) {
+        if (! $deleteStatus) {
             return $this->sendResponse(
                 [],
                 __('Data not deleted because it is in use'),

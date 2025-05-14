@@ -5,7 +5,6 @@ namespace Modules\System\Position\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
-use Modules\System\User\Http\Resources\UserResource;
 
 class PositionResource extends JsonResource
 {

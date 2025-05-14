@@ -5,7 +5,6 @@ namespace Database\Seeders\TenantSeeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\System\User\Models\User;
 
 class UserSeeder extends Seeder
@@ -13,15 +12,16 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // for owner only
-        if (DB::getDatabaseName() == config('app.name') . '_admin') {
+        if (DB::getDatabaseName() == config('app.name').'_admin') {
             User::firstOrcreate(
-                ['role' => 'owner'],
+                ['username' => 'admin'],
                 [
                     'id' => 1,
                     'name' => ['en' => 'admin user', 'ar' => 'مستخدم ادمن'],
                     'username' => 'admin',
                     'branch_id' => 1,
-                    'role' => 'owner',
+                    'is_owner' => 1,
+                    'is_super_admin' => 1,
                     'email' => 'admin@example.com',
                     'password' => Hash::make('123456789'),
                 ]
@@ -29,13 +29,14 @@ class UserSeeder extends Seeder
         } else {
             // super admin for all tenants
             User::firstOrcreate(
-                ['role' => UserRoleEnum::SuperAdmin],
+                ['username' => 'admin'],
                 [
                     'id' => 1,
                     'name' => ['en' => 'admin user', 'ar' => 'مستخدم ادمن'],
                     'username' => 'admin',
                     'branch_id' => 1,
-                    'role' => UserRoleEnum::SuperAdmin,
+                    'is_owner' => 0,
+                    'is_super_admin' => 1,
                     'email' => 'admin@example.com',
                     'password' => Hash::make('admin'),
                 ]

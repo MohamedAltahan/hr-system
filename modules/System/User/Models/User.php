@@ -3,12 +3,11 @@
 namespace Modules\System\User\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Traits\Filterable;
-use Modules\Common\Traits\HasLocalizedName;
 use Modules\System\Branch\Models\Branch;
 use Modules\System\Department\Models\Department;
 use Spatie\Permission\Traits\HasRoles;
@@ -22,9 +21,9 @@ class User extends Authenticatable
     use HasApiTokens, HasRoles, Notifiable;
     use HasFactory;
     use HasTranslations;
+    use SoftDeletes;
 
     protected $translatable = ['name', 'description', 'address'];
-
 
     protected $fillable = [
         'name',
@@ -50,12 +49,12 @@ class User extends Authenticatable
 
     protected $casts = [
         'name' => 'array',
-        'role' => UserRoleEnum::class,
         'address' => 'array',
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
 
+    // relations
     public function branch()
     {
         return $this->belongsTo(Branch::class);
@@ -69,5 +68,11 @@ class User extends Authenticatable
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    // scopes
+    public function scopeExcludeOwnerAndSuperAdmin($query)
+    {
+        return $query->where('is_owner', '!=', 1)->where('is_super_admin', '!=', 1);
     }
 }

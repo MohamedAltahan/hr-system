@@ -4,8 +4,6 @@ namespace Modules\System\Tenant\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\Central\Plan\Models\Plan;
-
 use Modules\Common\Traits\HasPagination;
 use Modules\System\Plan\Resources\PlanResource;
 

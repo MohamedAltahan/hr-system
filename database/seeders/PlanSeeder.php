@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Modules\System\Plan\Models\Plan;
 
 class PlanSeeder extends Seeder
@@ -37,7 +36,7 @@ class PlanSeeder extends Seeder
                     'Feature 1',
                     'Feature 2',
                     'Feature 3',
-                ]
+                ],
             ],
             'is_trial' => true,
             'trial_days' => 14,

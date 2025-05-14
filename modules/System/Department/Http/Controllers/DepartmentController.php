@@ -2,17 +2,13 @@
 
 namespace Modules\System\Department\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Modules\Common\Enums\StatusCodeEnum;
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Department\Http\Requests\DepartmentRequest;
 use Modules\System\Department\Http\Resources\DepartmentResource;
 use Modules\System\Department\Models\Department;
 use Modules\System\Department\Services\DepartmentService;
-
 
 class DepartmentController extends ApiController
 {
@@ -38,7 +34,7 @@ class DepartmentController extends ApiController
 
     public function store(DepartmentRequest $request)
     {
-        $data =  $this->service->create($request, new Department);
+        $data = $this->service->create($request, new Department);
 
         return $this->sendResponse(
             DepartmentResource::make($data),
@@ -71,13 +67,14 @@ class DepartmentController extends ApiController
     {
         $deleteStatus = $this->service->destroy($id);
 
-        if (!$deleteStatus) {
+        if (! $deleteStatus) {
             return $this->sendResponse(
                 [],
                 __('Data not deleted because it is in use'),
                 StatusCodeEnum::CONFlICT->value
             );
         }
+
         return $this->sendResponse(
             [],
             __('Data deleted successfully'),

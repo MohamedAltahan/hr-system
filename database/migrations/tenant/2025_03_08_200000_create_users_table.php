@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Common\Enums\UserRoleEnum;
 
 return new class extends Migration
 {
@@ -38,8 +37,9 @@ return new class extends Migration
             $table->foreignId('job_title_id')->nullable();
             $table->foreign('job_title_id')->references('id')->on('job_titles');
 
+            $table->boolean('is_owner')->default(0);
+            $table->boolean('is_super_admin')->default(0);
 
-            $table->string('role');
             $table->json('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

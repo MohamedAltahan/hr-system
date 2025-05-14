@@ -3,10 +3,10 @@
 namespace Modules\System\Plan\Services;
 
 use Illuminate\Support\Facades\DB;
-use Modules\System\Plan\Models\Plan;
 use Modules\Central\TenantPermission\Models\TenantPermission;
 use Modules\Central\TenantSidebar\Models\TenantSidebar;
 use Modules\Common\Traits\Filterable;
+use Modules\System\Plan\Models\Plan;
 
 class PlanService
 {

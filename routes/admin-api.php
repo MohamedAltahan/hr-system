@@ -13,7 +13,7 @@ foreach (config('tenancy.central_domains') as $domain) {
                     Route::group([
                         'prefix' => 'admin',
                         'middleware' => ['auth:sanctum'],
-                        'as' => 'admin.' . Str::of($module)->snake('-')->lower()->append('.')->toString(),
+                        'as' => 'admin.'.Str::of($module)->snake('-')->lower()->append('.')->toString(),
                     ], function () use ($path) {
                         require $path;
                     });

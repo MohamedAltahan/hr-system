@@ -12,7 +12,7 @@ foreach (config('tenancy.central_domains') as $domain) {
                 if (file_exists($path)) {
                     Route::group([
                         'prefix' => 'website',
-                        'as' => 'webiste.' . Str::of($module)->snake('-')->lower()->append('.')->toString(),
+                        'as' => 'webiste.'.Str::of($module)->snake('-')->lower()->append('.')->toString(),
                     ], function () use ($path) {
                         require $path;
                     });

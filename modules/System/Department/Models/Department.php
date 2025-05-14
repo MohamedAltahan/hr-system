@@ -4,16 +4,15 @@ namespace Modules\System\Department\Models;
 
 use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Models\BaseModel;
-use Modules\Common\Traits\HasLocalizedName;
 use Modules\System\User\Models\User;
 
 class Department extends BaseModel
 {
     public $timestamps = false;
 
-    protected $translatable = ['name', 'description',];
+    protected $translatable = ['name', 'description'];
 
-    protected $fillable = ['name', 'description',];
+    protected $fillable = ['name', 'description'];
 
     protected $casts = [
         'name' => 'array',

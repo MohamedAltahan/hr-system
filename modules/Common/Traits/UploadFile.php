@@ -16,8 +16,8 @@ trait UploadFile
 
             if (str_starts_with($file->getMimeType(), 'image/')) {
 
-                $filename = Str::random(12) . '.' . $file->getClientOriginalExtension();
-                $destinationPath = storage_path('app/public/' . $folderName);
+                $filename = Str::random(12).'.'.$file->getClientOriginalExtension();
+                $destinationPath = storage_path('app/public/'.$folderName);
                 $manager = new ImageManager(new Driver);
                 $image = $manager->read($file->getPathname());
                 if (! file_exists($destinationPath)) {
@@ -27,9 +27,9 @@ trait UploadFile
                     // $constraint->aspectRatio();
                     $constraint->upsize();
                 });
-                $image->save($destinationPath . '/' . $filename);
+                $image->save($destinationPath.'/'.$filename);
 
-                return $folderName . '/' . $filename;
+                return $folderName.'/'.$filename;
             } else {
 
                 $path = $file->store($folderName, ['disk' => $diskName]);

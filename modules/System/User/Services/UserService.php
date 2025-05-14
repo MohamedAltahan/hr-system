@@ -3,8 +3,11 @@
 namespace Modules\System\User\Services;
 
 use Modules\Common\Enums\ImageQuality;
-use Modules\Common\Enums\UserRoleEnum;
+use Modules\Common\Filters\Common\BranchFilter;
 use Modules\Common\Filters\Common\JsonNameSearch;
+use Modules\Common\Filters\Employee\DepartmentFilter;
+use Modules\Common\Filters\Employee\EmployeeNumberFilter;
+use Modules\Common\Filters\Employee\EmployeePositionFilter;
 use Modules\Common\Traits\UploadFile;
 use Modules\System\User\Http\Requests\UserRequest;
 use Modules\System\User\Models\User;
@@ -15,7 +18,13 @@ class UserService
 
     public function getPaginatedUsers($perPage)
     {
-        return User::filter([JsonNameSearch::class])->paginate($perPage);
+        return User::excludeOwnerAndSuperAdmin()->filter([
+            JsonNameSearch::class,
+            EmployeeNumberFilter::class,
+            EmployeePositionFilter::class,
+            DepartmentFilter::class,
+            BranchFilter::class,
+        ])->paginate($perPage);
     }
 
     public function getUser($id)
@@ -27,6 +36,7 @@ class UserService
     {
         $userData = $request->validated();
         $userData['avatar'] = $this->uploadFile('avatar', 'avatar', config('filesystems.default'), ImageQuality::Low->value);
+
         return User::create($userData);
     }
 
@@ -39,9 +49,9 @@ class UserService
 
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = User::excludeOwnerAndSuperAdmin()->find($id);
 
-        if ($user->role == UserRoleEnum::SuperAdmin || $user->role == UserRoleEnum::OWNER) {
+        if (! $user) {
             return false;
         }
 

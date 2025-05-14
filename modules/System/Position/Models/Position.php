@@ -2,10 +2,7 @@
 
 namespace Modules\System\Position\Models;
 
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Models\BaseModel;
-use Modules\Common\Traits\HasLocalizedName;
-use Modules\System\User\Models\User;
 
 class Position extends BaseModel
 {

@@ -2,10 +2,7 @@
 
 namespace Modules\System\JobTitle\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Modules\Common\Enums\StatusCodeEnum;
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\JobTitle\Http\Requests\JobTitleRequest;
@@ -37,7 +34,7 @@ class JobTitleController extends ApiController
 
     public function store(JobTitleRequest $request)
     {
-        $data =  $this->service->create($request, new JobTitle);
+        $data = $this->service->create($request, new JobTitle);
 
         return $this->sendResponse(
             JobTitleResource::make($data),
@@ -70,7 +67,7 @@ class JobTitleController extends ApiController
     {
         $deleteStatus = $this->service->destroy($id);
 
-        if (!$deleteStatus) {
+        if (! $deleteStatus) {
             return $this->sendResponse(
                 [],
                 __('Data not deleted because it is in use'),
