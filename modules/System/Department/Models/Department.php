@@ -14,11 +14,6 @@ class Department extends BaseModel
 
     protected $fillable = ['name', 'description'];
 
-    protected $casts = [
-        'name' => 'array',
-        'description' => 'array',
-        'address' => 'array',
-    ];
 
     public function users()
     {

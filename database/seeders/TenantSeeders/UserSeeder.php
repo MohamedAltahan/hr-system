@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // for owner only
-        if (DB::getDatabaseName() == config('app.name').'_admin') {
+        if (DB::getDatabaseName() == config('app.name') . '_admin') {
             User::firstOrcreate(
                 ['username' => 'admin'],
                 [
@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
                     'username' => 'admin',
                     'branch_id' => 1,
                     'is_owner' => 1,
+                    'position_id' => 1,
                     'is_super_admin' => 1,
                     'email' => 'admin@example.com',
                     'password' => Hash::make('123456789'),
@@ -35,6 +36,7 @@ class UserSeeder extends Seeder
                     'name' => ['en' => 'admin user', 'ar' => 'مستخدم ادمن'],
                     'username' => 'admin',
                     'branch_id' => 1,
+                    'position_id' => 1,
                     'is_owner' => 0,
                     'is_super_admin' => 1,
                     'email' => 'admin@example.com',

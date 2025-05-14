@@ -36,14 +36,20 @@ class UserService
     {
         $userData = $request->validated();
         $userData['avatar'] = $this->uploadFile('avatar', 'avatar', config('filesystems.default'), ImageQuality::Low->value);
+        $user = User::create($userData);
 
-        return User::create($userData);
+        $user->update([
+            'employee_number' => $user->id,
+        ]);
+
+        return $user;
     }
 
     public function update(UserRequest $request, User $user)
     {
         $userData = $request->validated();
         $userData['avatar'] = $this->fileUpdate('avatar', 'avatar', config('filesystems.default'), $user->avatar, ImageQuality::Low->value);
+        $userData['employee_number'] = $user->id;
         $user->update($userData);
     }
 
