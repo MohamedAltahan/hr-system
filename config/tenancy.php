@@ -24,7 +24,6 @@ return [
         'alkholoudhr',
         'alkholoudhr.com',
         'www.alkholoudhr.com',
-        'https://alkholoudhr.com/'
     ],
 
     /**

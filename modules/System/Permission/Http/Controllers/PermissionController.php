@@ -5,8 +5,8 @@ namespace Modules\System\Permission\Http\Controllers;
 use Illuminate\Http\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
+use Modules\System\Permission\Http\Resources\PermissionResource;
 use Modules\System\Permission\Models\Permission;
-use Modules\System\Permission\Resources\PermissionResource;
 use Modules\System\Permission\Services\PermissionService;
 
 class PermissionController extends ApiController

@@ -6,7 +6,7 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Permission\Http\Requests\assignRoleRequest;
-use Modules\System\Permission\Resources\RoleResource;
+use Modules\System\Permission\Http\Resources\RoleResource;
 use Modules\System\Permission\Services\AssignRoleService;
 
 class AssignRoleController extends ApiController

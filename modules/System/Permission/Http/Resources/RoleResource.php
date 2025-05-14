@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\System\Permission\Resources;
+namespace Modules\System\Permission\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
 
-class PermissionResource extends JsonResource
+class RoleResource extends JsonResource
 {
     use HasPagination;
 
@@ -14,10 +14,10 @@ class PermissionResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            // 'translation' => $this->getTranslations(),
             'name' => $this->name,
-            'group' => $this->group,
             'guard_name' => $this->guard_name,
+            'permissions' => PermissionResource::collection($this->permissions),
+            'translation' => $this->getTranslations(),
         ];
     }
 }
