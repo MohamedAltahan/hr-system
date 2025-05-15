@@ -12,9 +12,8 @@ foreach (ModuleRegistry::erp() as $module) {
     if (file_exists($path)) {
         Route::group([
             'middleware' => [
-                InitializeTenancyByDomainOrSubdomain::class,
                 'auth:sanctum',
-                // PreventAccessFromCentralDomains::class,
+                PreventAccessFromCentralDomains::class,
             ],
             'as' => Str::of($module)->snake('-')->lower()->append('.')->toString(),
         ], function () use ($path) {

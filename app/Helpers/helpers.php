@@ -62,4 +62,9 @@ if (! function_exists('formatDate')) {
 
         return $result;
     }
+
+    function currentBranchId()
+    {
+        return auth('tenant-users')->user()->branch_id;
+    }
 }

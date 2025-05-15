@@ -53,7 +53,7 @@ return [
             'driver' => 'mysql',
             'url' => env('TELESCOPE_DATABASE_URL'),
             'host' => env('TELESCOPE_DB_HOST', '127.0.0.1'),
-            'port' => env('TELESCOPE_DB_PORT', '3310'),
+            'port' => env('TELESCOPE_DB_PORT', '60000'),
             'database' => env('TELESCOPE_DB_DATABASE', 'forge'),
             'username' => env('TELESCOPE_DB_USERNAME', 'forge'),
             'password' => env('TELESCOPE_DB_PASSWORD', ''),
@@ -102,7 +102,7 @@ return [
 
             'options' => [
                 'cluster' => env('REDIS_CLUSTER', 'redis'),
-                'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+                'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
                 'persistent' => env('REDIS_PERSISTENT', false),
             ],
 

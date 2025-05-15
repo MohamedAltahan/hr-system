@@ -13,8 +13,7 @@ class BranchSeeder extends Seeder
             ['id' => 1],
             [
                 'id' => 1,
-                'name_en' => 'main branch',
-                'name_ar' => 'الفرع الرئيسي',
+                'name' => ['en' => 'main branch', 'ar' => 'الفرع الرئيسي'],
                 'is_active' => 1,
                 'description' => ['en' => 'main branch', 'ar' => 'الفرع الرئيسي'],
                 'address' => ['en' => 'main branch', 'ar' => 'الفرع الرئيسي'],

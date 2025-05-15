@@ -19,4 +19,15 @@ class BaseModel extends Model
     use HasFactory;
     use HasTranslations;
     use TranslateAttributes;
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            if (
+                empty($model->branch_id) &&
+                $model->getConnection()->getSchemaBuilder()->hasColumn($model->getTable(), 'branch_id')
+            ) {
+                $model->branch_id = currentBranchId();
+            }
+        });
+    }
 }

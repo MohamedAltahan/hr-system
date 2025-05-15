@@ -4,7 +4,7 @@ return [
 
     'defaults' => [
         'guard' => 'tenant-users',
-        'passwords' => 'tenant',
+        'passwords' => 'users',
     ],
 
     'guards' => [

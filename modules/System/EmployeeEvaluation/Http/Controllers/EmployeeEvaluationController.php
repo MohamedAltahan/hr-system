@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\Branch\Http\Controllers;
+namespace Modules\System\EmployeeEvaluation\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -8,54 +8,56 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\Branch\Http\Requests\BranchRequest;
-use Modules\System\Branch\Http\Resources\BranchResource;
-use Modules\System\Branch\Models\Branch;
-use Modules\System\Branch\Services\BranchService;
+use Modules\System\EmployeeEvaluation\Http\Requests\EmployeeEvaluationRequest;
+use Modules\System\EmployeeEvaluation\Http\Resources\EmployeeEvaluationResource;
+use Modules\System\EmployeeEvaluation\Models\EmployeeEvaluation;
+use Modules\System\EmployeeEvaluation\Services\EmployeeEvaluationService;
 
-class BranchController extends ApiController
+class EmployeeEvaluationController extends ApiController
 {
     use ApiResponse;
 
-    public function __construct(protected BranchService $service)
+    public static ?string $model = EmployeeEvaluation::class;
+
+    public function __construct(protected EmployeeEvaluationService $service)
     {
         parent::__construct();
     }
 
     public function index()
     {
-        $branchs = $this->service->getPaginatedBranchs($this->perPage);
+        $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            BranchResource::paginate($branchs),
+            EmployeeEvaluationResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(BranchRequest $request)
+    public function store(EmployeeEvaluationRequest $request)
     {
         $data = $this->service->create($request);
 
         return $this->sendResponse(
-            BranchResource::make($data),
+            EmployeeEvaluationResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
     }
 
-    public function show(Branch $branch)
+    public function show(EmployeeEvaluation $EmployeeEvaluation)
     {
         return $this->sendResponse(
-            BranchResource::make($branch),
+            EmployeeEvaluationResource::make($EmployeeEvaluation),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(BranchRequest $request, Branch $branch)
+    public function update(EmployeeEvaluationRequest $request, int $id)
     {
-        $this->service->update($request, $branch);
+        $this->service->update($request, $id);
 
         return $this->sendResponse(
             [],
@@ -64,9 +66,9 @@ class BranchController extends ApiController
         );
     }
 
-    public function destroy(Branch $branch)
+    public function destroy(EmployeeEvaluation $EmployeeEvaluation)
     {
-        $this->service->destroy($branch);
+        $this->service->destroy($EmployeeEvaluation);
 
         return $this->sendResponse(
             [],

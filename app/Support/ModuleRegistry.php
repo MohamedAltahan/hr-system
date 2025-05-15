@@ -20,6 +20,7 @@ class ModuleRegistry
             'Position',
             'Employee',
             'JobTitle',
+            'EmployeeEvaluation'
 
         ];
     }
