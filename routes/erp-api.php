@@ -13,9 +13,10 @@ foreach (ModuleRegistry::erp() as $module) {
         Route::group([
             'middleware' => [
                 'auth:sanctum',
+                InitializeTenancyByDomainOrSubdomain::class,
                 // PreventAccessFromCentralDomains::class,
             ],
-            'as' => Str::of($module)->snake('-')->lower()->append('.')->toString(),
+            'as' => Str::of('system')->snake('-')->lower()->append('.')->toString(),
         ], function () use ($path) {
             require $path;
         });

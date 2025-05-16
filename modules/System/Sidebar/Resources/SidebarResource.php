@@ -3,6 +3,7 @@
 namespace Modules\System\Sidebar\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Route;
 
 class SidebarResource extends JsonResource
 {
@@ -12,7 +13,7 @@ class SidebarResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'route' => $this->route,
+            'route' => $this->route ? route($this->route) : '',
             'icon' => $this->icon,
             'is_active' => $this->is_active,
             'order' => $this->order,

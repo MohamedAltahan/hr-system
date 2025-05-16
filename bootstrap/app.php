@@ -13,8 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(SetLanguage::class)
-            ->append(Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain::class);
+        $middleware->append(SetLanguage::class);
+        // ->append(Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {})
     ->create();
