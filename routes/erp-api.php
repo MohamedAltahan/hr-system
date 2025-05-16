@@ -13,7 +13,7 @@ foreach (ModuleRegistry::erp() as $module) {
         Route::group([
             'middleware' => [
                 'auth:sanctum',
-                PreventAccessFromCentralDomains::class,
+                // PreventAccessFromCentralDomains::class,
             ],
             'as' => Str::of($module)->snake('-')->lower()->append('.')->toString(),
         ], function () use ($path) {
