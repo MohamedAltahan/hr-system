@@ -2,6 +2,7 @@
 
 namespace Modules\System\Plan\Http\Controllers;
 
+use Illuminate\Support\Facades\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
@@ -13,14 +14,14 @@ class PlanController extends ApiController
 {
     use ApiResponse;
 
-    public function __construct(protected PlanService $planService)
+    public function __construct(protected PlanService $service)
     {
         parent::__construct();
     }
 
     public function index()
     {
-        $plans = $this->planService->getPaginatedPlans($this->perPage);
+        $plans = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
             PlanResource::paginate($plans),
@@ -42,7 +43,7 @@ class PlanController extends ApiController
 
     public function show($id)
     {
-        $plan = $this->planService->getPlan($id);
+        $plan = $this->service->getPlan($id);
 
         return $this->sendResponse(
             PlanResource::make($plan),
@@ -53,7 +54,7 @@ class PlanController extends ApiController
 
     public function update(PlanRequest $request, $id)
     {
-        $this->planService->updatePlan($request, $id);
+        $this->service->updatePlan($request, $id);
 
         return $this->sendResponse(
             [],

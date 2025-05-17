@@ -21,7 +21,9 @@ class TenantDatabaseSeeder extends Seeder
                 PositionSeeder::class,
                 JobTitleSeeder::class,
                 UserSeeder::class,
-                DepartmentSeeder::class
+                DepartmentSeeder::class,
+                SettingSeeder::class,
+                // PlanSeeder::class,
             ]
         );
     }

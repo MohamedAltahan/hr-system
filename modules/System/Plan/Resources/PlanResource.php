@@ -24,6 +24,7 @@ class PlanResource extends JsonResource
             'currency' => $this->currency,
             'is_trial' => $this->is_trial,
             'trial_days' => $this->trial_days,
+            'order' => $this->order,
         ];
     }
 }

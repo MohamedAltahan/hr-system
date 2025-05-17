@@ -6,7 +6,7 @@ use Modules\Common\Models\BaseModel;
 
 class Plan extends BaseModel
 {
-    public $translatable = ['name', 'description', 'features'];
+    public $translatable = ['name', 'description', 'features', 'currency'];
 
     protected $fillable = [
         'name',
@@ -21,15 +21,18 @@ class Plan extends BaseModel
         'permissions',
         'sidebar_items',
         'plan_id',
+        'order',
+        'currency',
+        'is_trial',
+        'trial_days',
+        'duration_in_months',
+        'tenant_id',
+        'is_deletable',
     ];
 
     protected $casts = [
-        'features' => 'array',
         'limits' => 'array',
         'permissions' => 'array',
         'sidebar_items' => 'array',
-        'name' => 'array',
-        'description' => 'array',
-        'currency' => 'array',
     ];
 }

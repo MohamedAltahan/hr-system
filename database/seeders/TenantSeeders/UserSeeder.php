@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // for owner only
-        if (DB::getDatabaseName() == config('app.name') . '_admin') {
+        if (tenant()->domain == 'admin') {
             User::firstOrcreate(
                 ['username' => 'admin'],
                 [
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 ]
             );
         } else {
-            // super admin for all tenants
+            // super admin for all other tenants
             User::firstOrcreate(
                 ['username' => 'admin'],
                 [

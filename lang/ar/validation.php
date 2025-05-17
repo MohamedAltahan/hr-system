@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'unique_json' => 'تم استخدام :attribute (:lang) من قبل.',
     'accepted' => 'يجب قبول :attribute.',
     'phone' => ':attribute يجب ان يحتوى على رقم جوال صحيح.',
@@ -178,6 +179,8 @@ return [
     */
 
     'attributes' => [
+        'price_after_discount' => 'السعر بعد الخصم',
+        'is_trial' => 'خطة تجريبية',
         'en' => 'الانجليزي',
         'ar' => 'العربي',
         'plan_id' => 'الخطة',

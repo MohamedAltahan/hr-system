@@ -12,49 +12,45 @@ class PlanService
 {
     use Filterable;
 
-    public static function getPaginatedPlans($perPage)
+    public static function getPaginatedData($perPage)
     {
-        $plan = DB::connection('admin')->table('plans')->where('id', 2)->first();
+        $tenantId = request('company_id') ?? null;
 
-        $permissions = json_decode($plan->permissions, true);
-        $sidebarItems = json_decode($plan->sidebar_items, true);
-        foreach ($sidebarItems as $sidebarItem) {
+        $data = tenancy()->central(function () use ($tenantId, $perPage) {
+            return Plan::where('is_active', 1)->where('tenant_id', $tenantId)->orderBy('order', 'asc')->paginate($perPage);
+        });
 
-            dd($sidebarItem['name']);
-        }
-
-        $plans = Plan::paginate($perPage);
-
-        return $plans;
+        return $data;
     }
 
     public static function storePlan($request)
     {
-        $permission_ids = $request->input('permission_ids');
-        $sidebar_item_ids = $request->input('sidebar_item_ids');
+        $tenantId = request('company_id') ?? null;
 
-        $permissions = TenantPermission::whereIn('id', $permission_ids)->get()->toArray();
-        $sidebarItems = TenantSidebar::whereIn('id', $sidebar_item_ids)->get()->toArray();
+        $data = tenancy()->central(function () use ($request, $tenantId) {
+            $request->merge(['tenant_id' => $tenantId]);
+            return Plan::create($request->all());
+        });
 
-        $request->merge(['permissions' => $permissions, 'sidebar_items' => $sidebarItems]);
-
-        $plan = Plan::create($request->all());
-
-        return $plan;
+        return $data;
     }
 
     public static function getPlan($id)
     {
-        $plan = Plan::find($id);
+        $data = tenancy()->central(function () use ($id) {
+            return Plan::findOrFail($id);
+        });
 
-        return $plan;
+        return $data;
     }
 
     public static function updatePlan($request, $id)
     {
-        $plan = Plan::find($id);
-        $plan->update($request->all());
+        $data = tenancy()->central(function () use ($id, $request) {
+            $plan = Plan::findOrFail($id);
+            return $plan->update($request->all());
+        });
 
-        return $plan;
+        return $data;
     }
 }
