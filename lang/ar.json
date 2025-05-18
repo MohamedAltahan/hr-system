@@ -32,5 +32,10 @@
     "PENDING": "قيد الانتظار",
     "male": "ذكر",
     "female": "انثى",
-    "owner": "المالك"
+    "owner": "المالك",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "canceled": "تم الالغاء",
+    "expired": "انتهى",
+    "pending": "معلق"
 }

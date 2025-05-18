@@ -37,12 +37,12 @@ if (! function_exists('formatDate')) {
     function formatDate($date)
     {
         $formats = [
-            'default' => 'Y-m-d',           // '2025-01-01'
-            'datetime_12hr' => 'Y-m-d h:i A',     // 2025-01-01 11:00:00 AM
-            'time_12hr' => 'h:i A',           // 12:00 AM
-            'datetime_24hr' => 'Y-m-d H:i:s',     // 2025-01-01 23:00:00
-            'time_24hr' => 'H:i',             // 24:00
-            'long' => 'F Y j',           // 1 Jan 2025
+            'date' => 'Y-m-d',           // '2025-01-01'
+            'datetime' => 'Y-m-d h:i A',     // 2025-01-01 11:00:00 AM
+            // 'time_12hr' => 'h:i A',           // 12:00 AM
+            // 'datetime_24hr' => 'Y-m-d H:i:s',     // 2025-01-01 23:00:00
+            // 'time_24hr' => 'H:i',             // 24:00
+            // 'long' => 'F Y j',           // 1 Jan 2025
         ];
 
         if (empty($date)) {

@@ -9,6 +9,7 @@ class Plan extends BaseModel
     public $translatable = ['name', 'description', 'features', 'currency'];
 
     protected $fillable = [
+        'id',
         'name',
         'description',
         'price',
@@ -28,6 +29,8 @@ class Plan extends BaseModel
         'duration_in_months',
         'tenant_id',
         'is_deletable',
+        'created_at',
+        'updated_at',
     ];
 
     protected $casts = [

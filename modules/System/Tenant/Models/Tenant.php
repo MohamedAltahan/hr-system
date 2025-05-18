@@ -5,6 +5,7 @@ namespace Modules\System\Tenant\Models;
 use Modules\Common\Enums\TenantCreateStatus;
 use Modules\Common\Traits\Filterable;
 use Modules\System\Plan\Models\Plan;
+use Modules\System\Subscription\Models\Subscription;
 use Spatie\Translatable\HasTranslations;
 use Stancl\Tenancy\Contracts\TenantWithDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDatabase;
@@ -31,6 +32,19 @@ class Tenant extends BaseTenant implements TenantWithDatabase
         'creating_status' => TenantCreateStatus::class,
     ];
 
+    //relations
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function currentSubscription()
+    {
+        return $this->hasOne(Subscription::class)->where('status', 'active');
+    }
+
+
+    // custom columns for tenancy for laravel
     public static function getCustomColumns(): array
     {
         return [

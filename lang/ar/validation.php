@@ -179,6 +179,7 @@ return [
     */
 
     'attributes' => [
+        'company_id' => 'الشركة',
         'price_after_discount' => 'السعر بعد الخصم',
         'is_trial' => 'خطة تجريبية',
         'en' => 'الانجليزي',
