@@ -1,6 +1,7 @@
 <?php
 
 return [
+    //my services
     [
         'name' => ['ar' => 'خدماتي', 'en' => 'My Services'],
         'slug' => 'my_services',
@@ -93,6 +94,7 @@ return [
             ],
         ],
     ],
+    //settings
     [
         'name' => ['ar' => 'الاعدادات العامة', 'en' => 'Genaral Settings'],
         'slug' => 'general_settings',
@@ -176,6 +178,7 @@ return [
             ],
         ],
     ],
+    //salary
     [
         'name' => ['ar' => 'الرواتب', 'en' => 'Salary'],
         'slug' => 'salary',
@@ -259,6 +262,7 @@ return [
             ],
         ],
     ],
+    //employees
     [
         'name' => ['ar' => 'الموظفون', 'en' => 'Employees'],
         'slug' => 'employees',

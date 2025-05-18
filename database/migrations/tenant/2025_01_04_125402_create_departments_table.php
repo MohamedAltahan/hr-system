@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->json('name');
             $table->json('description')->nullable();
+            $table->foreignId('branch_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('manager_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
     }

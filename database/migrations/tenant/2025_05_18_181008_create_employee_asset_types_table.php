@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tenant_limits', function (Blueprint $table) {
+        Schema::create('employee_asset_types', function (Blueprint $table) {
             $table->id();
-            $table->string('resource_type')->unique();
-            $table->integer('max_count');
-            $table->integer('current_count')->default(0);
+            $table->json('name');
+            $table->json('description')->nullable();
+            $table->foreignId('branch_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tenant_limits');
+        Schema::dropIfExists('employee_asset_types');
     }
 };

@@ -21,6 +21,8 @@ class ModuleRegistry
             'Employee',
             'JobTitle',
             'EmployeeEvaluation',
+            'EmployeeAssetType',
+            'EmployeeAsset',
             'Subscription'
         ];
     }

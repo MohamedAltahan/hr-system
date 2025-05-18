@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\System\Department\Http\Requests;
+namespace Modules\System\EmployeeAssetType\Http\Requests;
 
 use Modules\Common\Http\Requests\ApiRequest;
 use Modules\Common\Rules\UniqueJson;
 
-class DepartmentRequest extends ApiRequest
+class EmployeeAssetTypeRequest extends ApiRequest
 {
     public function rules(): array
     {
@@ -15,7 +15,7 @@ class DepartmentRequest extends ApiRequest
             'name' => ['required', 'array', 'max:255'],
             'name' => [new UniqueJson('departments', 'name', $department_id)],
             'description' => 'nullable|array|max:300',
-            'manager_id' => 'nullable|exists:users,id',
+            'branch_id' => 'required|exists:branches,id',
         ];
     }
 }

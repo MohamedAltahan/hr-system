@@ -18,11 +18,12 @@ class DepartmentSeeder extends Seeder
 
         foreach ($departments as $department) {
 
-            Department::updateOrCreate(
+            Department::firstOrCreate(
                 ['id' => $department['id']],
                 [
                     'name' => $department['name'],
                     'description' => $department['description'],
+                    'manager_id' => $department['manager_id'],
                 ]
             );
         }

@@ -1,18 +1,19 @@
 <?php
 
-namespace Modules\System\Department\Models;
+namespace Modules\System\EmployeeAssetType\Models;
 
 use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Models\BaseModel;
 use Modules\System\User\Models\User;
 
-class Department extends BaseModel
+class EmployeeAssetType extends BaseModel
 {
     public $timestamps = false;
 
     protected $translatable = ['name', 'description'];
 
-    protected $fillable = ['name', 'description', 'manager_id'];
+    protected $fillable = ['name', 'description', 'branch_id'];
+
 
     public function users()
     {
@@ -21,6 +22,6 @@ class Department extends BaseModel
 
     public function manager()
     {
-        return $this->belongsTo(User::class, 'manager_id');
+        return $this->hasOne(User::class, 'department_id')->where('role', UserRoleEnum::MANAGER);
     }
 }
