@@ -2,19 +2,23 @@
 
 namespace Modules\System\EmployeeAsset\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
 use Modules\Common\Rules\UniqueJson;
+use Modules\System\EmployeeAsset\Enum\EmployeeAssetStatusEnum;
 
 class EmployeeAssetRequest extends ApiRequest
 {
     public function rules(): array
     {
-        $department_id = $this->route('department');
-
         return [
-            'name' => ['required', 'array', 'max:255'],
-            'name' => [new UniqueJson('departments', 'name', $department_id)],
-            'description' => 'nullable|array|max:300',
+            'employee_id' => 'required|exists:users,id',
+            'manager_id' => 'required|exists:users,id',
+            'employee_asset_type_id' => 'required|exists:employee_asset_types,id',
+            'department_id' => 'required|exists:departments,id',
+            'issue_date' => 'required|date',
+            'return_date' => 'sometimes|nullable|date',
+            'status' => ['required', Rule::in(EmployeeAssetStatusEnum::cases())],
         ];
     }
 }

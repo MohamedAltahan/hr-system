@@ -4,24 +4,34 @@ namespace Modules\System\EmployeeAsset\Models;
 
 use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Models\BaseModel;
+use Modules\System\EmployeeAssetType\Models\EmployeeAssetType;
 use Modules\System\User\Models\User;
 
 class EmployeeAsset extends BaseModel
 {
     public $timestamps = false;
 
-    protected $translatable = ['name', 'description'];
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['manager_id', 'employee_id', 'employee_asset_type_id', 'department_id', 'issue_date', 'return_date', 'status'];
 
 
-    public function users()
+    public function employee()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class, 'employee_id');
     }
 
     public function manager()
     {
-        return $this->hasOne(User::class, 'department_id')->where('role', UserRoleEnum::MANAGER);
+        return $this->belongsTo(User::class, 'manager_id');
+    }
+
+    public function asset()
+    {
+        return $this->belongsTo(EmployeeAssetType::class, 'employee_asset_type_id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(User::class, 'department_id');
     }
 }

@@ -34,7 +34,7 @@ class EmployeeAssetController extends ApiController
 
     public function store(EmployeeAssetRequest $request)
     {
-        $data = $this->service->create($request, new EmployeeAsset);
+        $data = $this->service->create($request);
 
         return $this->sendResponse(
             EmployeeAssetResource::make($data),

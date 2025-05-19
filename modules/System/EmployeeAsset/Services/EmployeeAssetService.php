@@ -12,14 +12,13 @@ class EmployeeAssetService
 {
     public function getPaginatedData($perPage)
     {
-        return EmployeeAsset::withCount('users')->with('manager')->filter([JsonNameSearch::class])->paginate($perPage);
+        return EmployeeAsset::with('asset', 'manager', 'employee')->filter([JsonNameSearch::class])->paginate($perPage);
     }
 
     public function create(Request $request): Model
     {
-        $Data = $request->validated();
-
-        return EmployeeAsset::create($Data);
+        $data = $request->validated();
+        return EmployeeAsset::create($data);
     }
 
     public function update(Request $request, $id): void
@@ -32,13 +31,6 @@ class EmployeeAssetService
     public function destroy(int $id): bool
     {
         $model = EmployeeAsset::findOrFail($id);
-
-        $checkExists = User::where('department_id', $model->id)->first();
-
-        if ($checkExists) {
-            return false;
-        }
-
         return $model->delete();
     }
 }
