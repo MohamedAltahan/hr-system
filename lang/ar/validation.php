@@ -179,6 +179,12 @@ return [
     */
 
     'attributes' => [
+        'employee_asset_type_id' => 'نوع العهدة',
+        'issue_date' => 'تاريخ الاصدار',
+        'department_id' => 'القسم',
+        'manager_id' => 'المدير',
+        'employee_id' => 'الموظف',
+        'attendance_rule_id' => 'ساعات العمل',
         'company_id' => 'الشركة',
         'price_after_discount' => 'السعر بعد الخصم',
         'is_trial' => 'خطة تجريبية',

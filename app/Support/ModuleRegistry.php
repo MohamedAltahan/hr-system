@@ -23,6 +23,8 @@ class ModuleRegistry
             'EmployeeEvaluation',
             'EmployeeAssetType',
             'EmployeeAsset',
+            'EmployeeContract',
+            'AttendanceRule',
             'Subscription'
         ];
     }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('employee_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->foreignId('manager_id')->constrained('users', 'id')->cascadeOnDelete();
-            $table->foreignId('employee_asset_type_id')->constrained('asset_types', 'id')->cascadeOnDelete();
+            $table->foreignId('employee_asset_type_id')->constrained('employee_asset_types', 'id')->cascadeOnDelete();
             $table->foreignId('department_id')->constrained('departments', 'id')->cascadeOnDelete();
             $table->date('issue_date');
             $table->date('return_date')->nullable();

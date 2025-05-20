@@ -40,5 +40,11 @@
     "pending": "معلق",
     "issued": "تم اصدارها",
     "returned": "تم ارجاعها",
-    "lost": "تم فقدانها"
+    "lost": "تم فقدانها",
+    "Morning": "صباحا",
+    "Afternoon": "بعد الظهر",
+    "Evening": "مساء",
+    "full-time": "دوام كامل",
+    "part-time": "دوام جزئي",
+    "flexible": "دوام مرن"
 }
