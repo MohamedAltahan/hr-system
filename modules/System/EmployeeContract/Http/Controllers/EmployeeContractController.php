@@ -34,7 +34,6 @@ class EmployeeContractController extends ApiController
 
     public function store(EmployeeContractRequest $request)
     {
-        dd($request->all());
         $data = $this->service->create($request);
 
         return $this->sendResponse(

@@ -28,7 +28,7 @@ class UserResource extends JsonResource
             'hire_date' => $this?->hire_date,
             'direct_manager_name' => $this?->directManager?->name,
             'department_name' => $this?->department?->name,
-            'job_title' => $this?->job_title,
+            'job_title' => $this?->jobTitle?->name,
             'address' => $this?->address,
             'is_active' => $this->is_active,
             'translations' => $this->getTranslations(),

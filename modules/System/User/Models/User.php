@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Modules\Common\Traits\Filterable;
 use Modules\System\Branch\Models\Branch;
 use Modules\System\Department\Models\Department;
+use Modules\System\JobTitle\Models\JobTitle;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Translatable\HasTranslations;
 
@@ -71,6 +72,11 @@ class User extends Authenticatable
     public function department()
     {
         return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function jobTitle()
+    {
+        return $this->belongsTo(JobTitle::class, 'job_title_id');
     }
 
     // scopes
