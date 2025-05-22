@@ -13,7 +13,7 @@ class EmployeeAssetTypeService
 {
     public function getPaginatedData($perPage)
     {
-        return EmployeeAssetType::filter([JsonNameSearch::class])->paginate($perPage);
+        return EmployeeAssetType::with('branch')->filter([JsonNameSearch::class])->paginate($perPage);
     }
 
     public function create(Request $request): Model

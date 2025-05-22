@@ -29,7 +29,7 @@ class UserService
 
     public function getUser($id)
     {
-        return User::with('branch')->find($id);
+        return User::with('branch', 'department', 'jobTitle', 'directManager')->find($id);
     }
 
     public function create(UserRequest $request)

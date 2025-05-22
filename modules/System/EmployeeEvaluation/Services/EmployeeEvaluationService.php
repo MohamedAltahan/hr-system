@@ -13,7 +13,7 @@ class EmployeeEvaluationService
 {
     public function getPaginatedData($perPage)
     {
-        return EmployeeEvaluation::filter([JsonNameSearch::class])->paginate($perPage);
+        return EmployeeEvaluation::with('employee', 'evaluator')->filter([JsonNameSearch::class])->paginate($perPage);
     }
 
     public function create($request)

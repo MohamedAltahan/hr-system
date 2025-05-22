@@ -15,7 +15,6 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'branch' => $this->branch->name,
             'username' => $this->username,
             'email' => $this?->email,
             'phone' => $this?->phone,
@@ -26,11 +25,24 @@ class UserResource extends JsonResource
             'gender' => __($this?->gender),
             'social_status' => __($this?->social_status),
             'hire_date' => $this?->hire_date,
-            'direct_manager_name' => $this?->directManager?->name,
-            'department_name' => $this?->department?->name,
-            'job_title' => $this?->jobTitle?->name,
             'address' => $this?->address,
             'is_active' => $this->is_active,
+            'branch' => [
+                'id' => $this->branch->id,
+                'name' => $this->branch->name
+            ],
+            'direct_manager' => [
+                'id' => $this?->directManager?->id,
+                'name' => $this?->directManager?->name
+            ],
+            'department_name' => [
+                'id' => $this?->department?->id,
+                'name' => $this?->department?->name
+            ],
+            'job_title' => [
+                'id' => $this?->jobTitle?->id,
+                'name' => $this?->jobTitle?->name
+            ],
             'translations' => $this->getTranslations(),
         ];
     }

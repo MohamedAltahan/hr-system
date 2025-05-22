@@ -4,6 +4,7 @@ namespace Modules\System\EmployeeAssetType\Models;
 
 use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Models\BaseModel;
+use Modules\System\Branch\Models\Branch;
 use Modules\System\User\Models\User;
 
 class EmployeeAssetType extends BaseModel
@@ -14,14 +15,8 @@ class EmployeeAssetType extends BaseModel
 
     protected $fillable = ['name', 'description', 'branch_id'];
 
-
-    public function users()
+    public function branch()
     {
-        return $this->hasMany(User::class);
-    }
-
-    public function manager()
-    {
-        return $this->hasOne(User::class, 'department_id')->where('role', UserRoleEnum::MANAGER);
+        return $this->belongsTo(Branch::class);
     }
 }

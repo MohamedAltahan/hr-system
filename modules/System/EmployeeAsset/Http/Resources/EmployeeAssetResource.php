@@ -14,11 +14,16 @@ class EmployeeAssetResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'employee_name' => $this->employee->name,
-            'employee_number' => $this->employee->employee_number,
-            'asset_type' => $this->asset->name,
-            'department' => $this->department->name,
-            'manager_name' => $this->manager->name,
+            'id' => $this->id,
+            'employee' => UserResource::make($this->employee),
+            'asset_type' => [
+                'id' => $this->asset->id,
+                'name' => $this->asset->name
+            ],
+            'manager' => [
+                'id' => $this->manager->id,
+                'name' => $this->manager->name
+            ],
             'issue_date' => formatDate($this->issue_date),
             'return_date' => formatDate($this->return_date),
         ];

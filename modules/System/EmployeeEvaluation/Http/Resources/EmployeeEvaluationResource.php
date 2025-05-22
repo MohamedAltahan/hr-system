@@ -14,12 +14,18 @@ class EmployeeEvaluationResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'employee_name' => $this->employee->name,
-            'employee_number' => $this->employee->employee_number ?? '-',
             'evaluation_from' => $this->evaluation_from,
             'evaluation_to' => $this->evaluation_to,
             'score' => $this->score,
-            'evaluator' => $this->evaluator?->name,
+            'employee' => [
+                'id' => $this->employee->id,
+                'name' => $this->employee->name,
+                'number' =>  $this->employee->employee_number ?? '-',
+            ],
+            'evaluator' => [
+                'id' => $this->evaluator?->id,
+                'name' => $this->evaluator?->name
+            ],
         ];
     }
 }

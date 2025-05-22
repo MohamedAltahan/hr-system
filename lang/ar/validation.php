@@ -179,6 +179,8 @@ return [
     */
 
     'attributes' => [
+        'job_title_id' => 'الوظيفة',
+        'national_id' => 'رقم الهوية',
         'employee_asset_type_id' => 'نوع العهدة',
         'issue_date' => 'تاريخ الاصدار',
         'department_id' => 'القسم',
