@@ -23,7 +23,7 @@ class UserResource extends JsonResource
             'employee_number' => $this?->employee_number,
             'avatar' => $this->avatar ? asset('storage/' . $this->avatar) : '',
             'gender' => $this?->gender,
-            'social_status' => __($this?->social_status),
+            'social_status' => $this?->social_status,
             'hire_date' => $this?->hire_date,
             'address' => $this?->address,
             'is_active' => $this->is_active,
