@@ -12,7 +12,7 @@ class AttendanceRuleService
 {
     public function getPaginatedData($perPage)
     {
-        return AttendanceRule::with('asset', 'manager', 'employee')->filter([JsonNameSearch::class])->paginate($perPage);
+        return AttendanceRule::with('branch')->filter([JsonNameSearch::class])->paginate($perPage);
     }
 
     public function create($request)
@@ -26,6 +26,11 @@ class AttendanceRuleService
         $model = AttendanceRule::findOrFail($id);
         $data = $request->validated();
         $model->update($data);
+    }
+
+    public function show($id): Model
+    {
+        return AttendanceRule::with('branch')->findOrFail($id);
     }
 
     public function destroy(int $id): bool

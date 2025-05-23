@@ -16,13 +16,14 @@ class AttendanceRuleResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'entry_time' => $this->entry_time,
-            'exit_time' => $this->exit_time,
-            'break_time' => $this->break_time,
+            'entry_time' => formatTime($this->entry_time),
+            'exit_time' => formatTime($this->exit_time),
+            'break_time' => formatTime($this->break_time),
             'grace_period_minutes' => $this->grace_period_minutes,
             'shift_time' => $this->shift_time,
             'work_type' => $this->work_type,
             'weekly_days_count' => $this->weekly_days_count,
+            'branch' => $this->branch->name,
             'status' => $this->status,
         ];
     }

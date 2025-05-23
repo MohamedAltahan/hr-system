@@ -43,10 +43,12 @@ class AttendanceRuleController extends ApiController
         );
     }
 
-    public function show(AttendanceRule $department)
+    public function show($id)
     {
+        $data = $this->service->show($id);
+
         return $this->sendResponse(
-            AttendanceRuleResource::make($department),
+            AttendanceRuleResource::make($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );

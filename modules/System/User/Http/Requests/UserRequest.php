@@ -13,7 +13,9 @@ class UserRequest extends ApiRequest
 
         return [
             'name' => ['required', 'array', 'max:255'],
-            'password' => 'required|string|min:2',
+            'password' => $user_id
+                ? ['sometimes', 'string', 'min:2']
+                : ['required', 'string', 'min:2'],
             'username' => ['required', 'string', 'max:20', Rule::unique('users', 'username')->ignore($user_id)],
             'phone' => ['required', 'string', 'max:20', Rule::unique('users', 'phone')->ignore($user_id)],
             'branch_id' => 'integer|required|exists:branches,id',
