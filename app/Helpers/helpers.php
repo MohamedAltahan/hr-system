@@ -63,6 +63,33 @@ if (! function_exists('formatDate')) {
         return $result;
     }
 
+
+    function formatTime($time)
+    {
+        $formats = [
+            'time_12hr' => 'h:i A',     // 12-hour format with AM/PM (e.g., 01:30 PM)
+            'time_24hr' => 'H:i',       // 24-hour format (e.g., 13:30)
+        ];
+
+        if (empty($time)) {
+            return '';
+        }
+
+        $carbon = is_numeric($time)
+            ? Carbon::createFromTimestamp($time)
+            : Carbon::parse($time);
+
+        $result = [];
+
+        foreach ($formats as $key => $format) {
+            $formatted = $carbon->translatedFormat($format);
+            $result[$key] = $formatted;
+        }
+
+        return $result;
+    }
+
+
     function currentBranchId()
     {
         return auth('tenant-users')->user()->branch_id;

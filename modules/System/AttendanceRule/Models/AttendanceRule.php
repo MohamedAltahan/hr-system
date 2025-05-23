@@ -9,6 +9,7 @@ use Modules\System\User\Models\User;
 
 class AttendanceRule extends BaseModel
 {
+    protected $translatable = ['name'];
 
     protected $fillable = [
         'name',
@@ -22,5 +23,4 @@ class AttendanceRule extends BaseModel
         'weekly_days_count',
         'status',
     ];
-    // protected $guarded = [];
 }

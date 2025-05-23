@@ -18,8 +18,6 @@ class AttendanceRuleService
     public function create($request)
     {
         $data = $request->validated();
-        dd($data);
-        // dd(new AttendanceRule());
         return AttendanceRule::create($data);
     }
 

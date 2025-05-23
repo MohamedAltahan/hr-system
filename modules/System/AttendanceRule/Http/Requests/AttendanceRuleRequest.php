@@ -14,8 +14,7 @@ class AttendanceRuleRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'array', 'max:255'],
-            'name' => [new UniqueJson('attendance_rules', 'name')],
+            'name' => ['required', 'array', 'max:255', new UniqueJson('attendance_rules', 'name')],
             'entry_time' => 'required|date_format:H:i',
             'exit_time' => 'required|date_format:H:i',
             'break_time' => 'required|date_format:H:i',

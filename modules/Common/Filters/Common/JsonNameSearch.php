@@ -8,12 +8,13 @@ use Modules\Common\Contracts\FilterContract;
 
 class JsonNameSearch implements FilterContract
 {
-    // handle method auto recognized by laravel pipleline
     public function handle(Builder $query, Closure $next)
     {
-        return $next($query)->when(request()->has('name'), function ($query) {
-            $query->whereRaw('LOWER(name->"$.ar") LIKE ?', ['%'.strtolower(request('name')).'%'])
-                ->orWhereRaw('LOWER(name->"$.en") LIKE ?', ['%'.strtolower(request('name')).'%']);
+        return $next($query)->when(request()->filled('name'), function ($query) {
+            $search = '%' . strtolower(request('name')) . '%';
+
+            $query->whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.ar"))) LIKE ?', [$search])
+                ->orWhereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.en"))) LIKE ?', [$search]);
         });
     }
 }

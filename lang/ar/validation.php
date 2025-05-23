@@ -179,6 +179,13 @@ return [
     */
 
     'attributes' => [
+        'entry_time' => 'وقت الدخول',
+        'exit_time' => 'وقت الخروج',
+        'break_time' => 'وقت الاستراحة',
+        'grace_period_minutes' => 'التاخير المسموح به',
+        'work_type' => 'نوع المناوبة',
+        'shift_time' => 'وقت المناوبة',
+        'weekly_days_count' => 'عدد ايام العمل',
         'job_title_id' => 'الوظيفة',
         'national_id' => 'رقم الهوية',
         'employee_asset_type_id' => 'نوع العهدة',

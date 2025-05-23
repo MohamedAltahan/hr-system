@@ -14,13 +14,16 @@ class AttendanceRuleResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'employee_name' => $this->employee->name,
-            'employee_number' => $this->employee->employee_number,
-            'asset_type' => $this->asset->name,
-            'department' => $this->department->name,
-            'manager_name' => $this->manager->name,
-            'issue_date' => formatDate($this->issue_date),
-            'return_date' => formatDate($this->return_date),
+            'id' => $this->id,
+            'name' => $this->name,
+            'entry_time' => $this->entry_time,
+            'exit_time' => $this->exit_time,
+            'break_time' => $this->break_time,
+            'grace_period_minutes' => $this->grace_period_minutes,
+            'shift_time' => $this->shift_time,
+            'work_type' => $this->work_type,
+            'weekly_days_count' => $this->weekly_days_count,
+            'status' => $this->status,
         ];
     }
 }
