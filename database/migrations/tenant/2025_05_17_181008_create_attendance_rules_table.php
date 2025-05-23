@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('attendance_rules', function (Blueprint $table) {
             $table->id();
+            $table->json('name');
             $table->foreignId('branch_id')->constrained('branches')->onDelete('cascade');
             $table->time('entry_time');
             $table->time('exit_time');

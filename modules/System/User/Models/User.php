@@ -11,6 +11,7 @@ use Modules\Common\Traits\Filterable;
 use Modules\System\Branch\Models\Branch;
 use Modules\System\Department\Models\Department;
 use Modules\System\JobTitle\Models\JobTitle;
+use Modules\System\Position\Models\Position;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Translatable\HasTranslations;
 
@@ -77,6 +78,11 @@ class User extends Authenticatable
     public function jobTitle()
     {
         return $this->belongsTo(JobTitle::class, 'job_title_id');
+    }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'position_id');
     }
 
     // scopes

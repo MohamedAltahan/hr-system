@@ -15,13 +15,15 @@ class AttendanceRuleService
         return AttendanceRule::with('asset', 'manager', 'employee')->filter([JsonNameSearch::class])->paginate($perPage);
     }
 
-    public function create(Request $request): Model
+    public function create($request)
     {
         $data = $request->validated();
+        dd($data);
+        // dd(new AttendanceRule());
         return AttendanceRule::create($data);
     }
 
-    public function update(Request $request, $id): void
+    public function update($request, $id): void
     {
         $model = AttendanceRule::findOrFail($id);
         $data = $request->validated();

@@ -6,19 +6,24 @@ use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
 use Modules\Common\Rules\UniqueJson;
 use Modules\System\AttendanceRule\Enum\AttendanceRuleStatusEnum;
+use Modules\System\AttendanceRule\Enum\ShiftTimeEmum;
+use Modules\System\AttendanceRule\Enum\WorkTypeEnum;
 
 class AttendanceRuleRequest extends ApiRequest
 {
     public function rules(): array
     {
         return [
-            'employee_id' => 'required|exists:users,id',
-            'manager_id' => 'required|exists:users,id',
-            'employee_asset_type_id' => 'required|exists:employee_asset_types,id',
-            'department_id' => 'required|exists:departments,id',
-            'issue_date' => 'required|date',
-            'return_date' => 'sometimes|nullable|date',
-            // 'status' => ['required', Rule::in(AttendanceRuleStatusEnum::cases())],
+            'name' => ['required', 'array', 'max:255'],
+            'name' => [new UniqueJson('attendance_rules', 'name')],
+            'entry_time' => 'required|date_format:H:i',
+            'exit_time' => 'required|date_format:H:i',
+            'break_time' => 'required|date_format:H:i',
+            'grace_period_minutes' => 'required|integer|min:0',
+            'shift_time' => ['required', Rule::in(ShiftTimeEmum::cases())],
+            'work_type' => ['required', Rule::in(WorkTypeEnum::cases())],
+            'weekly_days_count' => 'required|integer|min:0|max:7',
+            'status' => ['required', 'boolean'],
         ];
     }
 }

@@ -43,6 +43,10 @@ class UserResource extends JsonResource
                 'id' => $this?->jobTitle?->id,
                 'name' => $this?->jobTitle?->name
             ],
+            'position' => [
+                'id' => $this?->position?->id,
+                'name' => $this?->position?->name
+            ],
             'translations' => $this->getTranslations(),
         ];
     }

@@ -17,9 +17,9 @@ class DepartmentService
 
     public function create(Request $request): Model
     {
-        $Data = $request->validated();
+        $data = $request->validated();
 
-        return Department::create($Data);
+        return Department::create($data);
     }
 
     public function update(Request $request, $id): void

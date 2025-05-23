@@ -15,7 +15,9 @@ class RoleService
 
     public function storeRoleWithPermissions($request): void
     {
+
         $validated = $request->validated();
+        $validated['guard_name'] = 'tenant-users';
         $permissionIds = Arr::pull($validated, 'permission_Ids');
         $permissionIds = array_map('intval', $permissionIds);
 
