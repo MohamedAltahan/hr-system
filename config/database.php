@@ -53,7 +53,7 @@ return [
             'driver' => 'mysql',
             'url' => env('TELESCOPE_DATABASE_URL'),
             'host' => env('TELESCOPE_DB_HOST', '127.0.0.1'),
-            'port' => env('TELESCOPE_DB_PORT', '60000'),
+            'port' => env('TELESCOPE_DB_PORT', '3306'),
             'database' => env('TELESCOPE_DB_DATABASE', 'forge'),
             'username' => env('TELESCOPE_DB_USERNAME', 'forge'),
             'password' => env('TELESCOPE_DB_PASSWORD', ''),
