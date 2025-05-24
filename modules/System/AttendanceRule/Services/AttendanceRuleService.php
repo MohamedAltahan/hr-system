@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\Common\Filters\Common\JsonNameSearch;
 use Modules\System\AttendanceRule\Models\AttendanceRule;
+use Modules\System\EmployeeContract\Models\EmployeeContract;
 use Modules\System\User\Models\User;
 
 class AttendanceRuleService
@@ -21,6 +22,11 @@ class AttendanceRuleService
         return AttendanceRule::create($data);
     }
 
+    public function show($id): Model
+    {
+        return AttendanceRule::with('branch')->findOrFail($id);
+    }
+
     public function update($request, $id): void
     {
         $model = AttendanceRule::findOrFail($id);
@@ -28,14 +34,17 @@ class AttendanceRuleService
         $model->update($data);
     }
 
-    public function show($id): Model
-    {
-        return AttendanceRule::with('branch')->findOrFail($id);
-    }
 
     public function destroy(int $id): bool
     {
         $model = AttendanceRule::findOrFail($id);
+
+        $checkExists = EmployeeContract::where('attendance_rule_id', $model->id)->first();
+
+        if ($checkExists) {
+            return false;
+        }
+
         return $model->delete();
     }
 }

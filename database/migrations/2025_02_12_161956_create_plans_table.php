@@ -16,7 +16,7 @@ return new class extends Migration
             $table->json('name')->comment('e.g., Basic, Pro');
 
             $table->foreignId('tenant_id')->nullable();
-            $table->foreign('tenant_id')->references('id')->on('tenants');
+            // $table->foreign('tenant_id')->references('id')->on('tenants');
             $table->boolean('is_deletable')->default(1);
 
             $table->json('description')->nullable();
