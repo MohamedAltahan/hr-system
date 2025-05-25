@@ -19,6 +19,7 @@ class PositionSeeder extends Seeder
             Position::updateOrCreate(
                 ['id' => $position['id']],
                 [
+                    'branch_id' => $position['branch_id'],
                     'name' => $position['name'],
                 ]
             );

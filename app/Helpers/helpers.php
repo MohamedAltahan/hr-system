@@ -92,6 +92,6 @@ if (! function_exists('formatDate')) {
 
     function currentBranchId()
     {
-        return auth('tenant-users')?->user()?->branch_id;
+        return auth('tenant-users')?->user()?->branch_id ?: 1;
     }
 }

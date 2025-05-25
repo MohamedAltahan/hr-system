@@ -4,6 +4,7 @@
 return [
     [
         'id' => 1,
+        'branch_id' => 1,
         'name' => [
             'en' => 'Chief Executive Officer',
             'ar' => 'الرئيس التنفيذي',
@@ -11,6 +12,7 @@ return [
     ],
     [
         'id' => 2,
+        'branch_id' => 1,
         'name' => [
             'en' => 'Employee',
             'ar' => 'موظف',
@@ -18,6 +20,7 @@ return [
     ],
     [
         'id' => 3,
+        'branch_id' => 1,
         'name' => [
             'en' => 'Human Resources Manager',
             'ar' => 'مدير',
