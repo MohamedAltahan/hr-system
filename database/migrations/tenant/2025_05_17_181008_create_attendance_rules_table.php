@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('branch_id')->constrained('branches')->onDelete('cascade');
             $table->time('entry_time');
             $table->time('exit_time');
-            $table->int('grace_period_minutes')->default(0);
+            $table->integer('grace_period_minutes')->default(0);
             $table->time('break_time')->nullable();
             $table->string('shift_time')->default('morning');
             $table->string('work_type')->default('full-time');
