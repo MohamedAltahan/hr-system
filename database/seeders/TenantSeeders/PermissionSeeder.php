@@ -11,11 +11,10 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
 
+        $sidebarPermissions = $this->getSidebarPermissions();
         $modelsPermissions = $this->getModelsPermissions();
 
-        $sidebarPermissions = $this->getSidebarPermissions();
-
-        $permissions = $modelsPermissions->merge($sidebarPermissions);
+        $permissions = $sidebarPermissions->merge($modelsPermissions);
 
         foreach ($permissions as $permission) {
             Permission::updateOrCreate(
@@ -34,7 +33,7 @@ class PermissionSeeder extends Seeder
     {
         $title = [];
         foreach (config('app.supported_languages') as $locale) {
-            $title[$locale] = trans("$key", [], $locale).' '.trans("$value", [], $locale);
+            $title[$locale] = trans("$key", [], $locale) . ' ' . trans("$value", [], $locale);
         }
 
         return $title;
@@ -48,7 +47,7 @@ class PermissionSeeder extends Seeder
                     return [
                         'name' => "{$key}_{$value}",
                         'title' => $this->translatePermissionTitle($key, $value),
-                        'group' => 'model',
+                        'group' => $value,
                     ];
                 });
             })
@@ -66,7 +65,7 @@ class PermissionSeeder extends Seeder
             ];
 
             $children = collect($item['children'] ?? [])
-                ->map(fn ($entry) => [
+                ->map(fn($entry) => [
                     'name' => $entry['permission_name'],
                     'title' => $entry['name'],
                     'group' => 'sidebar',

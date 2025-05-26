@@ -5,6 +5,7 @@ namespace Modules\System\User\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
+use Modules\System\Permission\Http\Resources\RoleResource;
 
 class UserResource extends JsonResource
 {
@@ -12,7 +13,9 @@ class UserResource extends JsonResource
 
     public function toArray(Request $request): array
     {
+        $userPermissions = $this->permissions->pluck('name');
         return [
+            'company_id' => tenant()->id,
             'id' => $this->id,
             'name' => $this->name,
             'username' => $this->username,
@@ -47,6 +50,7 @@ class UserResource extends JsonResource
                 'id' => $this?->position?->id,
                 'name' => $this?->position?->name
             ],
+            'roles' => RoleResource::collection($this->roles),
             'translations' => $this->getTranslations(),
         ];
     }

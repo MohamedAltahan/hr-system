@@ -4,7 +4,7 @@ use Illuminate\Support\Str;
 
 return [
     // used to change default connection in validation rules to check in central database
-    'central_connection' => env('DB_CONNECTION', 'admin'),
+    'central_connection' => env('DB_CONNECTION', 'central'),
 
     'default' => env('DB_CONNECTION', 'admin'),
     'connections' => [

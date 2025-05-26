@@ -36,6 +36,7 @@ class TenantController extends ApiController
 
     public function store(TenantRequest $request)
     {
+
         $tenant = Tenant::create([
             'tenancy_db_name' => config('app.name') . '_' . $request->domain,
             'user_id' => null,
@@ -51,7 +52,9 @@ class TenantController extends ApiController
             'domain' => $request->domain,
         ]);
 
-        $plan = Plan::findOrFail($request->plan_id);
+        $centralConnection = config('database.central_connection');
+
+        $plan = Plan::on($centralConnection)->findOrFail($request->plan_id);
 
         $tenant->subscriptions()->create([
             'tenant_id' => $tenant->id,
