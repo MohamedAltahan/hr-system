@@ -2,6 +2,7 @@
 
 namespace Modules\System\User\Services;
 
+use Illuminate\Support\Arr;
 use Modules\Common\Enums\ImageQuality;
 use Modules\Common\Filters\Common\BranchFilter;
 use Modules\Common\Filters\Common\JsonNameSearch;
@@ -9,6 +10,7 @@ use Modules\Common\Filters\Employee\DepartmentFilter;
 use Modules\Common\Filters\Employee\EmployeeNumberFilter;
 use Modules\Common\Filters\Employee\EmployeePositionFilter;
 use Modules\Common\Traits\UploadFile;
+use Modules\System\Permission\Models\Role;
 use Modules\System\User\Http\Requests\UserRequest;
 use Modules\System\User\Models\User;
 
@@ -35,8 +37,13 @@ class UserService
     public function create(UserRequest $request)
     {
         $userData = $request->validated();
+        $roles = Arr::pull($userData, 'role_ids');
+
         $userData['avatar'] = $this->uploadFile('avatar', 'avatar', config('filesystems.default'), ImageQuality::Low->value);
         $user = User::create($userData);
+
+        $roles = Role::whereIn('id', $roles)->get();
+        $user->syncRoles($roles);
 
         $user->update([
             'employee_number' => $user->id,

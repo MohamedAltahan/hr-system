@@ -179,6 +179,7 @@ return [
     */
 
     'attributes' => [
+        'role_ids.*' => 'الدور',
         'domain' => 'النطاق',
         'entry_time' => 'وقت الدخول',
         'exit_time' => 'وقت الخروج',

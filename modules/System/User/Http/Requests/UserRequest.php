@@ -32,6 +32,8 @@ class UserRequest extends ApiRequest
             'direct_manager_id' => 'nullable|exists:users,id',
             'department_id' => 'nullable|exists:departments,id',
             'position_id' => 'nullable|exists:positions,id',
+            'role_ids' => 'required|array',
+            'role_ids.*' => 'exists:roles,id',
         ];
     }
 }
