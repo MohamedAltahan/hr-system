@@ -11,5 +11,5 @@ class Branch extends BaseModel
 
     protected $translatable = ['name', 'description', 'address'];
 
-    protected $fillable = ['name', 'description', 'address', 'status', 'phone', 'created_at'];
+    protected $fillable = ['name', 'description', 'address', 'is_active', 'phone', 'created_at'];
 }
