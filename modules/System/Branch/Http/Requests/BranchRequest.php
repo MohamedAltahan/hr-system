@@ -18,7 +18,7 @@ class BranchRequest extends ApiRequest
             'phone' => ['nullable', 'string', 'max:20', Rule::unique('branches', 'phone')->ignore($branch_id)],
             'address' => 'nullable|array|max:300',
             'description' => 'nullable|array|max:300',
-            'status' => 'boolean', // if not entered it will be true
+            'is_active' => 'boolean', // if not entered it will be true
         ];
     }
 }
