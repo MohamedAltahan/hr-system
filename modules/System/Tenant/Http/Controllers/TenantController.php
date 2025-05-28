@@ -46,6 +46,8 @@ class TenantController extends ApiController
             'version' => config('app.version'),
             'creating_status' => TenantCreateStatus::CREATED,
             'plan_id' => $request->plan_id,
+            'email' => $request->email,
+            'phone' => $request->phone,
         ]);
 
         $tenant->domains()->create([
