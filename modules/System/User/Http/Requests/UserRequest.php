@@ -34,6 +34,7 @@ class UserRequest extends ApiRequest
             'position_id' => 'nullable|exists:positions,id',
             'role_ids' => 'required|array',
             'role_ids.*' => 'exists:roles,id',
+
         ];
     }
 }
