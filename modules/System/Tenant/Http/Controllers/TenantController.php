@@ -42,7 +42,7 @@ class TenantController extends ApiController
             'user_id' => null,
             'company_name' => $request->company_name,
             'domain' => $request->domain,
-            'is_active' => 1,
+            'is_active' => $request->is_active,
             'version' => config('app.version'),
             'creating_status' => TenantCreateStatus::CREATED,
             'plan_id' => $request->plan_id,
