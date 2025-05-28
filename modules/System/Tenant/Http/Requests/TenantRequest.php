@@ -43,6 +43,7 @@ class TenantRequest extends ApiRequest
                 Rule::unique($centralConnection . '.tenants', 'email')->ignore($tenant_id),
             ],
             'plan_id' => "required|exists:$centralConnection.plans,id",
+            'is_active' => 'boolean',
 
         ];
     }
