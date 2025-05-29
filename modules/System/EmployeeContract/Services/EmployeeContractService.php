@@ -12,7 +12,12 @@ class EmployeeContractService
 {
     public function getPaginatedData($perPage)
     {
-        return EmployeeContract::with('asset', 'manager', 'employee')->filter([JsonNameSearch::class])->paginate($perPage);
+        return EmployeeContract::with(
+            'attendanceRule',
+            'employee',
+            'employee.department',
+            'employee.jobTitle',
+        )->filter([JsonNameSearch::class])->paginate($perPage);
     }
 
     public function create(Request $request): Model

@@ -18,6 +18,9 @@ class EmployeeContractResource extends JsonResource
             'employee' => [
                 'id' => $this->employee->id,
                 'name' => $this->employee->name,
+                'number' =>  $this->employee->employee_number,
+                'department' => $this->employee->department?->name,
+                'job_title' => $this->employee->jobTitle?->name,
             ],
             'attendance_rule' => [
                 'id' => $this->attendanceRule->id,
