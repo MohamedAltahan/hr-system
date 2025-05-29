@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('salary', 10, 2);
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('status')->default('active');
+            $table->string('is_active')->default(1);
             $table->timestamps();
         });
     }

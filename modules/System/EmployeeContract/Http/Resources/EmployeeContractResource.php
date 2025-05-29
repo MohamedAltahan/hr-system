@@ -14,13 +14,19 @@ class EmployeeContractResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'employee_name' => $this->employee->name,
-            'employee_number' => $this->employee->employee_number,
-            'asset_type' => $this->asset->name,
-            'department' => $this->department->name,
-            'manager_name' => $this->manager->name,
-            'issue_date' => formatDate($this->issue_date),
-            'return_date' => formatDate($this->return_date),
+            'id' => $this->id,
+            'employee' => [
+                'id' => $this->employee->id,
+                'name' => $this->employee->name,
+            ],
+            'attendance_rule' => [
+                'id' => $this->attendanceRule->id,
+                'name' => $this->attendanceRule->name,
+            ],
+            'salary' => $this->salary,
+            'start_date' => formatDate($this->start_date),
+            'end_date' => formatDate($this->end_date),
+            'is_active' => $this->is_active,
         ];
     }
 }

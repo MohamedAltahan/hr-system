@@ -21,11 +21,17 @@ class EmployeeContractService
         return EmployeeContract::create($data);
     }
 
-    public function update(Request $request, $id): void
+    public function show(int $id): Model
+    {
+        return EmployeeContract::findOrFail($id);
+    }
+
+    public function update(Request $request, $id): Model
     {
         $model = EmployeeContract::findOrFail($id);
         $data = $request->validated();
         $model->update($data);
+        return $model;
     }
 
     public function destroy(int $id): bool

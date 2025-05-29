@@ -43,10 +43,12 @@ class EmployeeContractController extends ApiController
         );
     }
 
-    public function show(EmployeeContract $department)
+    public function show(int $id)
     {
+        $date = $this->service->show($id);
+
         return $this->sendResponse(
-            EmployeeContractResource::make($department),
+            EmployeeContractResource::make($date),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
@@ -54,10 +56,10 @@ class EmployeeContractController extends ApiController
 
     public function update(EmployeeContractRequest $request, int $id)
     {
-        $this->service->update($request, $id);
+        $data = $this->service->update($request, $id);
 
         return $this->sendResponse(
-            [],
+            EmployeeContractResource::make($data),
             __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );
