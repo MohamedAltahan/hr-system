@@ -16,7 +16,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
 {
     use Filterable, HasDatabase, HasDomains, HasTranslations;
 
-    protected $connection = 'admin';
+    protected $connection = 'central';
 
     // protected $fillable = [];
     protected $guarded = [];

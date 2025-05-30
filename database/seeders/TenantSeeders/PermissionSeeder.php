@@ -33,7 +33,7 @@ class PermissionSeeder extends Seeder
     {
         $title = [];
         foreach (config('app.supported_languages') as $locale) {
-            $title[$locale] = trans("$key", [], $locale).' '.trans("$value", [], $locale);
+            $title[$locale] = trans("$key", [], $locale) . ' ' . trans("$value", [], $locale);
         }
 
         return $title;
@@ -57,7 +57,9 @@ class PermissionSeeder extends Seeder
     private function getSidebarPermissions(): \Illuminate\Support\Collection
     {
         return collect(config('sidebar'))->flatMap(function ($item) {
-
+            if (!isset($item['permission_name'])) {
+                dd($item);
+            }
             $parent = [
                 'name' => $item['permission_name'],
                 'title' => $item['name'],
@@ -65,7 +67,7 @@ class PermissionSeeder extends Seeder
             ];
 
             $children = collect($item['children'] ?? [])
-                ->map(fn ($entry) => [
+                ->map(fn($entry) => [
                     'name' => $entry['permission_name'],
                     'title' => $entry['name'],
                     'group' => 'sidebar',

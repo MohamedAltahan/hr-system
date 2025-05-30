@@ -3,6 +3,7 @@
 namespace Database\Seeders\TenantSeeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Modules\System\Sidebar\Models\Sidebar;
 
 class SidebarSeeder extends Seeder
@@ -10,6 +11,9 @@ class SidebarSeeder extends Seeder
     public function run(): void
     {
         $sidebarItems = config('sidebar');
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Sidebar::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         foreach ($sidebarItems as $sidebarItem) {
             // parent

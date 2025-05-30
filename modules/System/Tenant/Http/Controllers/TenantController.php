@@ -37,7 +37,7 @@ class TenantController extends ApiController
     {
 
         $tenant = Tenant::create([
-            'tenancy_db_name' => config('app.name').'_'.$request->domain,
+            'tenancy_db_name' => config('app.name') . '_' . $request->domain,
             'user_id' => null,
             'company_name' => $request->company_name,
             'domain' => $request->domain,
@@ -53,9 +53,15 @@ class TenantController extends ApiController
             'domain' => $request->domain,
         ]);
 
-        $centralConnection = config('database.central_connection');
+        $plan = Plan::findOrFail($request->plan_id);
 
-        $plan = Plan::on($centralConnection)->findOrFail($request->plan_id);
+        $newPlanData = $plan->toArray();
+        unset($newPlanData['id']);
+        $newPlanData['tenant_id'] = $tenant->id;
+        $newPlanData['created_at'] = now();
+        $newPlanData['updated_at'] = now();
+
+        $plan = Plan::create($newPlanData);
 
         $tenant->subscriptions()->create([
             'tenant_id' => $tenant->id,

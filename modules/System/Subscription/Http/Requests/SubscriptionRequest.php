@@ -2,19 +2,25 @@
 
 namespace Modules\System\Subscription\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
 
 class SubscriptionRequest extends ApiRequest
 {
     public function rules(): array
     {
-        // $sidebarItemId = $this->route('plan');
-
         $centralConnection = config('database.central_connection');
+        $companyId = $this->input('company_id');
 
         return [
-            'plan_id' => "required|exists:$centralConnection.plans,id",
             'company_id' => "required|exists:$centralConnection.tenants,id",
+            'plan_id' => [
+                'required',
+                Rule::exists("$centralConnection.plans", 'id')
+                    ->where(function ($query) use ($companyId) {
+                        $query->where('tenant_id', $companyId);
+                    }),
+            ],
         ];
     }
 }

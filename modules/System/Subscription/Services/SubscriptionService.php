@@ -31,10 +31,9 @@ class SubscriptionService
             $tenant = Tenant::findOrFail($request->company_id);
             $plan = Plan::findOrFail($request->plan_id);
             $currentSubscription = $tenant->currentSubscription()->first();
-
             DB::beginTransaction();
 
-            if ($currentSubscription && $currentSubscription['status'] == SubscriptionStatus::ACTIVE->value) {
+            if ($currentSubscription && $currentSubscription['status']->value == SubscriptionStatus::ACTIVE->value) {
                 // expire current subscription
                 $currentSubscription->update([
                     'status' => SubscriptionStatus::EXPIRED->value,
@@ -62,6 +61,7 @@ class SubscriptionService
     public static function getSubscriptions($tenantId, $perPage)
     {
         $data = tenancy()->central(function () use ($tenantId, $perPage) {
+
             $tenant = Tenant::findOrFail($tenantId);
 
             return $tenant->subscriptions()->paginate($perPage);

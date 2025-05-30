@@ -81,4 +81,15 @@ class PlanService
 
         return $data;
     }
+
+    public static function destroy($id)
+    {
+        $data = tenancy()->central(function () use ($id) {
+            $plan = Plan::findOrFail($id);
+
+            return $plan->delete();
+        });
+
+        return $data;
+    }
 }

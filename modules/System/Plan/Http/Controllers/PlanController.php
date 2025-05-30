@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
+use Modules\System\Plan\Http\Requests\AssignPlanToTenantRequest;
 use Modules\System\Plan\Http\Requests\PlanRequest;
 use Modules\System\Plan\Resources\PlanResource;
 use Modules\System\Plan\Services\PlanService;
@@ -41,7 +42,7 @@ class PlanController extends ApiController
         );
     }
 
-    public function assignPlanToTenant(Request $request)
+    public function assignPlanToTenant(AssignPlanToTenantRequest $request)
     {
         $data = $this->service->assignPlanToTenant($request);
 

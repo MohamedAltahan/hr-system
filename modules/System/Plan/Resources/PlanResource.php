@@ -11,6 +11,7 @@ class PlanResource extends JsonResource
 
     public function toArray($request)
     {
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -25,6 +26,7 @@ class PlanResource extends JsonResource
             'is_trial' => $this->is_trial,
             'trial_days' => $this->trial_days,
             'order' => $this->order,
+            'is_current' => $this->current_active_subscription ? true : false,
         ];
     }
 }

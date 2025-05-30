@@ -3,10 +3,14 @@
 namespace Modules\System\Plan\Models;
 
 use Modules\Common\Models\BaseModel;
+use Modules\System\Subscription\Enum\SubscriptionStatus;
+use Modules\System\Subscription\Models\Subscription;
 
 class Plan extends BaseModel
 {
     public $translatable = ['name', 'description', 'features', 'currency'];
+
+    protected $connection = 'central';
 
     protected $fillable = [
         'id',
@@ -38,4 +42,19 @@ class Plan extends BaseModel
         'permissions' => 'array',
         'sidebar_items' => 'array',
     ];
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function getCurrentActiveSubscriptionAttribute()
+    {
+        return tenancy()->central(function () {
+            return Subscription::where('status', SubscriptionStatus::ACTIVE->value)
+                ->where('plan_data->id', $this->id)
+                ->where('tenant_id', $this->tenant_id)
+                ->first();
+        });
+    }
 }
