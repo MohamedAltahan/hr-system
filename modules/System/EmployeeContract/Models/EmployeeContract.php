@@ -2,10 +2,8 @@
 
 namespace Modules\System\EmployeeContract\Models;
 
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Models\BaseModel;
 use Modules\System\AttendanceRule\Models\AttendanceRule;
-use Modules\System\EmployeeContractType\Models\EmployeeContractType;
 use Modules\System\User\Models\User;
 
 class EmployeeContract extends BaseModel
@@ -14,7 +12,6 @@ class EmployeeContract extends BaseModel
 
     // protected $fillable = [];
     protected $guarded = [];
-
 
     public function employee()
     {

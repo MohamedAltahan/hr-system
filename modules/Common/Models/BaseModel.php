@@ -19,6 +19,7 @@ class BaseModel extends Model
     use HasFactory;
     use HasTranslations;
     use TranslateAttributes;
+
     protected static function booted()
     {
         static::creating(function ($model) {

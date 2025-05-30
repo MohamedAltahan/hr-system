@@ -2,7 +2,6 @@
 
 namespace Modules\System\EmployeeEvaluation\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
 
 class EmployeeEvaluationRequest extends ApiRequest

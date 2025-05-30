@@ -63,7 +63,6 @@ if (! function_exists('formatDate')) {
         return $result;
     }
 
-
     function formatTime($time)
     {
         $formats = [
@@ -88,7 +87,6 @@ if (! function_exists('formatDate')) {
 
         return $result;
     }
-
 
     function currentBranchId()
     {

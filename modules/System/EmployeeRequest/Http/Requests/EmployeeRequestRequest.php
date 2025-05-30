@@ -1,13 +1,10 @@
 <?php
 
-namespace Modules\System\EmployeeContract\Http\Requests;
+namespace Modules\System\EmployeeRequest\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
-use Modules\Common\Rules\UniqueJson;
-use Modules\System\EmployeeContract\Enum\EmployeeContractStatusEnum;
 
-class EmployeeContractRequest extends ApiRequest
+class EmployeeRequestRequest extends ApiRequest
 {
     public function rules(): array
     {

@@ -10,7 +10,7 @@ class UniqueJson implements ValidationRule
     public function __construct(
         protected string $table,
         protected string $column,
-        protected ?int $exceptId = null
+        protected int|object|null $exceptId = null
     ) {}
 
     public function validate(string $attribute, mixed $value, \Closure $fail): void
@@ -21,8 +21,9 @@ class UniqueJson implements ValidationRule
             $query = DB::table($this->table)
                 ->where("{$this->column}->{$key}", $value[$key] ?? null);
 
-            if ($this->exceptId !== null) {
-                $query->where('id', '!=', $this->exceptId);
+            $exceptId = gettype($this->exceptId) == 'object' ? $this->exceptId->id : $this->exceptId;
+            if ($exceptId !== null) {
+                $query->where('id', '!=', $exceptId);
             }
 
             if ($query->exists()) {

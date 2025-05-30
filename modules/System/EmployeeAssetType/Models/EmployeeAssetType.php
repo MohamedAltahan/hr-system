@@ -2,10 +2,8 @@
 
 namespace Modules\System\EmployeeAssetType\Models;
 
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Models\BaseModel;
 use Modules\System\Branch\Models\Branch;
-use Modules\System\User\Models\User;
 
 class EmployeeAssetType extends BaseModel
 {

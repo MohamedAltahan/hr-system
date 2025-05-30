@@ -20,11 +20,11 @@ class EmployeeEvaluationResource extends JsonResource
             'employee' => [
                 'id' => $this->employee->id,
                 'name' => $this->employee->name,
-                'number' =>  $this->employee->employee_number ?? '-',
+                'number' => $this->employee->employee_number ?? '-',
             ],
             'evaluator' => [
                 'id' => $this->evaluator?->id,
-                'name' => $this->evaluator?->name
+                'name' => $this->evaluator?->name,
             ],
         ];
     }

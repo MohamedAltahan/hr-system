@@ -2,7 +2,7 @@
 
 namespace Modules\System\Plan\Http\Controllers;
 
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
@@ -41,12 +41,34 @@ class PlanController extends ApiController
         );
     }
 
+    public function assignPlanToTenant(Request $request)
+    {
+        $data = $this->service->assignPlanToTenant($request);
+
+        return $this->sendResponse(
+            PlanResource::make($data),
+            __('Data created successfully'),
+            StatusCodeEnum::Created_successfully->value
+        );
+    }
+
     public function show($id)
     {
         $plan = $this->service->getPlan($id);
 
         return $this->sendResponse(
             PlanResource::make($plan),
+            __('Data fetched successfully'),
+            StatusCodeEnum::Success->value
+        );
+    }
+
+    public function getActivePlans()
+    {
+        $plans = $this->service->getActivePlans();
+
+        return $this->sendResponse(
+            PlanResource::collection($plans),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
@@ -65,6 +87,12 @@ class PlanController extends ApiController
 
     public function destroy($id)
     {
-        //
+        $this->service->destroy($id);
+
+        return $this->sendResponse(
+            [],
+            __('Data deleted successfully'),
+            StatusCodeEnum::Success->value
+        );
     }
 }

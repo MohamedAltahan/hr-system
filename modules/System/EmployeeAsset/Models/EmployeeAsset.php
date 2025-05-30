@@ -2,7 +2,6 @@
 
 namespace Modules\System\EmployeeAsset\Models;
 
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Models\BaseModel;
 use Modules\System\EmployeeAssetType\Models\EmployeeAssetType;
 use Modules\System\User\Models\User;
@@ -11,9 +10,7 @@ class EmployeeAsset extends BaseModel
 {
     public $timestamps = false;
 
-
     protected $fillable = ['manager_id', 'employee_id', 'employee_asset_type_id', 'department_id', 'issue_date', 'return_date', 'status'];
-
 
     public function employee()
     {

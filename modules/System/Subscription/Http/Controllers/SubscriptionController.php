@@ -2,7 +2,6 @@
 
 namespace Modules\System\Subscription\Http\Controllers;
 
-use Illuminate\Support\Facades\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;

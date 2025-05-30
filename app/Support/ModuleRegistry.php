@@ -26,7 +26,7 @@ class ModuleRegistry
             'EmployeeContract',
             'EmployeeRequest',
             'AttendanceRule',
-            'Subscription'
+            'Subscription',
         ];
     }
 

@@ -14,7 +14,7 @@ class SidebarService
 
         $sidebarItems = Sidebar::with('children')->whereNull('parent_id')->filter([JsonNameSearch::class])->get();
 
-        if (!$user->is_owner && !$user->is_super_admin) {
+        if (! $user->is_owner && ! $user->is_super_admin) {
 
             $allowedSidebarItems = $sidebarItems->filter(function ($parent) use ($user) {
 

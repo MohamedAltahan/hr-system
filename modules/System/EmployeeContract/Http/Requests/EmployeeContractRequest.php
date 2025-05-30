@@ -2,10 +2,7 @@
 
 namespace Modules\System\EmployeeContract\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
-use Modules\Common\Rules\UniqueJson;
-use Modules\System\EmployeeContract\Enum\EmployeeContractStatusEnum;
 
 class EmployeeContractRequest extends ApiRequest
 {

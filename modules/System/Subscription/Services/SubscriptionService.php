@@ -3,8 +3,6 @@
 namespace Modules\System\Subscription\Services;
 
 use Illuminate\Support\Facades\DB;
-use Modules\Central\TenantPermission\Models\TenantPermission;
-use Modules\Central\TenantSidebar\Models\TenantSidebar;
 use Modules\Common\Traits\Filterable;
 use Modules\System\Plan\Models\Plan;
 use Modules\System\Subscription\Enum\SubscriptionStatus;
@@ -54,6 +52,7 @@ class SubscriptionService
             ]);
 
             DB::commit();
+
             return $subscription;
         });
 
@@ -64,6 +63,7 @@ class SubscriptionService
     {
         $data = tenancy()->central(function () use ($tenantId, $perPage) {
             $tenant = Tenant::findOrFail($tenantId);
+
             return $tenant->subscriptions()->paginate($perPage);
         });
 
@@ -74,6 +74,7 @@ class SubscriptionService
     {
         $data = tenancy()->central(function () use ($id, $request) {
             $plan = Subscription::findOrFail($id);
+
             return $plan->update($request->all());
         });
 

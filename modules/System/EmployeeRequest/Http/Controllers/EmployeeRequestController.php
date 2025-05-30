@@ -1,22 +1,22 @@
 <?php
 
-namespace Modules\System\EmployeeContract\Http\Controllers;
+namespace Modules\System\EmployeeRequest\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\EmployeeContract\Http\Requests\EmployeeContractRequest;
-use Modules\System\EmployeeContract\Http\Resources\EmployeeContractResource;
-use Modules\System\EmployeeContract\Models\EmployeeContract;
-use Modules\System\EmployeeContract\Services\EmployeeContractService;
+use Modules\System\EmployeeRequest\Http\Requests\EmployeeRequestRequest;
+use Modules\System\EmployeeRequest\Http\Resources\EmployeeRequestResource;
+use Modules\System\EmployeeRequest\Models\EmployeeRequest;
+use Modules\System\EmployeeRequest\Services\EmployeeRequestService;
 
-class EmployeeContractController extends ApiController
+class EmployeeRequestController extends ApiController
 {
     use ApiResponse;
 
-    public static ?string $model = EmployeeContract::class;
+    public static ?string $model = EmployeeRequest::class;
 
-    public function __construct(protected EmployeeContractService $service)
+    public function __construct(protected EmployeeRequestService $service)
     {
         parent::__construct();
     }
@@ -26,18 +26,18 @@ class EmployeeContractController extends ApiController
         $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            EmployeeContractResource::paginate($data),
+            EmployeeRequestResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(EmployeeContractRequest $request)
+    public function store(EmployeeRequestRequest $request)
     {
         $data = $this->service->create($request);
 
         return $this->sendResponse(
-            EmployeeContractResource::make($data),
+            EmployeeRequestResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
@@ -48,18 +48,18 @@ class EmployeeContractController extends ApiController
         $date = $this->service->show($id);
 
         return $this->sendResponse(
-            EmployeeContractResource::make($date),
+            EmployeeRequestResource::make($date),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(EmployeeContractRequest $request, int $id)
+    public function update(EmployeeRequestRequest $request, int $id)
     {
         $data = $this->service->update($request, $id);
 
         return $this->sendResponse(
-            EmployeeContractResource::make($data),
+            EmployeeRequestResource::make($data),
             __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );

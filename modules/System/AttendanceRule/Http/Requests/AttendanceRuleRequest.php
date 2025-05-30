@@ -5,7 +5,6 @@ namespace Modules\System\AttendanceRule\Http\Requests;
 use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
 use Modules\Common\Rules\UniqueJson;
-use Modules\System\AttendanceRule\Enum\AttendanceRuleStatusEnum;
 use Modules\System\AttendanceRule\Enum\ShiftTimeEmum;
 use Modules\System\AttendanceRule\Enum\WorkTypeEnum;
 

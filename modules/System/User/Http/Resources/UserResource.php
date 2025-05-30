@@ -14,6 +14,7 @@ class UserResource extends JsonResource
     public function toArray(Request $request): array
     {
         $userPermissions = $this->permissions->pluck('name');
+
         return [
             'company_id' => tenant()->id,
             'id' => $this->id,
@@ -24,7 +25,7 @@ class UserResource extends JsonResource
             'birthday' => $this?->birthday,
             'national_id' => $this?->national_id,
             'employee_number' => $this?->employee_number,
-            'avatar' => $this->avatar ? asset('storage/' . $this->avatar) : '',
+            'avatar' => $this->avatar ? asset('storage/'.$this->avatar) : '',
             'gender' => $this?->gender,
             'social_status' => $this?->social_status,
             'hire_date' => $this?->hire_date,
@@ -32,23 +33,23 @@ class UserResource extends JsonResource
             'is_active' => $this->is_active,
             'branch' => [
                 'id' => $this->branch->id,
-                'name' => $this->branch->name
+                'name' => $this->branch->name,
             ],
             'direct_manager' => [
                 'id' => $this?->directManager?->id,
-                'name' => $this?->directManager?->name
+                'name' => $this?->directManager?->name,
             ],
             'department_name' => [
                 'id' => $this?->department?->id,
-                'name' => $this?->department?->name
+                'name' => $this?->department?->name,
             ],
             'job_title' => [
                 'id' => $this?->jobTitle?->id,
-                'name' => $this?->jobTitle?->name
+                'name' => $this?->jobTitle?->name,
             ],
             'position' => [
                 'id' => $this?->position?->id,
-                'name' => $this?->position?->name
+                'name' => $this?->position?->name,
             ],
             'roles' => RoleResource::collection($this->roles),
             'translations' => $this->getTranslations(),

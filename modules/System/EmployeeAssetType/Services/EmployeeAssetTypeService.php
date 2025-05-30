@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Modules\Common\Filters\Common\JsonNameSearch;
 use Modules\System\EmployeeAsset\Models\EmployeeAsset;
 use Modules\System\EmployeeAssetType\Models\EmployeeAssetType;
-use Modules\System\User\Models\User;
 
 class EmployeeAssetTypeService
 {

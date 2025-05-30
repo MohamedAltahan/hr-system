@@ -8,7 +8,6 @@ use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Plan\Models\Plan;
 use Modules\System\Subscription\Enum\SubscriptionStatus;
-use Modules\System\Subscription\Models\Subscription;
 use Modules\System\Tenant\Http\Requests\TenantRequest;
 use Modules\System\Tenant\Http\Resources\TenantResource;
 use Modules\System\Tenant\Models\Tenant;
@@ -38,7 +37,7 @@ class TenantController extends ApiController
     {
 
         $tenant = Tenant::create([
-            'tenancy_db_name' => config('app.name') . '_' . $request->domain,
+            'tenancy_db_name' => config('app.name').'_'.$request->domain,
             'user_id' => null,
             'company_name' => $request->company_name,
             'domain' => $request->domain,

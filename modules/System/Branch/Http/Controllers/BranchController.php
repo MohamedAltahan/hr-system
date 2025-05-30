@@ -2,10 +2,7 @@
 
 namespace Modules\System\Branch\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Modules\Common\Enums\StatusCodeEnum;
-use Modules\Common\Enums\UserRoleEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Branch\Http\Requests\BranchRequest;
@@ -55,10 +52,10 @@ class BranchController extends ApiController
 
     public function update(BranchRequest $request, Branch $branch)
     {
-        $this->service->update($request, $branch);
+        $data = $this->service->update($request, $branch);
 
         return $this->sendResponse(
-            [],
+            BranchResource::make($data),
             __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );

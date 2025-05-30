@@ -8,7 +8,6 @@ enum WorkTypeEnum: string
     case PARTTIME = 'part-time';
     case FLEXIBLE = 'flexible';
 
-
     public function label(): string
     {
         return __("$this->value");

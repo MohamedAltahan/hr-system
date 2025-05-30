@@ -4,7 +4,6 @@ namespace Modules\System\EmployeeAsset\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
-use Modules\Common\Rules\UniqueJson;
 use Modules\System\EmployeeAsset\Enum\EmployeeAssetStatusEnum;
 
 class EmployeeAssetRequest extends ApiRequest

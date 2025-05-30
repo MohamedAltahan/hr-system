@@ -33,7 +33,7 @@ class PermissionSeeder extends Seeder
     {
         $title = [];
         foreach (config('app.supported_languages') as $locale) {
-            $title[$locale] = trans("$key", [], $locale) . ' ' . trans("$value", [], $locale);
+            $title[$locale] = trans("$key", [], $locale).' '.trans("$value", [], $locale);
         }
 
         return $title;
@@ -65,7 +65,7 @@ class PermissionSeeder extends Seeder
             ];
 
             $children = collect($item['children'] ?? [])
-                ->map(fn($entry) => [
+                ->map(fn ($entry) => [
                     'name' => $entry['permission_name'],
                     'title' => $entry['name'],
                     'group' => 'sidebar',

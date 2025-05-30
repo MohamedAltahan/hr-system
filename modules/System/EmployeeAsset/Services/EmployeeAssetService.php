@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\Common\Filters\Common\JsonNameSearch;
 use Modules\System\EmployeeAsset\Models\EmployeeAsset;
-use Modules\System\User\Models\User;
 
 class EmployeeAssetService
 {
@@ -18,6 +17,7 @@ class EmployeeAssetService
     public function create(Request $request): Model
     {
         $data = $request->validated();
+
         return EmployeeAsset::create($data);
     }
 
@@ -31,6 +31,7 @@ class EmployeeAssetService
     public function destroy(int $id): bool
     {
         $model = EmployeeAsset::findOrFail($id);
+
         return $model->delete();
     }
 }

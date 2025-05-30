@@ -19,7 +19,7 @@ class BranchResource extends JsonResource
             'address' => $this->address,
             'description' => $this->description,
             'is_active' => $this->is_active,
-            'created_at' =>  formatDate($this->created_at),
+            'created_at' => formatDate($this->created_at),
         ];
     }
 }

@@ -5,7 +5,6 @@ namespace Modules\System\EmployeeAssetType\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
-use Modules\System\User\Http\Resources\UserResource;
 
 class EmployeeAssetTypeResource extends JsonResource
 {
@@ -19,7 +18,7 @@ class EmployeeAssetTypeResource extends JsonResource
             'description' => $this->description,
             'branch' => [
                 'id' => $this->branch->id,
-                'name' => $this->branch->name
+                'name' => $this->branch->name,
             ],
         ];
     }

@@ -5,7 +5,6 @@ namespace Modules\System\EmployeeContract\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
-use Modules\System\User\Http\Resources\UserResource;
 
 class EmployeeContractResource extends JsonResource
 {
@@ -18,7 +17,7 @@ class EmployeeContractResource extends JsonResource
             'employee' => [
                 'id' => $this->employee->id,
                 'name' => $this->employee->name,
-                'number' =>  $this->employee->employee_number,
+                'number' => $this->employee->employee_number,
                 'department' => $this->employee->department?->name,
                 'job_title' => $this->employee->jobTitle?->name,
             ],

@@ -18,11 +18,11 @@ class EmployeeAssetResource extends JsonResource
             'employee' => UserResource::make($this->employee),
             'asset_type' => [
                 'id' => $this->asset->id,
-                'name' => $this->asset->name
+                'name' => $this->asset->name,
             ],
             'manager' => [
                 'id' => $this->manager->id,
-                'name' => $this->manager->name
+                'name' => $this->manager->name,
             ],
             'issue_date' => formatDate($this->issue_date),
             'return_date' => formatDate($this->return_date),
