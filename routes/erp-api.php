@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Support\ModuleRegistry;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -13,7 +14,8 @@ foreach (ModuleRegistry::erp() as $module) {
         Route::group([
             'middleware' => [
                 'auth:sanctum',
-                InitializeTenancyByDomainOrSubdomain::class,
+                App\Http\Middleware\InitializeTenancyByRequestData::class,
+                // InitializeTenancyByDomainOrSubdomain::class,
                 // PreventAccessFromCentralDomains::class,
             ],
             'as' => Str::of('system')->snake('-')->lower()->append('.')->toString(),

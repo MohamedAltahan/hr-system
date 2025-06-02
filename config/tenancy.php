@@ -6,6 +6,14 @@ use Modules\System\Tenant\Models\Tenant;
 use Stancl\Tenancy\Database\Models\Domain;
 
 return [
+
+    'config' => [
+        'enable' => env('TENANT_ENABLE', true),
+        'header' => env('TENANT_HEADER', 'X-Company'),
+        'query_parameter' => env('TENANT_QUERY_PARAMETER', 'store'),
+        'create_tenant_should_be_queued' => env('CREATE_TENANCY_SHOULD_BE_QUEUED', true),
+    ],
+
     'tenant_model' => Tenant::class,
     'id_generator' => null,
     // 'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
@@ -20,10 +28,10 @@ return [
     'central_domains' => [
         '127.0.0.1',
         'localhost',
-        'hr',
-        'alkholoudhr',
-        'alkholoudhr.com',
-        'www.alkholoudhr.com',
+        // 'hr',
+        // 'alkholoudhr',
+        // 'alkholoudhr.com',
+        // 'www.alkholoudhr.com',
     ],
 
     /**
