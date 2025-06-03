@@ -25,7 +25,7 @@ class TenantResource extends JsonResource
             'plan' => PlanResource::make($this->plan),
             'creating_status' => $this->creating_status->label(),
             'created_at' => formatDate($this->created_at),
-            'subscriptions' => SubscriptionResource::collection($this->subscriptions),
+            'subscription' => SubscriptionResource::make($this->currentSubscription),
         ];
     }
 }

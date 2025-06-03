@@ -23,12 +23,15 @@ class InitializeTenancyByRequestData extends \Stancl\Tenancy\Middleware\Initiali
 
     public function handle($request, Closure $next)
     {
-        if (!$request->expectsJson() && !$this->inExceptArray($request)) {
-            abort(404);
-        }
+        if ($request->method() !== 'OPTIONS') {
+            if (!$request->expectsJson() && !$this->inExceptArray($request)) {
+                abort(404);
+            }
 
-        if ($this->getPayload($request)) {
-            return $this->initializeTenancy($request, $next, $this->getPayload($request));
+            if ($this->getPayload($request)) {
+
+                return $this->initializeTenancy($request, $next, $this->getPayload($request));
+            }
         }
 
         return $next($request);
