@@ -49,14 +49,14 @@ class PlanService
     public static function assignPlanToTenant($request)
     {
         $data = tenancy()->central(function () use ($request) {
-            $plan = Plan::findOrFail($request->plan_id);
-            $newPlanData = $plan->toArray();
+
+            $mainPlan = Plan::findOrFail($request->plan_id);
+            $newPlanData = $mainPlan->toArray();
             unset($newPlanData['id']);
             $newPlanData['tenant_id'] = $request->company_id;
-            $newPlanData['created_at'] = now();
-            $newPlanData['updated_at'] = now();
-
-            return $plan = Plan::create($newPlanData);
+            $newPlan = Plan::create($newPlanData);
+            $oldPlan = Plan::where('tenant_id', $request->company_id)->where('id', '!=', $newPlan->id)->delete();
+            return $newPlan;
         });
 
         return $data;
