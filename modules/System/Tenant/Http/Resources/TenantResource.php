@@ -22,7 +22,6 @@ class TenantResource extends JsonResource
             'phone' => $this->phone,
             'is_active' => $this->is_active,
             'version' => $this->version,
-            'plan' => PlanResource::make($this->plan),
             'creating_status' => $this->creating_status->label(),
             'created_at' => formatDate($this->created_at),
             'subscription' => SubscriptionResource::make($this->currentSubscription),
