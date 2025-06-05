@@ -1,6 +1,37 @@
 <?php
 
 return [
+    //companies and subscriptions  (appear for owner only)
+    [
+        'name' => ['ar' => 'الشركات و الباقات', 'en' => 'Companies and plans '],
+        'slug' => 'companies_and_plans',
+        'route' => '',
+        'icon' => 'companies_and_plans',
+        'permission_name' => 'sidebar_view_companies_and_plans',
+        'order' => 5,
+        'is_active' => 1,
+        'visible_for_owner_only' => 1,
+        'children' => [
+            [
+                'name' => ['ar' => 'الشركات', 'en' => 'Companies'],
+                'slug' => 'companies',
+                'route' => 'system.tenant.index',
+                'icon' => 'companies',
+                'permission_name' => 'sidebar_view_company',
+                'order' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'name' => ['ar' => 'الباقات', 'en' => 'Plans'],
+                'slug' => 'plans',
+                'route' => 'system.plans.index',
+                'icon' => 'plans',
+                'permission_name' => 'sidebar_view_plan',
+                'order' => 4,
+                'is_active' => 1,
+            ],
+        ]
+    ],
     // my services
     [
         'name' => ['ar' => 'خدماتي', 'en' => 'My Services'],
@@ -10,6 +41,7 @@ return [
         'permission_name' => 'sidebar_view_my_services',
         'order' => 1,
         'is_active' => 1,
+        'visible_for_owner_only' => 0,
         'children' => [
             [
                 'name' => ['ar' => 'الملف الشخصي', 'en' => 'Profile'],
@@ -103,6 +135,7 @@ return [
         'permission_name' => 'sidebar_view_employee',
         'order' => 2,
         'is_active' => 1,
+        'visible_for_owner_only' => 0,
         'children' => [
             [
                 'name' => ['ar' => 'ادارة الموظفين', 'en' => 'Employees management'],
@@ -187,6 +220,7 @@ return [
         'permission_name' => 'sidebar_view_salary',
         'order' => 3,
         'is_active' => 1,
+        'visible_for_owner_only' => 0,
         'children' => [
             [
                 'name' => ['ar' => 'الطلبات المالية', 'en' => 'Financial Request'],
@@ -271,6 +305,7 @@ return [
         'permission_name' => 'sidebar_view_general_settings',
         'order' => 4,
         'is_active' => 1,
+        'visible_for_owner_only' => 0,
         'children' => [
             [
                 'name' => ['ar' => 'الفروع', 'en' => 'Branches'],
@@ -329,32 +364,23 @@ return [
         ],
     ],
 
-    //companies and subscriptions
     [
-        'name' => ['ar' => 'الشركات و الباقات', 'en' => 'Companies and plans '],
-        'slug' => 'companies_and_plans',
-        'route' => '',
-        'icon' => 'companies_and_plans',
-        'permission_name' => 'sidebar_view_companies_and_plans',
+        'name' => ['ar' => 'الاشتراكات', 'en' => 'Subscriptions'],
+        'slug' => 'my_current_subscriptions',
+        'route' => 'my_current_subscriptions',
+        'icon' => '',
+        'permission_name' => 'sidebar_view_my_current_subscriptions',
         'order' => 5,
         'is_active' => 1,
+        'visible_for_owner_only' => 0,
         'children' => [
             [
-                'name' => ['ar' => 'الشركات', 'en' => 'Companies'],
-                'slug' => 'companies',
-                'route' => 'system.tenant.index',
-                'icon' => 'companies',
-                'permission_name' => 'sidebar_view_company',
-                'order' => 1,
-                'is_active' => 1,
-            ],
-            [
-                'name' => ['ar' => 'الباقات', 'en' => 'Plans'],
-                'slug' => 'plans',
-                'route' => 'system.plans.index',
-                'icon' => 'plans',
-                'permission_name' => 'sidebar_view_plan',
-                'order' => 4,
+                'name' => ['ar' => 'الاشتراكات', 'en' => 'Subscriptions'],
+                'slug' => 'my_subscriptions',
+                'route' => '',
+                'icon' => 'my_current_subscriptions',
+                'permission_name' => 'sidebar_view_my_subscriptions',
+                'order' => 6,
                 'is_active' => 1,
             ],
         ]

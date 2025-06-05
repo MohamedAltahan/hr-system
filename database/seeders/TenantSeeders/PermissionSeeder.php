@@ -3,6 +3,7 @@
 namespace Database\Seeders\TenantSeeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Modules\Common\Enums\GuardEnum;
 use Modules\System\Permission\Models\Permission;
 
@@ -10,6 +11,10 @@ class PermissionSeeder extends Seeder
 {
     public function run(): void
     {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Permission::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $sidebarPermissions = $this->getSidebarPermissions();
         $modelsPermissions = $this->getModelsPermissions();
@@ -57,9 +62,12 @@ class PermissionSeeder extends Seeder
     private function getSidebarPermissions(): \Illuminate\Support\Collection
     {
         return collect(config('sidebar'))->flatMap(function ($item) {
-            if (!isset($item['permission_name'])) {
-                dd($item);
+
+            // Skip if it's not for this tenant type
+            if ($item['visible_for_owner_only'] === 1 && tenant()->domain != 'admin') {
+                return collect(); // skip this item
             }
+
             $parent = [
                 'name' => $item['permission_name'],
                 'title' => $item['name'],
@@ -72,6 +80,7 @@ class PermissionSeeder extends Seeder
                     'title' => $entry['name'],
                     'group' => 'sidebar',
                 ]);
+
 
             return collect([$parent])->merge($children);
         });

@@ -10,12 +10,22 @@ class SidebarSeeder extends Seeder
 {
     public function run(): void
     {
-        $sidebarItems = config('sidebar');
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Sidebar::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
+        $sidebarItems = config('sidebar');
+
         foreach ($sidebarItems as $sidebarItem) {
+
+            //check if this item is for owner only
+            if (
+                $sidebarItem['visible_for_owner_only'] === 1 &&
+                tenant()->domain != 'admin'
+            ) {
+                continue;
+            }
+
             // parent
             $parent = Sidebar::updateOrCreate(
                 ['slug' => $sidebarItem['slug'], 'parent_id' => null],
