@@ -63,9 +63,9 @@ class PermissionSeeder extends Seeder
     {
         return collect(config('sidebar'))->flatMap(function ($item) {
 
-            // Skip if it's not for this tenant type
+            //check if this item is for owner only
             if ($item['visible_for_owner_only'] === 1 && tenant()->domain != 'admin') {
-                return collect(); // skip this item
+                return collect(); //skip
             }
 
             $parent = [

@@ -5,6 +5,7 @@ namespace Modules\System\EmployeeRequest\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
+use Modules\System\User\Http\Resources\UserResource;
 
 class EmployeeRequestResource extends JsonResource
 {
@@ -12,23 +13,29 @@ class EmployeeRequestResource extends JsonResource
 
     public function toArray(Request $request): array
     {
+
         return [
             'id' => $this->id,
             'employee' => [
                 'id' => $this->employee->id,
                 'name' => $this->employee->name,
-                'number' => $this->employee->employee_number,
-                'department' => $this->employee->department?->name,
-                'job_title' => $this->employee->jobTitle?->name,
             ],
-            'attendance_rule' => [
-                'id' => $this->attendanceRule->id,
-                'name' => $this->attendanceRule->name,
+            'type' => [
+                $this->type->value => $this->type->label(),
             ],
-            'salary' => $this->salary,
-            'start_date' => formatDate($this->start_date),
-            'end_date' => formatDate($this->end_date),
-            'is_active' => $this->is_active,
+            'loan_amount' => $this->loan_amount,
+            'from_date' => formatDate($this->from_date),
+            'to_date' => formatDate($this->to_date),
+            'reason' => $this->reason,
+            'file_path' => $this->file_path,
+            'status' => $this->status,
+            'manager_comment' => $this->manager_comment,
+            'reviewed_by' => [
+                'id' => $this->reviewedBy?->id,
+                'name' => $this->reviewedBy?->name
+            ],
+            'reviewed_at' => formatDate($this->reviewed_at),
+
         ];
     }
 }

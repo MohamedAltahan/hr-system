@@ -46,5 +46,8 @@
     "Evening": "مساء",
     "full-time": "دوام كامل",
     "part-time": "دوام جزئي",
-    "flexible": "دوام مرن"
+    "flexible": "دوام مرن",
+    "loan": "سلفة",
+    "leave": "اجازة",
+    "other": "اخرى"
 }

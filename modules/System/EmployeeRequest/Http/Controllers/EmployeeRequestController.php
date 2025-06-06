@@ -6,6 +6,7 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\EmployeeRequest\Http\Requests\EmployeeRequestRequest;
+use Modules\System\EmployeeRequest\Http\Requests\EmployeeRequeUpdateStatusRequest;
 use Modules\System\EmployeeRequest\Http\Resources\EmployeeRequestResource;
 use Modules\System\EmployeeRequest\Models\EmployeeRequest;
 use Modules\System\EmployeeRequest\Services\EmployeeRequestService;
@@ -80,6 +81,18 @@ class EmployeeRequestController extends ApiController
         return $this->sendResponse(
             [],
             __('Data deleted successfully'),
+            StatusCodeEnum::Success->value
+        );
+    }
+
+
+    public function updateStatus(EmployeeRequeUpdateStatusRequest $request, int $id)
+    {
+        $data = $this->service->updateStatus($request, $id);
+
+        return $this->sendResponse(
+            EmployeeRequestResource::make($data),
+            __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );
     }

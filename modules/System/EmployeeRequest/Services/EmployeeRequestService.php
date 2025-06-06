@@ -4,19 +4,13 @@ namespace Modules\System\EmployeeRequest\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\Common\Filters\Common\JsonNameSearch;
 use Modules\System\EmployeeRequest\Models\EmployeeRequest;
 
 class EmployeeRequestService
 {
     public function getPaginatedData($perPage)
     {
-        return EmployeeRequest::with(
-            'attendanceRule',
-            'employee',
-            'employee.department',
-            'employee.jobTitle',
-        )->filter([JsonNameSearch::class])->paginate($perPage);
+        return EmployeeRequest::paginate($perPage);
     }
 
     public function create(Request $request): Model
@@ -45,5 +39,15 @@ class EmployeeRequestService
         $model = EmployeeRequest::findOrFail($id);
 
         return $model->delete();
+    }
+
+    public function updateStatus(Request $request, int $id): Model
+    {
+        $model = EmployeeRequest::findOrFail($id);
+        $model->status = $request->status;
+        $model->manager_comment = $request->manager_comment;
+        $model->save();
+
+        return $model;
     }
 }
