@@ -25,6 +25,7 @@ class ModuleRegistry
             'EmployeeAsset',
             'EmployeeContract',
             'EmployeeRequest',
+            'EmployeeClearance',
             'AttendanceRule',
             'Subscription',
         ];

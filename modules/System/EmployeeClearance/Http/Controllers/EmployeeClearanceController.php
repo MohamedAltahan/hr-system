@@ -1,23 +1,24 @@
 <?php
 
-namespace Modules\System\EmployeeRequest\Http\Controllers;
+namespace Modules\System\EmployeeClearance\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\EmployeeRequest\Http\Requests\EmployeeRequestRequest;
-use Modules\System\EmployeeRequest\Http\Requests\EmployeeRequestUpdateStatusRequest;
-use Modules\System\EmployeeRequest\Http\Resources\EmployeeRequestResource;
-use Modules\System\EmployeeRequest\Models\EmployeeRequest;
-use Modules\System\EmployeeRequest\Services\EmployeeRequestService;
+use Modules\System\EmployeeClearance\Http\Requests\EmployeeClearanceRequest;
+use Modules\System\EmployeeClearance\Http\Requests\EmployeeClearanceUpdateStatusRequest as RequestsEmployeeClearanceUpdateStatusRequest;
+use Modules\System\EmployeeClearance\Http\Resources\EmployeeClearanceResource;
+use Modules\System\EmployeeClearance\Models\EmployeeClearance;
+use Modules\System\EmployeeClearance\Services\EmployeeClearanceService;
+use Modules\System\EmployeeRequest\Http\Requests\EmployeeClearanceUpdateStatusRequest;
 
-class EmployeeRequestController extends ApiController
+class EmployeeClearanceController extends ApiController
 {
     use ApiResponse;
 
-    public static ?string $model = EmployeeRequest::class;
+    public static ?string $model = EmployeeClearance::class;
 
-    public function __construct(protected EmployeeRequestService $service)
+    public function __construct(protected EmployeeClearanceService $service)
     {
         parent::__construct();
     }
@@ -27,18 +28,18 @@ class EmployeeRequestController extends ApiController
         $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            EmployeeRequestResource::paginate($data),
+            EmployeeClearanceResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(EmployeeRequestRequest $request)
+    public function store(EmployeeClearanceRequest $request)
     {
         $data = $this->service->create($request);
 
         return $this->sendResponse(
-            EmployeeRequestResource::make($data),
+            EmployeeClearanceResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
@@ -49,18 +50,18 @@ class EmployeeRequestController extends ApiController
         $date = $this->service->show($id);
 
         return $this->sendResponse(
-            EmployeeRequestResource::make($date),
+            EmployeeClearanceResource::make($date),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(EmployeeRequestRequest $request, int $id)
+    public function update(EmployeeClearanceRequest $request, int $id)
     {
         $data = $this->service->update($request, $id);
 
         return $this->sendResponse(
-            EmployeeRequestResource::make($data),
+            EmployeeClearanceResource::make($data),
             __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );
@@ -85,13 +86,12 @@ class EmployeeRequestController extends ApiController
         );
     }
 
-
-    public function updateStatus(EmployeeRequestUpdateStatusRequest $request, int $id)
+    public function updateStatus(RequestsEmployeeClearanceUpdateStatusRequest $request, int $id)
     {
         $data = $this->service->updateStatus($request, $id);
 
         return $this->sendResponse(
-            EmployeeRequestResource::make($data),
+            EmployeeClearanceResource::make($data),
             __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );

@@ -7,7 +7,7 @@ use Modules\Common\Http\Requests\ApiRequest;
 use Modules\System\EmployeeRequest\Enum\EmployeeRequestStatusEnum;
 use Modules\System\EmployeeRequest\Enum\EmployeeRequestTypeEnum;
 
-class EmployeeRequeUpdateStatusRequest extends ApiRequest
+class EmployeeRequestUpdateStatusRequest extends ApiRequest
 {
     protected function prepareForValidation(): void
     {
@@ -22,7 +22,6 @@ class EmployeeRequeUpdateStatusRequest extends ApiRequest
     {
         return [
             'status' => ['nullable', 'string', Rule::in(EmployeeRequestStatusEnum::cases())],
-            'manager_comment' => 'nullable|string',
         ];
     }
 }
