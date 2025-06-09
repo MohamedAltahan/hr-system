@@ -12,7 +12,8 @@ class TenantRequest extends ApiRequest
         $tenant_id = $this->route('tenant');
         $centralConnection = config('database.central_connection');
 
-        return [
+
+        $rules = [
             'company_name' => ['array', 'required', 'max:255'],
             'company_name.*' => [
                 'string',
@@ -40,12 +41,14 @@ class TenantRequest extends ApiRequest
                 'max:50',
                 Rule::unique($centralConnection . '.tenants', 'email')->ignore($tenant_id),
             ],
-            'plan_id' => [
-                $tenant_id ? 'sometimes' : 'required',
-                "exists:$centralConnection.plans,id",
-            ],
+            'plan_id' => "required|exists:$centralConnection.plans,id",
             'is_active' => 'boolean',
-
         ];
+
+        if (!$tenant_id) {
+            $rules['plan_id'] = "required|exists:$centralConnection.plans,id";
+        }
+
+        return $rules;
     }
 }
