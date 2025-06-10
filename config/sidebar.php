@@ -375,7 +375,7 @@ return [
         'visible_for_owner_only' => 0,
         'children' => [
             [
-                'name' => ['ar' => 'الاشتراكات', 'en' => 'Subscriptions'],
+                'name' => ['ar' => 'الاشتراك الحالي', 'en' => 'Current Subscription'],
                 'slug' => 'my_subscriptions',
                 'route' => '',
                 'icon' => 'my_current_subscription',
