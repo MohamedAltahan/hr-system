@@ -367,7 +367,7 @@ return [
     [
         'name' => ['ar' => 'الاشتراكات', 'en' => 'Subscriptions'],
         'slug' => 'my_current_subscriptions',
-        'route' => 'my_current_subscriptions',
+        'route' => '',
         'icon' => '',
         'permission_name' => 'sidebar_view_my_current_subscriptions',
         'order' => 5,
