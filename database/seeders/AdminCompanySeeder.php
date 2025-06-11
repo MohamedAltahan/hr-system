@@ -11,11 +11,11 @@ class AdminCompanySeeder extends Seeder
     public function run(): void
     {
         $tenant = Tenant::firstOrCreate(
-            ['domain' => 'admin'],
+            ['domain' => config('app.owner_domain')],
             [
-                'tenancy_db_name' => config('app.name').'_'.'admin',
-                'company_name' => ['ar' => 'ادمن', 'en' => 'admin'],
-                'domain' => 'admin',
+                'tenancy_db_name' => config('app.name') . '_' . config('app.owner_domain'),
+                'company_name' => ['ar' => 'المالك', 'en' => config('app.owner_domain')],
+                'domain' => config('app.owner_domain'),
                 'is_active' => 1,
                 'version' => config('app.version'),
                 'plan_id' => null,
@@ -26,9 +26,9 @@ class AdminCompanySeeder extends Seeder
         );
 
         $tenant->domains()->updateOrCreate(
-            ['domain' => 'admin'],
+            ['domain' => config('app.owner_domain')],
             [
-                'domain' => 'admin',
+                'domain' => config('app.owner_domain'),
                 'tenant_id' => $tenant->id,
                 'created_at' => now(),
                 'updated_at' => now(),
