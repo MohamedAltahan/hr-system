@@ -20,7 +20,7 @@ class SidebarSeeder extends Seeder
             //check if this item is for owner only
             if (
                 $sidebarItem['visible_for_owner_only'] === 1 &&
-                tenant()->domain != 'admin'
+                tenant()->domain != config('app.owner_domain')
             ) {
                 continue;
             }
