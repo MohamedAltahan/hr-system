@@ -109,7 +109,7 @@ class TenantController extends ApiController
             return $this->sendResponse(
                 [],
                 __('Owner can not be deleted'),
-                StatusCodeEnum::Success->value
+                StatusCodeEnum::CONFlICT->value
             );
         }
 
