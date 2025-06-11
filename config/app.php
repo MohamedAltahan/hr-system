@@ -2,7 +2,7 @@
 
 return [
 
-    'owner_domain' => env('OWNER_DOMAIN', 'admin'),
+    'owner_domain' => env('OWNER_DOMAIN', 'owner'),
 
     'version' => env('APP_VERSION', '1.0.0'),
 

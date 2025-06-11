@@ -11,18 +11,18 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // for owner only
-        if (tenant()->domain == 'admin') {
+        if (tenant()->domain == 'owner') {
             User::firstOrcreate(
-                ['username' => 'admin'],
+                ['username' => 'owner'],
                 [
                     'id' => 1,
-                    'name' => ['en' => 'admin user', 'ar' => 'مستخدم ادمن'],
-                    'username' => 'admin',
+                    'name' => ['en' => 'owner', 'ar' => 'المالك'],
+                    'username' => 'owner',
                     'branch_id' => 1,
                     'is_owner' => 1,
                     'position_id' => 1,
                     'is_super_admin' => 1,
-                    'email' => 'admin@example.com',
+                    'email' => 'owner@alkholoudhr.com',
                     'password' => Hash::make('123456789'),
                 ]
             );
