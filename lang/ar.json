@@ -49,5 +49,6 @@
     "flexible": "دوام مرن",
     "loan": "سلفة",
     "leave": "اجازة",
-    "other": "اخرى"
+    "other": "اخرى",
+    "Owner can not be deleted": "لا يمكن حذف المالك"
 }
