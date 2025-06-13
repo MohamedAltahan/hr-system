@@ -22,7 +22,7 @@ class TenantResource extends JsonResource
         tenancy()->initialize($tenant);
         $user = User::where('is_super_admin', 1)->first();
         tenancy()->end();
-        $userName = $user?->name;
+        $userName = $user?->username;
 
         return [
             'id' => $this->id,
