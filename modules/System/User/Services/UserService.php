@@ -54,6 +54,7 @@ class UserService
 
     public function update(UserRequest $request, User $user)
     {
+
         $userData = $request->validated();
         $userData['avatar'] = $this->fileUpdate('avatar', 'avatar', config('filesystems.default'), $user->avatar, ImageQuality::Low->value);
         $userData['employee_number'] = $user->id;

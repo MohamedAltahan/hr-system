@@ -28,6 +28,7 @@ class ModuleRegistry
             'EmployeeClearance',
             'AttendanceRule',
             'Subscription',
+            'Profile',
         ];
     }
 

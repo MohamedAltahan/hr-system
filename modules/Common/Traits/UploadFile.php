@@ -10,36 +10,8 @@ use Intervention\Image\ImageManager;
 
 trait UploadFile
 {
-    public function uploadFile(string $inputName, string $folderName, string $diskName = 'public', int $imageHeight = 1080)
-    {
-        if ($file = request()->file($inputName)) {
 
-            if (str_starts_with($file->getMimeType(), 'image/')) {
-
-                $filename = Str::random(12).'.'.$file->getClientOriginalExtension();
-                $destinationPath = storage_path('app/public/'.$folderName);
-                $manager = new ImageManager(new Driver);
-                $image = $manager->read($file->getPathname());
-                if (! file_exists($destinationPath)) {
-                    mkdir($destinationPath, 0755, true);
-                }
-                $image->scaleDown(null, $imageHeight, function ($constraint) {
-                    // $constraint->aspectRatio();
-                    $constraint->upsize();
-                });
-                $image->save($destinationPath.'/'.$filename);
-
-                return $folderName.'/'.$filename;
-            } else {
-
-                $path = $file->store($folderName, ['disk' => $diskName]);
-
-                return $path;
-            }
-        }
-    }
-
-    public function fileUpdate(string $inputName, string $folderName, string $diskName = 'public', ?string $oldFileName = null, int $imageHeight = 1080)
+    public function fileUpdate(string $inputName, string $folderName, string $diskName, ?string $oldFileName = null, int $imageHeight = 1080)
     {
         $path = $this->uploadFile($inputName, $folderName, $diskName, $imageHeight);
 
@@ -49,6 +21,38 @@ trait UploadFile
         }
 
         return $path;
+    }
+
+    public function uploadFile(string $inputName, string $folderName, string $diskName, int $imageHeight = 1080)
+    {
+        if ($file = request()->file($inputName)) {
+
+            //upload image
+            if (str_starts_with($file->getMimeType(), 'image/')) {
+
+                $filename = Str::random(12) . '.' . $file->getClientOriginalExtension();
+                // $destinationPath = storage_path('app/public/' . $folderName);
+                $destinationPath = public_path($folderName);
+                $manager = new ImageManager(new Driver);
+                $image = $manager->read($file->getPathname());
+                if (! file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0755, true);
+                }
+                $image->scaleDown(null, $imageHeight, function ($constraint) {
+                    // $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+                $image->save($destinationPath . '/' . $filename);
+
+                return $folderName . '/' . $filename;
+                //upload normal file
+            } else {
+
+                $path = $file->store($folderName, ['disk' => $diskName]);
+
+                return $path;
+            }
+        }
     }
 
     public function deleteFile(string $fileName, string $diskName = 'public')
