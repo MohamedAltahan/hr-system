@@ -2,6 +2,7 @@
 
 namespace Modules\System\Tenant\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Enums\TenantCreateStatus;
 use Modules\Common\Http\Controllers\ApiController;
@@ -116,6 +117,36 @@ class TenantController extends ApiController
         return $this->sendResponse(
             [],
             __('Data deleted successfully'),
+            StatusCodeEnum::Success->value
+        );
+    }
+
+    public function disableTenant(Request $request)
+    {
+        $central = config('database.central_connection');
+
+        $validatedData = $request->validate([
+            'company_id' => "required|exists:$central.tenants,id",
+            'is_active' => 'required|boolean',
+        ]);
+
+        $tenant = Tenant::findOrFail($validatedData['company_id']);
+
+        if ($tenant->domain == config('app.owner_domain')) {
+            return $this->sendResponse(
+                [],
+                __('Owner can not be disabled'),
+                StatusCodeEnum::CONFlICT->value
+            );
+        }
+
+        $tenant->update([
+            'is_active' => $validatedData['is_active'],
+        ]);
+
+        return $this->sendResponse(
+            [],
+            __('company disabled successfully'),
             StatusCodeEnum::Success->value
         );
     }

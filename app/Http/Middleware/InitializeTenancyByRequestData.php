@@ -6,6 +6,8 @@ use App\Exceptions\Custom\ExceptionResponse;
 use App\Resolvers\SlugTenantResolver;
 use Closure;
 use Illuminate\Http\Request;
+use Modules\Common\Enums\StatusCodeEnum;
+use Modules\Common\Traits\ApiResponse;
 use Modules\Tenancy\States\Expired;
 use Modules\Tenancy\States\UnderReview;
 use Stancl\Tenancy\Contracts\TenantCouldNotBeIdentifiedException;
@@ -13,6 +15,8 @@ use Stancl\Tenancy\Tenancy;
 
 class InitializeTenancyByRequestData extends \Stancl\Tenancy\Middleware\InitializeTenancyByRequestData
 {
+    use ApiResponse;
+
     public function __construct(
         Tenancy $tenancy,
         SlugTenantResolver $resolver
@@ -70,6 +74,25 @@ class InitializeTenancyByRequestData extends \Stancl\Tenancy\Middleware\Initiali
             $this->tenancy->initialize(
                 $this->resolver->resolve(...$resolverArguments)
             );
+
+            if (tenant()->is_active == 0) {
+                return $this->sendResponse(
+                    [],
+                    __('Company is suspended'),
+                    StatusCodeEnum::Unauthorized->value
+                );
+            }
+            $tenant = tenant();
+
+            tenancy()->central(function () use ($tenant) {
+                if ($tenant->currentSubscription->end_date < now()) {
+                    return $this->sendResponse(
+                        [],
+                        __('Subscription is expired'),
+                        StatusCodeEnum::Unauthorized->value
+                    );
+                };
+            });
         } catch (TenantCouldNotBeIdentifiedException $e) {
             $onFail = static::$onFail ?? function ($e) {
                 throw $e;

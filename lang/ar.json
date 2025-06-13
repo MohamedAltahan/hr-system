@@ -50,5 +50,10 @@
     "loan": "سلفة",
     "leave": "اجازة",
     "other": "اخرى",
-    "Owner can not be deleted": "لا يمكن حذف المالك"
+    "Owner can not be deleted": "لا يمكن حذف المالك",
+    "Company is not active": "الشركة غير نشطة",
+    "Company is suspended": "الشركة موقوفة",
+    "Subscription is expired": "تم انتهاء الاشتراك",
+    "company disabled successfully": "تم ايقاف الشركة بنجاح",
+    "Owner can not be disabled": "لا يمكن ايقاف المالك"
 }
