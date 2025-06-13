@@ -23,12 +23,17 @@ class TenantService
     public function update(TenantRequest $request, int $id)
     {
         $tenant = Tenant::findOrFail($id);
+        $validatedData = $request->validated();
+
+        if ($tenant->domain == config('app.owner_domain')) {
+            unset($validatedData['is_active']);
+        }
 
         $tenant->domains()->update([
             'domain' => $request->domain,
         ]);
 
-        return $tenant->update($request->validated());
+        return $tenant->update($validatedData);
     }
 
     public function getTenant($id)

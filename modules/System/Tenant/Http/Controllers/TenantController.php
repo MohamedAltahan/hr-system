@@ -93,7 +93,7 @@ class TenantController extends ApiController
 
     public function update(TenantRequest $request, int $id)
     {
-        $this->TenantService->update($request, $id);
+        $statue =  $this->TenantService->update($request, $id);
 
         return $this->sendResponse(
             [],
