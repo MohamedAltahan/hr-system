@@ -75,24 +75,26 @@ class InitializeTenancyByRequestData extends \Stancl\Tenancy\Middleware\Initiali
                 $this->resolver->resolve(...$resolverArguments)
             );
 
-            if (tenant()->is_active == 0) {
-                return $this->sendResponse(
-                    [],
-                    __('Company is suspended'),
-                    StatusCodeEnum::Unauthorized->value
-                );
-            }
-            $tenant = tenant();
-
-            tenancy()->central(function () use ($tenant) {
-                if ($tenant->currentSubscription->end_date < now()) {
+            if (tenant()->domain != config('app.owner_domain')) {
+                if (tenant()->is_active == 0) {
                     return $this->sendResponse(
                         [],
-                        __('Subscription is expired'),
+                        __('Company is suspended'),
                         StatusCodeEnum::Unauthorized->value
                     );
-                };
-            });
+                }
+                $tenant = tenant();
+
+                tenancy()->central(function () use ($tenant) {
+                    if ($tenant->currentSubscription->end_date < now()) {
+                        return $this->sendResponse(
+                            [],
+                            __('Subscription is expired'),
+                            StatusCodeEnum::Unauthorized->value
+                        );
+                    };
+                });
+            }
         } catch (TenantCouldNotBeIdentifiedException $e) {
             $onFail = static::$onFail ?? function ($e) {
                 throw $e;
