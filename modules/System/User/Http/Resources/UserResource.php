@@ -25,7 +25,7 @@ class UserResource extends JsonResource
             'birthday' => $this?->birthday,
             'national_id' => $this?->national_id,
             'employee_number' => $this?->employee_number,
-            'avatar' => $this->avatar ? asset('storage/'.$this->avatar) : '',
+            'avatar' => $this->avatar ? asset($this->avatar) : '',
             'gender' => $this?->gender,
             'social_status' => $this?->social_status,
             'hire_date' => $this?->hire_date,
