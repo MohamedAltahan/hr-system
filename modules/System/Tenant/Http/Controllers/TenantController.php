@@ -3,6 +3,7 @@
 namespace Modules\System\Tenant\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Enums\TenantCreateStatus;
 use Modules\Common\Http\Controllers\ApiController;
@@ -13,6 +14,7 @@ use Modules\System\Tenant\Http\Requests\TenantRequest;
 use Modules\System\Tenant\Http\Resources\TenantResource;
 use Modules\System\Tenant\Models\Tenant;
 use Modules\System\Tenant\Services\TenantService;
+use Modules\System\User\Models\User;
 
 class TenantController extends ApiController
 {
@@ -146,29 +148,32 @@ class TenantController extends ApiController
 
         return $this->sendResponse(
             [],
-            __('company disabled successfully'),
+            __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
     public function updatePassword(Request $request)
     {
+        $central = config('database.central_connection');
+
         $validatedData = $request->validate([
-            'company_id' => "required|exists:tenants,id",
+            'company_id' => "required|exists:$central.tenants,id",
             'password' => 'required|confirmed',
         ]);
 
-        // $tenant = Tenant::findOrFail($validatedData['company_id']);
+        if (!empty($validatedData['password'])) {
+            $validatedData['password'] = Hash::make($validatedData['password']);
+        } else {
+            unset($validatedData['password']);
+        }
 
-        // if (!empty($data['password'])) {
-        //     $data['password'] = Hash::make($data['password']);
-        // } else {
-        //     unset($data['password']);
-        // }
+        $tenant = Tenant::findOrFail($validatedData['company_id']);
 
-        // $tenant->update([
-        //     'password' => Hash::make($validatedData['password']),
-        // ]);
+        tenancy()->initialize($tenant);
+        $user = User::where('is_super_admin', 1)->first();
+        $user->update($validatedData);
+        tenancy()->end();
 
         return $this->sendResponse(
             [],

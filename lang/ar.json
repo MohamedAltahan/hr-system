@@ -55,5 +55,6 @@
     "Company is suspended": "الشركة موقوفة",
     "Subscription is expired": "تم انتهاء الاشتراك",
     "company disabled successfully": "تم ايقاف الشركة بنجاح",
-    "Owner can not be disabled": "لا يمكن ايقاف المالك"
+    "Owner can not be disabled": "لا يمكن ايقاف المالك",
+    "Password updated successfully": "تم تحديث كلمة المرور بنجاح"
 }
