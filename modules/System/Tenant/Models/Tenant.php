@@ -55,6 +55,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
             'version',
             'creating_status',
             'plan_id',
+            'password',
             'deleted_at',
         ];
     }

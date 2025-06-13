@@ -35,7 +35,11 @@ class ProfileController extends ApiController
 
         $data = $request->validated();
 
-        $data['avatar'] = $this->fileUpdate('avatar', 'avatar', config('filesystems.default'), $profile->avatar, ImageQuality::Low->value);
+        if (!empty($data['avatar'])) {
+            $data['avatar'] = $this->fileUpdate('avatar', 'avatar', config('filesystems.default'), $profile->avatar, ImageQuality::Low->value);
+        } else {
+            unset($data['avatar']);
+        }
 
         if (!empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);

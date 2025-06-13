@@ -150,4 +150,30 @@ class TenantController extends ApiController
             StatusCodeEnum::Success->value
         );
     }
+
+    public function updatePassword(Request $request)
+    {
+        $validatedData = $request->validate([
+            'company_id' => "required|exists:tenants,id",
+            'password' => 'required|confirmed',
+        ]);
+
+        // $tenant = Tenant::findOrFail($validatedData['company_id']);
+
+        // if (!empty($data['password'])) {
+        //     $data['password'] = Hash::make($data['password']);
+        // } else {
+        //     unset($data['password']);
+        // }
+
+        // $tenant->update([
+        //     'password' => Hash::make($validatedData['password']),
+        // ]);
+
+        return $this->sendResponse(
+            [],
+            __('Password updated successfully'),
+            StatusCodeEnum::Success->value
+        );
+    }
 }

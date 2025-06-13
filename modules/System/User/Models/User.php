@@ -54,8 +54,6 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'name' => 'array',
-        'address' => 'array',
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];

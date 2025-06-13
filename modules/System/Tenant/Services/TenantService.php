@@ -2,6 +2,7 @@
 
 namespace Modules\System\Tenant\Services;
 
+use Illuminate\Support\Facades\Hash;
 use Modules\Common\Traits\UploadFile;
 use Modules\System\Tenant\Http\Requests\TenantRequest;
 use Modules\System\Tenant\Models\Tenant;
@@ -29,9 +30,11 @@ class TenantService
             unset($validatedData['is_active']);
         }
 
-        $tenant->domains()->update([
-            'domain' => $request->domain,
-        ]);
+        if ($tenant->domain != config('app.owner_domain')) {
+            $tenant->domains()->update([
+                'domain' => $request->domain,
+            ]);
+        }
 
         return $tenant->update($validatedData);
     }
