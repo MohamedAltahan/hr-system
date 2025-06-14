@@ -9,6 +9,8 @@ use Modules\Common\Enums\TenantCreateStatus;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Plan\Models\Plan;
+use Modules\System\Price\Models\Price;
+use Modules\System\Price\Resources\PriceResource;
 use Modules\System\Subscription\Enum\SubscriptionStatus;
 use Modules\System\Tenant\Http\Requests\TenantRequest;
 use Modules\System\Tenant\Http\Resources\TenantResource;
@@ -38,16 +40,15 @@ class TenantController extends ApiController
 
     public function store(TenantRequest $request)
     {
-
         $tenant = Tenant::create([
-            'tenancy_db_name' => config('app.name').'_'.$request->domain,
+            'tenancy_db_name' => config('app.name') . '_' . $request->domain,
             'user_id' => null,
             'company_name' => $request->company_name,
             'domain' => $request->domain,
             'is_active' => $request->is_active,
             'version' => config('app.version'),
             'creating_status' => TenantCreateStatus::CREATED,
-            'plan_id' => $request->plan_id,
+            // 'plan_id' => $request->plan_id,
             'email' => $request->email,
             'phone' => $request->phone,
         ]);
@@ -56,23 +57,29 @@ class TenantController extends ApiController
             'domain' => $request->domain,
         ]);
 
-        $plan = Plan::findOrFail($request->plan_id);
+        // $plan = Plan::findOrFail($request->plan_id);
 
-        $newPlanData = $plan->toArray();
-        unset($newPlanData['id']);
-        $newPlanData['tenant_id'] = $tenant->id;
-        $newPlanData['created_at'] = now();
-        $newPlanData['updated_at'] = now();
+        // $newPlanData = $plan->toArray();
+        // unset($newPlanData['id']);
+        // $newPlanData['tenant_id'] = $tenant->id;
+        // $newPlanData['created_at'] = now();
+        // $newPlanData['updated_at'] = now();
 
-        $plan = Plan::create($newPlanData);
+        // $plan = Plan::create($newPlanData);
 
         $tenant->subscriptions()->create([
             'tenant_id' => $tenant->id,
             'status' => SubscriptionStatus::ACTIVE->value,
             'start_date' => now(),
-            'end_date' => $plan->is_trial ? now()->addDays($plan->trial_days) : now()->addMonths($plan->trial_days),
+            // 'end_date' => $plan->is_trial ? now()->addDays($plan->trial_days) : now()->addMonths($plan->trial_days),
+            'end_date' => now()->addDays((int)$request->trial_days),
             'cancel_date' => null,
-            'plan_data' => $plan,
+            'plan_data' => new Price([
+                'price' => 0,
+                'price_after_discount' => null,
+                'currency_code' => config('app.currency'),
+                'duration_in_months' => 0,
+            ]),
         ]);
 
         return $this->sendResponse(

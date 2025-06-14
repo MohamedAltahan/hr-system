@@ -24,28 +24,29 @@ class TenantRequest extends ApiRequest
                 'string',
                 'min:3',
                 'max:30',
-                Rule::unique($centralConnection.'.tenants', 'domain')->ignore($tenant_id),
+                Rule::unique($centralConnection . '.tenants', 'domain')->ignore($tenant_id),
             ],
             'phone' => [
                 'required',
                 'string',
                 'min:8',
                 'max:15',
-                Rule::unique($centralConnection.'.tenants', 'phone')->ignore($tenant_id),
+                Rule::unique($centralConnection . '.tenants', 'phone')->ignore($tenant_id),
             ],
             'email' => [
                 'required',
                 'email',
                 'min:3',
                 'max:50',
-                Rule::unique($centralConnection.'.tenants', 'email')->ignore($tenant_id),
+                Rule::unique($centralConnection . '.tenants', 'email')->ignore($tenant_id),
             ],
+            'trial_days' => 'integer|min:1|max:100',
             'is_active' => 'boolean',
         ];
 
-        if (! $tenant_id) {
-            $rules['plan_id'] = "required|exists:$centralConnection.plans,id";
-        }
+        // if (! $tenant_id) {
+        //     $rules['plan_id'] = "required|exists:$centralConnection.plans,id";
+        // }
 
         return $rules;
     }

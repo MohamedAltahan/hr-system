@@ -6,6 +6,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
 use Modules\System\Plan\Models\Plan;
 use Modules\System\Plan\Resources\PlanResource;
+use Modules\System\Price\Models\Price;
+use Modules\System\Price\Resources\PriceResource;
 
 class SubscriptionResource extends JsonResource
 {
@@ -20,7 +22,7 @@ class SubscriptionResource extends JsonResource
             'start_date' => formatDate($this->start_date),
             'end_date' => formatDate($this->end_date),
             'cancel_date' => formatDate($this->cancel_date),
-            'plan_data' => PlanResource::make(new plan($this->plan_data)),
+            'plan_data' => PriceResource::make(new Price($this->plan_data)),
         ];
     }
 }
