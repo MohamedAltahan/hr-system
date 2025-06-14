@@ -92,4 +92,13 @@ if (! function_exists('formatDate')) {
     {
         return auth('tenant-users')?->user()?->branch_id ?: 1;
     }
+
+    function formatCurrency($amount, $currency = null)
+    {
+        $formatter = new NumberFormatter(app()->getLocale(), NumberFormatter::CURRENCY);
+        if (! $currency) {
+            $currency = config('app.currency', 'SAR');
+        }
+        return $formatter->formatCurrency($amount, $currency);
+    }
 }

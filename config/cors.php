@@ -28,7 +28,7 @@ return [
         'https://alkholoudhr.com',
         'https://www.alkholoudhr.com',
         'http://alkholoudhr.com',
-        'http://www.alkholoudhr.com'
+        'http://www.alkholoudhr.com',
     ],
 
     'allowed_origins_patterns' => [],

@@ -4,7 +4,6 @@ namespace Modules\System\Profile\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
-use Modules\Common\Rules\UniqueJson;
 
 class ProfileRequest extends ApiRequest
 {

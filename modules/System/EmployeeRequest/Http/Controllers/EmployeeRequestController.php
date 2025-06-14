@@ -85,7 +85,6 @@ class EmployeeRequestController extends ApiController
         );
     }
 
-
     public function updateStatus(EmployeeRequestUpdateStatusRequest $request, int $id)
     {
         $data = $this->service->updateStatus($request, $id);

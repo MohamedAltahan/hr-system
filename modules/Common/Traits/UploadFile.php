@@ -10,7 +10,6 @@ use Intervention\Image\ImageManager;
 
 trait UploadFile
 {
-
     public function fileUpdate(string $inputName, string $folderName, string $diskName, ?string $oldFileName = null, int $imageHeight = 1080)
     {
         $path = $this->uploadFile($inputName, $folderName, $diskName, $imageHeight);
@@ -27,10 +26,10 @@ trait UploadFile
     {
         if ($file = request()->file($inputName)) {
 
-            //upload image
+            // upload image
             if (str_starts_with($file->getMimeType(), 'image/')) {
 
-                $filename = Str::random(12) . '.' . $file->getClientOriginalExtension();
+                $filename = Str::random(12).'.'.$file->getClientOriginalExtension();
                 // $destinationPath = storage_path('app/public/' . $folderName);
                 $destinationPath = public_path($folderName);
                 $manager = new ImageManager(new Driver);
@@ -42,10 +41,10 @@ trait UploadFile
                     // $constraint->aspectRatio();
                     $constraint->upsize();
                 });
-                $image->save($destinationPath . '/' . $filename);
+                $image->save($destinationPath.'/'.$filename);
 
-                return $folderName . '/' . $filename;
-                //upload normal file
+                return $folderName.'/'.$filename;
+                // upload normal file
             } else {
 
                 $path = $file->store($folderName, ['disk' => $diskName]);

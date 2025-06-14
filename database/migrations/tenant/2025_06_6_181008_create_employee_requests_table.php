@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('employee_requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained('users', 'id')->cascadeOnDelete();
-            $table->string('type'); //(e.g., Loan, Leave)
+            $table->string('type'); // (e.g., Loan, Leave)
             $table->decimal('loan_amount', 10, 2)->nullable();
             $table->date('from_date')->nullable();
             $table->date('to_date')->nullable();

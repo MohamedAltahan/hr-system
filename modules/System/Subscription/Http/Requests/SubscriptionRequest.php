@@ -14,9 +14,16 @@ class SubscriptionRequest extends ApiRequest
 
         return [
             'company_id' => "required|exists:$centralConnection.tenants,id",
-            'plan_id' => [
+            // 'plan_id' => [
+            //     'required',
+            //     Rule::exists("$centralConnection.plans", 'id')
+            //         ->where(function ($query) use ($companyId) {
+            //             $query->where('tenant_id', $companyId);
+            //         }),
+            // ],
+            'price_id' => [
                 'required',
-                Rule::exists("$centralConnection.plans", 'id')
+                Rule::exists("$centralConnection.prices", 'id')
                     ->where(function ($query) use ($companyId) {
                         $query->where('tenant_id', $companyId);
                     }),

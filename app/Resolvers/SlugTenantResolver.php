@@ -3,7 +3,6 @@
 namespace App\Resolvers;
 
 use Modules\System\Tenant\Models\Tenant;
-use Stancl\Tenancy\Contracts\TenantResolver;
 use Stancl\Tenancy\Resolvers\RequestDataTenantResolver;
 
 class SlugTenantResolver extends RequestDataTenantResolver

@@ -18,6 +18,8 @@ return [
 
     'locale' => env('APP_LOCALE', 'ar'),
 
+    'currency' =>  'SAR',
+
     'supported_languages' => ['en', 'ar'],
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),

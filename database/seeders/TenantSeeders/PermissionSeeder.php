@@ -38,7 +38,7 @@ class PermissionSeeder extends Seeder
     {
         $title = [];
         foreach (config('app.supported_languages') as $locale) {
-            $title[$locale] = trans("$key", [], $locale) . ' ' . trans("$value", [], $locale);
+            $title[$locale] = trans("$key", [], $locale).' '.trans("$value", [], $locale);
         }
 
         return $title;
@@ -63,9 +63,9 @@ class PermissionSeeder extends Seeder
     {
         return collect(config('sidebar'))->flatMap(function ($item) {
 
-            //check if this item is for owner only
+            // check if this item is for owner only
             if ($item['visible_for_owner_only'] === 1 && tenant()->domain != 'admin') {
-                return collect(); //skip
+                return collect(); // skip
             }
 
             $parent = [
@@ -75,12 +75,11 @@ class PermissionSeeder extends Seeder
             ];
 
             $children = collect($item['children'] ?? [])
-                ->map(fn($entry) => [
+                ->map(fn ($entry) => [
                     'name' => $entry['permission_name'],
                     'title' => $entry['name'],
                     'group' => 'sidebar',
                 ]);
-
 
             return collect([$parent])->merge($children);
         });

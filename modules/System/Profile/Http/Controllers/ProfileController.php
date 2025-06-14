@@ -11,8 +11,6 @@ use Modules\Common\Traits\ApiResponse;
 use Modules\Common\Traits\UploadFile;
 use Modules\System\Profile\Http\Requests\ProfileRequest;
 use Modules\System\Profile\Http\Resources\ProfileResource;
-use Modules\System\Profile\Models\Profile;
-use Modules\System\Profile\Services\ProfileService;
 
 class ProfileController extends ApiController
 {
@@ -35,13 +33,13 @@ class ProfileController extends ApiController
 
         $data = $request->validated();
 
-        if (!empty($data['avatar'])) {
+        if (! empty($data['avatar'])) {
             $data['avatar'] = $this->fileUpdate('avatar', 'avatar', config('filesystems.default'), $profile->avatar, ImageQuality::Low->value);
         } else {
             unset($data['avatar']);
         }
 
-        if (!empty($data['password'])) {
+        if (! empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         } else {
             unset($data['password']);

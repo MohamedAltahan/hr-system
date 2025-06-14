@@ -56,6 +56,7 @@ class PlanService
             $newPlanData['tenant_id'] = $request->company_id;
             $newPlan = Plan::create($newPlanData);
             $oldPlan = Plan::where('tenant_id', $request->company_id)->where('id', '!=', $newPlan->id)->delete();
+
             return $newPlan;
         });
 

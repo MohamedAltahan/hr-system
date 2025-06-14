@@ -179,6 +179,8 @@ return [
     */
 
     'attributes' => [
+        'duration_in_months' => 'مدة الاشتراك',
+        'currency_code' => 'العملة',
         'role_ids.*' => 'الدور',
         'domain' => 'النطاق',
         'entry_time' => 'وقت الدخول',

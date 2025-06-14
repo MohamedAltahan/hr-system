@@ -10,7 +10,6 @@ use Modules\System\EmployeeClearance\Http\Requests\EmployeeClearanceUpdateStatus
 use Modules\System\EmployeeClearance\Http\Resources\EmployeeClearanceResource;
 use Modules\System\EmployeeClearance\Models\EmployeeClearance;
 use Modules\System\EmployeeClearance\Services\EmployeeClearanceService;
-use Modules\System\EmployeeRequest\Http\Requests\EmployeeClearanceUpdateStatusRequest;
 
 class EmployeeClearanceController extends ApiController
 {

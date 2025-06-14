@@ -5,7 +5,6 @@ namespace Modules\System\EmployeeRequest\Http\Controllers;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\EmployeeRequest\Enum\EmployeeRequestTypeEnum;
-use Modules\System\EmployeeRequest\Http\Resources\EmployeeRequestTypeListResource;
 
 class EmployeeRequestTypeController
 {
@@ -13,7 +12,7 @@ class EmployeeRequestTypeController
 
     public function __invoke()
     {
-        $date  = collect(EmployeeRequestTypeEnum::cases())->mapWithKeys(function ($case) {
+        $date = collect(EmployeeRequestTypeEnum::cases())->mapWithKeys(function ($case) {
             return [$case->value => __("{$case->value}")];
         })->all();
 

@@ -40,7 +40,7 @@ class TenantController extends ApiController
     {
 
         $tenant = Tenant::create([
-            'tenancy_db_name' => config('app.name') . '_' . $request->domain,
+            'tenancy_db_name' => config('app.name').'_'.$request->domain,
             'user_id' => null,
             'company_name' => $request->company_name,
             'domain' => $request->domain,
@@ -95,7 +95,7 @@ class TenantController extends ApiController
 
     public function update(TenantRequest $request, int $id)
     {
-        $statue =  $this->TenantService->update($request, $id);
+        $statue = $this->TenantService->update($request, $id);
 
         return $this->sendResponse(
             [],
@@ -162,7 +162,7 @@ class TenantController extends ApiController
             'password' => 'required|confirmed',
         ]);
 
-        if (!empty($validatedData['password'])) {
+        if (! empty($validatedData['password'])) {
             $validatedData['password'] = Hash::make($validatedData['password']);
         } else {
             unset($validatedData['password']);

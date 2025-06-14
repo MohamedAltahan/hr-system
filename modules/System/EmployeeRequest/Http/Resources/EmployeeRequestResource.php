@@ -5,7 +5,6 @@ namespace Modules\System\EmployeeRequest\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
-use Modules\System\User\Http\Resources\UserResource;
 
 class EmployeeRequestResource extends JsonResource
 {
@@ -32,7 +31,7 @@ class EmployeeRequestResource extends JsonResource
             'manager_comment' => $this->manager_comment,
             'reviewed_by' => [
                 'id' => $this->reviewedBy?->id,
-                'name' => $this->reviewedBy?->name
+                'name' => $this->reviewedBy?->name,
             ],
             'reviewed_at' => formatDate($this->reviewed_at),
 

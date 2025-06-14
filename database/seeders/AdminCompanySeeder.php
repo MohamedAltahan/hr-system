@@ -13,7 +13,7 @@ class AdminCompanySeeder extends Seeder
         $tenant = Tenant::firstOrCreate(
             ['domain' => config('app.owner_domain')],
             [
-                'tenancy_db_name' => config('app.name') . '_' . config('app.owner_domain'),
+                'tenancy_db_name' => config('app.name').'_'.config('app.owner_domain'),
                 'company_name' => ['ar' => 'المالك', 'en' => config('app.owner_domain')],
                 'domain' => config('app.owner_domain'),
                 'is_active' => 1,

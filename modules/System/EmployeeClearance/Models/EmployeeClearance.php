@@ -4,7 +4,6 @@ namespace Modules\System\EmployeeClearance\Models;
 
 use Modules\Common\Models\BaseModel;
 use Modules\System\AttendanceRule\Models\AttendanceRule;
-use Modules\System\EmployeeClearance\Enum\EmployeeClearanceTypeEnum;
 use Modules\System\User\Models\User;
 
 class EmployeeClearance extends BaseModel
@@ -13,7 +12,6 @@ class EmployeeClearance extends BaseModel
 
     // protected $fillable = [];
     protected $guarded = [];
-
 
     public function employee()
     {

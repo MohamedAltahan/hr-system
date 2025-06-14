@@ -2,14 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Exceptions\Custom\ExceptionResponse;
 use App\Resolvers\SlugTenantResolver;
 use Closure;
 use Illuminate\Http\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Traits\ApiResponse;
-use Modules\Tenancy\States\Expired;
-use Modules\Tenancy\States\UnderReview;
 use Stancl\Tenancy\Contracts\TenantCouldNotBeIdentifiedException;
 use Stancl\Tenancy\Tenancy;
 
@@ -23,12 +20,13 @@ class InitializeTenancyByRequestData extends \Stancl\Tenancy\Middleware\Initiali
     ) {
         parent::__construct($tenancy, $resolver);
     }
+
     protected $except = [];
 
     public function handle($request, Closure $next)
     {
         if ($request->method() !== 'OPTIONS') {
-            if (!$request->expectsJson() && !$this->inExceptArray($request)) {
+            if (! $request->expectsJson() && ! $this->inExceptArray($request)) {
                 abort(404);
             }
 
@@ -92,7 +90,7 @@ class InitializeTenancyByRequestData extends \Stancl\Tenancy\Middleware\Initiali
                             __('Subscription is expired'),
                             StatusCodeEnum::Unauthorized->value
                         );
-                    };
+                    }
                 });
             }
         } catch (TenantCouldNotBeIdentifiedException $e) {

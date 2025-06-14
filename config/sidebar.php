@@ -1,7 +1,7 @@
 <?php
 
 return [
-    //companies and subscriptions  (appear for owner only)
+    // companies and subscriptions  (appear for owner only)
     [
         'name' => ['ar' => 'الشركات و الباقات', 'en' => 'Companies and plans '],
         'slug' => 'companies_and_plans',
@@ -30,7 +30,7 @@ return [
                 'order' => 4,
                 'is_active' => 1,
             ],
-        ]
+        ],
     ],
     // my services
     [
@@ -383,6 +383,6 @@ return [
                 'order' => 6,
                 'is_active' => 1,
             ],
-        ]
+        ],
     ],
 ];

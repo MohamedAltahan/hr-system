@@ -4,12 +4,9 @@ namespace Modules\System\Tenant\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\DB;
 use Modules\Common\Traits\HasPagination;
-use Modules\System\Plan\Resources\PlanResource;
 use Modules\System\Subscription\Resources\SubscriptionResource;
 use Modules\System\Tenant\Models\Tenant;
-use Modules\System\User\Http\Resources\UserResource;
 use Modules\System\User\Models\User;
 
 class TenantResource extends JsonResource

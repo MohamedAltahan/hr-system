@@ -29,6 +29,7 @@ class ModuleRegistry
             'AttendanceRule',
             'Subscription',
             'Profile',
+            'Price',
         ];
     }
 

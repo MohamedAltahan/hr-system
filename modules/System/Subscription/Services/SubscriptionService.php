@@ -5,6 +5,7 @@ namespace Modules\System\Subscription\Services;
 use Illuminate\Support\Facades\DB;
 use Modules\Common\Traits\Filterable;
 use Modules\System\Plan\Models\Plan;
+use Modules\System\Price\Models\Price;
 use Modules\System\Subscription\Enum\SubscriptionStatus;
 use Modules\System\Subscription\Models\Subscription;
 use Modules\System\Tenant\Models\Tenant;
@@ -29,7 +30,7 @@ class SubscriptionService
         $data = tenancy()->central(function () use ($request) {
 
             $tenant = Tenant::findOrFail($request->company_id);
-            $plan = Plan::findOrFail($request->plan_id);
+            $price = Price::findOrFail($request->price_id);
             $currentSubscription = $tenant->currentSubscription()->first();
             DB::beginTransaction();
 
@@ -45,9 +46,9 @@ class SubscriptionService
                 'tenant_id' => $tenant->id,
                 'status' => SubscriptionStatus::ACTIVE->value,
                 'start_date' => now(),
-                'end_date' => $plan->is_trial ? now()->addDays($plan->trial_days) : now()->addMonths($plan->trial_days),
+                'end_date' =>   now()->addMonths($price->duration_in_months),
                 'cancel_date' => null,
-                'plan_data' => $plan->toArray(),
+                'plan_data' => $price->toArray(),
             ]);
 
             DB::commit();
