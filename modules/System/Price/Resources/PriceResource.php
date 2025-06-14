@@ -13,7 +13,7 @@ class PriceResource extends JsonResource
     {
 
         return [
-            'id' => $this->id,
+            'id' => $this?->id,
             'price' => (int)$this?->price,
             'currency_translated' => config('currencies')[$this?->currency_code][app()->getLocale()],
             'duration_in_months' => $this?->duration_in_months,
