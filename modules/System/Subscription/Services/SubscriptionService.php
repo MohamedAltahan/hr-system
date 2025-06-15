@@ -48,7 +48,7 @@ class SubscriptionService
                 'start_date' => now(),
                 'end_date' =>   now()->addMonths($price->duration_in_months),
                 'cancel_date' => null,
-                'plan_data' => $price->toArray(),
+                'plan_data' => $price->toArray() + ['currency_translated' => config('currencies')[$price?->currency_code]],
             ]);
 
             DB::commit();
