@@ -3,7 +3,7 @@
 return [
     // companies and subscriptions  (appear for owner only)
     [
-        'name' => ['ar' => 'الشركات و الباقات', 'en' => 'Companies and plans '],
+        'name' => ['ar' => 'الشركات', 'en' => 'Companies and plans '],
         'slug' => 'companies_and_plans',
         'route' => '',
         'icon' => 'companies_and_plans',
