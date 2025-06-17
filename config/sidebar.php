@@ -158,7 +158,7 @@ return [
             [
                 'name' => ['ar' => 'عهد الموظفين', 'en' => 'Employee Assets'],
                 'slug' => 'employee_assets',
-                'route' => '',
+                'route' => 'system.employee-assets.index',
                 'icon' => 'employee_assets',
                 'permission_name' => 'sidebar_employee_assets',
                 'order' => 3,
@@ -167,7 +167,7 @@ return [
             [
                 'name' => ['ar' => 'عقود الموظفين', 'en' => 'Employee Contracts'],
                 'slug' => 'employee_contracts',
-                'route' => '',
+                'route' => 'system.employee-contracts.index',
                 'icon' => 'employee_contracts',
                 'permission_name' => 'sidebar_view_employee_contracts',
                 'order' => 4,
@@ -203,7 +203,7 @@ return [
             [
                 'name' => ['ar' => 'إخلاء طرف موظف', 'en' => 'Exit Clearance'],
                 'slug' => 'exit_clearance',
-                'route' => '',
+                'route' => 'system.employee-clearances.index',
                 'icon' => 'exit_clearance',
                 'permission_name' => 'sidebar_view_exit_clearance',
                 'order' => 8,
