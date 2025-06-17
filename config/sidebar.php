@@ -194,7 +194,7 @@ return [
             [
                 'name' => ['ar' => 'طلبات الموظفين', 'en' => 'Employee Requests'],
                 'slug' => 'employee_requests',
-                'route' => '',
+                'route' => 'system.employee-requests.index',
                 'icon' => 'employee_requests',
                 'permission_name' => 'sidebar_view_employee_requests',
                 'order' => 7,
