@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\System\Position\Models;
+namespace Modules\System\OpeningPosition\Models;
 
 use Modules\Common\Models\BaseModel;
 
-class Position extends BaseModel
+class OpeningPosition extends BaseModel
 {
     protected $translatable = ['name'];
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\System\Position\Http\Resources;
+namespace Modules\System\OpeningPosition\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
 
-class PositionResource extends JsonResource
+class OpeningPositionResource extends JsonResource
 {
     use HasPagination;
 

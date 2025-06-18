@@ -1,22 +1,22 @@
 <?php
 
-namespace Modules\System\Position\Http\Controllers;
+namespace Modules\System\OpeningPosition\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\Position\Http\Requests\PositionRequest;
-use Modules\System\Position\Http\Resources\PositionResource;
-use Modules\System\Position\Models\Position;
-use Modules\System\Position\Services\PositionService;
+use Modules\System\OpeningPosition\Http\Requests\OpeningPositionRequest;
+use Modules\System\OpeningPosition\Http\Resources\OpeningPositionResource;
+use Modules\System\OpeningPosition\Models\OpeningPosition;
+use Modules\System\OpeningPosition\Services\OpeningPositionService;
 
-class PositionController extends ApiController
+class OpeningPositionController extends ApiController
 {
     use ApiResponse;
 
-    public static ?string $model = Position::class;
+    public static ?string $model = OpeningPosition::class;
 
-    public function __construct(protected PositionService $service)
+    public function __construct(protected OpeningPositionService $service)
     {
         parent::__construct();
     }
@@ -26,33 +26,33 @@ class PositionController extends ApiController
         $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            PositionResource::paginate($data),
+            OpeningPositionResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(PositionRequest $request)
+    public function store(OpeningPositionRequest $request)
     {
-        $data = $this->service->create($request, new Position);
+        $data = $this->service->create($request, new OpeningPosition);
 
         return $this->sendResponse(
-            PositionResource::make($data),
+            OpeningPositionResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
     }
 
-    public function show(Position $Position)
+    public function show(OpeningPosition $OpeningPosition)
     {
         return $this->sendResponse(
-            PositionResource::make($Position),
+            OpeningPositionResource::make($OpeningPosition),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(PositionRequest $request, int $id)
+    public function update(OpeningPositionRequest $request, int $id)
     {
         $this->service->update($request, $id);
 

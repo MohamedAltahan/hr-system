@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('opening_positions', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
             $table->foreignId('position_id')->constrained()->cascadeOnDelete();
             $table->string('email')->nullable();
             $table->integer('number_of_vacancies')->nullable();
