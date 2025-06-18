@@ -11,7 +11,7 @@ class EmployeeAssetService
 {
     public function getPaginatedData($perPage)
     {
-        EmployeeAsset::with('asset', 'manager', 'employee')->filter([JsonNameSearch::class])->paginate($perPage);
+        return  EmployeeAsset::with('asset', 'manager', 'employee')->filter([JsonNameSearch::class])->paginate($perPage);
     }
 
     public function create(Request $request): Model
