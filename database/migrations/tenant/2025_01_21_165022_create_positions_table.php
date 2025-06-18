@@ -15,13 +15,6 @@ return new class extends Migration
             $table->id();
             $table->json('name');
             $table->foreignId('branch_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->string('email')->nullable();
-            $table->integer('required_employees')->nullable();
-            $table->string('type')->nullable();
-            $table->string('website')->nullable();
-            $table->date('job_posted_date')->nullable();
-            $table->string('description')->nullable();
-            $table->boolean('is_published')->default(0);
             $table->timestamps();
         });
     }

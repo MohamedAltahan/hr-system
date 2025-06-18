@@ -1,22 +1,22 @@
 <?php
 
-namespace Modules\System\EmployeeAsset\Http\Controllers;
+namespace Modules\System\Position\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\EmployeeAsset\Http\Requests\EmployeeAssetRequest;
-use Modules\System\EmployeeAsset\Http\Resources\EmployeeAssetResource;
-use Modules\System\EmployeeAsset\Models\EmployeeAsset;
-use Modules\System\EmployeeAsset\Services\EmployeeAssetService;
+use Modules\System\Position\Http\Requests\PositionRequest;
+use Modules\System\Position\Http\Resources\PositionResource;
+use Modules\System\Position\Models\Position;
+use Modules\System\Position\Services\PositionService;
 
-class EmployeeAssetController extends ApiController
+class PositionController extends ApiController
 {
     use ApiResponse;
 
-    public static ?string $model = EmployeeAsset::class;
+    public static ?string $model = Position::class;
 
-    public function __construct(protected EmployeeAssetService $service)
+    public function __construct(protected PositionService $service)
     {
         parent::__construct();
     }
@@ -26,33 +26,33 @@ class EmployeeAssetController extends ApiController
         $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            EmployeeAssetResource::paginate($data),
+            PositionResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(EmployeeAssetRequest $request)
+    public function store(PositionRequest $request)
     {
-        $data = $this->service->create($request);
+        $data = $this->service->create($request, new Position);
 
         return $this->sendResponse(
-            EmployeeAssetResource::make($data),
+            PositionResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
     }
 
-    public function show(EmployeeAsset $employeeAsset)
+    public function show(Position $Position)
     {
         return $this->sendResponse(
-            EmployeeAssetResource::make($employeeAsset),
+            PositionResource::make($Position),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(EmployeeAssetRequest $request, int $id)
+    public function update(PositionRequest $request, int $id)
     {
         $this->service->update($request, $id);
 

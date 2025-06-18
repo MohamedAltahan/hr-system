@@ -30,6 +30,7 @@ class ModuleRegistry
             'Subscription',
             'Profile',
             'Price',
+            'Hiring'
         ];
     }
 

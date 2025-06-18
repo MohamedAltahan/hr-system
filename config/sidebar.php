@@ -296,6 +296,30 @@ return [
             ],
         ],
     ],
+
+    //attendance rule
+    [
+        'name' => ['ar' => 'الحضور والانصراف', 'en' => 'Attendance'],
+        'slug' => 'attendance',
+        'route' => '',
+        'icon' => 'attendance',
+        'permission_name' => 'sidebar_view_attendance',
+        'order' => 5,
+        'is_active' => 1,
+        'visible_for_owner_only' => 0,
+        'children' => [
+            [
+                'name' => ['ar' => 'تهيئة الحضور والانصراف', 'en' => 'Attendance Setup'],
+                'slug' => 'attendance_setup',
+                'route' => 'system.attendance-rules.index',
+                'icon' => 'attendance_setup',
+                'permission_name' => 'sidebar_view_attendance_setup',
+                'order' => 1,
+                'is_active' => 1,
+            ],
+        ],
+    ],
+
     // settings
     [
         'name' => ['ar' => 'الاعدادات العامة', 'en' => 'Genaral Settings'],
@@ -353,24 +377,33 @@ return [
                 'is_active' => 1,
             ],
             [
+                'name' => ['ar' => 'انواع عهد الموظفين', 'en' => 'Employee Assets types'],
+                'slug' => 'employee_assets_types',
+                'route' => 'system.employee-asset-types.index',
+                'icon' => 'employee_assets_types',
+                'permission_name' => 'sidebar_view_employee_assets_types',
+                'order' => 8,
+                'is_active' => 1,
+            ],
+            [
                 'name' => ['ar' => 'الصلاحيات', 'en' => 'Permissions'],
                 'slug' => 'permissions',
                 'route' => 'system.role.index',
                 'icon' => 'Permissions',
                 'permission_name' => 'sidebar_view_permission',
-                'order' => 8,
+                'order' => 9,
                 'is_active' => 1,
             ],
         ],
     ],
-
+    //my current subscriptions
     [
         'name' => ['ar' => 'الاشتراكات', 'en' => 'Subscriptions'],
         'slug' => 'my_current_subscriptions',
         'route' => '',
         'icon' => 'my_current_subscriptions',
         'permission_name' => 'sidebar_view_my_current_subscriptions',
-        'order' => 5,
+        'order' => 6,
         'is_active' => 1,
         'visible_for_owner_only' => 0,
         'children' => [
@@ -380,7 +413,7 @@ return [
                 'route' => '',
                 'icon' => 'my_current_subscription',
                 'permission_name' => 'sidebar_view_my_subscriptions',
-                'order' => 6,
+                'order' => 1,
                 'is_active' => 1,
             ],
         ],
