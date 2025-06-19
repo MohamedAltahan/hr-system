@@ -9,11 +9,11 @@ class JobTitleRequest extends ApiRequest
 {
     public function rules(): array
     {
-        $jobTitle_id = $this->route('jobTitle');
+        $jobTitle_id = $this->route('job_title');
 
         return [
             'name' => ['required', 'array', 'max:255'],
-            'name' => [new UniqueJson('jobTitles', 'name', $jobTitle_id)],
+            'name' => [new UniqueJson('job_titles', 'name', $jobTitle_id)],
         ];
     }
 }
