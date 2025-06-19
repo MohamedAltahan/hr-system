@@ -24,6 +24,10 @@ class EmployeeAssetResource extends JsonResource
                 'id' => $this->manager->id,
                 'name' => $this->manager->name,
             ],
+            'department' => [
+                'id' => $this->department->id,
+                'name' => $this->department->name,
+            ],
             'issue_date' => formatDate($this->issue_date),
             'return_date' => formatDate($this->return_date),
             'status' => $this->status,

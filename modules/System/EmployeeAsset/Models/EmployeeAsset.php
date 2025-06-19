@@ -3,6 +3,7 @@
 namespace Modules\System\EmployeeAsset\Models;
 
 use Modules\Common\Models\BaseModel;
+use Modules\System\Department\Models\Department;
 use Modules\System\EmployeeAssetType\Models\EmployeeAssetType;
 use Modules\System\User\Models\User;
 
@@ -29,6 +30,6 @@ class EmployeeAsset extends BaseModel
 
     public function department()
     {
-        return $this->belongsTo(User::class, 'department_id');
+        return $this->belongsTo(Department::class, 'department_id');
     }
 }
