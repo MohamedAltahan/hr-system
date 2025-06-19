@@ -165,12 +165,21 @@ return [
                 'is_active' => 1,
             ],
             [
+                'name' => ['ar' => 'إدارة التوظيف', 'en' => 'Hiring Management'],
+                'slug' => 'hiring_management',
+                'route' => 'system.opening-positions.index',
+                'icon' => 'hiring_management',
+                'permission_name' => 'sidebar_view_hiring_management',
+                'order' => 4,
+                'is_active' => 1,
+            ],
+            [
                 'name' => ['ar' => 'عقود الموظفين', 'en' => 'Employee Contracts'],
                 'slug' => 'employee_contracts',
                 'route' => 'system.employee-contracts.index',
                 'icon' => 'employee_contracts',
                 'permission_name' => 'sidebar_view_employee_contracts',
-                'order' => 4,
+                'order' => 5,
                 'is_active' => 1,
             ],
             [
@@ -179,7 +188,7 @@ return [
                 'route' => 'system.position.index',
                 'icon' => 'positions',
                 'permission_name' => 'sidebar_view_position',
-                'order' => 5,
+                'order' => 6,
                 'is_active' => 1,
             ],
             [
@@ -188,7 +197,7 @@ return [
                 'route' => 'system.job-titles.index',
                 'icon' => 'job_title',
                 'permission_name' => 'sidebar_view_job_title',
-                'order' => 6,
+                'order' => 7,
                 'is_active' => 1,
             ],
             [
@@ -197,7 +206,7 @@ return [
                 'route' => 'system.employee-requests.index',
                 'icon' => 'employee_requests',
                 'permission_name' => 'sidebar_view_employee_requests',
-                'order' => 7,
+                'order' => 8,
                 'is_active' => 1,
             ],
             [
@@ -206,7 +215,7 @@ return [
                 'route' => 'system.employee-clearances.index',
                 'icon' => 'exit_clearance',
                 'permission_name' => 'sidebar_view_exit_clearance',
-                'order' => 8,
+                'order' => 9,
                 'is_active' => 1,
             ],
         ],
@@ -222,15 +231,15 @@ return [
         'is_active' => 1,
         'visible_for_owner_only' => 0,
         'children' => [
-            [
-                'name' => ['ar' => 'الطلبات المالية', 'en' => 'Financial Request'],
-                'slug' => 'financial_request',
-                'route' => '',
-                'icon' => 'financial_request',
-                'permission_name' => 'sidebar_view_financial_request',
-                'order' => 1,
-                'is_active' => 1,
-            ],
+            // [
+            //     'name' => ['ar' => 'الطلبات المالية', 'en' => 'Financial Request'],
+            //     'slug' => 'financial_request',
+            //     'route' => '',
+            //     'icon' => 'financial_request',
+            //     'permission_name' => 'sidebar_view_financial_request',
+            //     'order' => 1,
+            //     'is_active' => 1,
+            // ],
             [
                 'name' => ['ar' => 'العمل الاضافي', 'en' => 'Overtime'],
                 'slug' => 'overtime',

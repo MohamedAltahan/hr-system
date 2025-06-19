@@ -26,6 +26,7 @@ class EmployeeAssetResource extends JsonResource
             ],
             'issue_date' => formatDate($this->issue_date),
             'return_date' => formatDate($this->return_date),
+            'status' => $this->status,
         ];
     }
 }

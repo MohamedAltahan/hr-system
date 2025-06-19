@@ -31,7 +31,8 @@ class ModuleRegistry
             'Profile',
             'Price',
             'OpeningPosition',
-            'HiringApplication'
+            'HiringApplication',
+            'Salary',
         ];
     }
 
