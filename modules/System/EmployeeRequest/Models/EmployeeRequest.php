@@ -28,7 +28,7 @@ class EmployeeRequest extends BaseModel
         return $this->belongsTo(AttendanceRule::class, 'attendance_rule_id');
     }
 
-    public function reviwedBy()
+    public function reviewedBy()
     {
         return $this->belongsTo(User::class, 'reviewed_by');
     }

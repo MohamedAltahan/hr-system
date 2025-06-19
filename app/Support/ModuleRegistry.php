@@ -32,7 +32,7 @@ class ModuleRegistry
             'Price',
             'OpeningPosition',
             'HiringApplication',
-            'Salary',
+            'Salary/Overtime',
         ];
     }
 

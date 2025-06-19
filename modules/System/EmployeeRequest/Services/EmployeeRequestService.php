@@ -46,6 +46,8 @@ class EmployeeRequestService
         $model = EmployeeRequest::findOrFail($id);
         $model->status = $request->status;
         $model->manager_comment = $request->manager_comment;
+        $model->reviewed_by = user()->id;
+        $model->reviewed_at = now();
         $model->save();
 
         return $model;
