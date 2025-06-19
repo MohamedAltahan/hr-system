@@ -13,20 +13,23 @@ return new class extends Migration
     {
         Schema::create('hiring_applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('position_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('opening_position_id')->constrained('opening_positions', 'id')->cascadeOnDelete();
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->decimal('expected_salary', 10, 2)->nullable();
-            $table->decimal('current_salary', 10, 2)->nullable();
+            $table->string('nationality')->nullable();
+            $table->string('birthdate')->nullable();
+            $table->string('religion')->nullable();
+            $table->string('expected_salary')->nullable();
+            $table->string('current_salary')->nullable();
             $table->date('hire_date')->nullable();
             $table->string('contract')->nullable();
             $table->integer('evaluations')->nullable();
             $table->string('status')->default('pending');
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

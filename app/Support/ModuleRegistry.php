@@ -30,7 +30,8 @@ class ModuleRegistry
             'Subscription',
             'Profile',
             'Price',
-            'OpeningPosition'
+            'OpeningPosition',
+            'HiringApplication'
         ];
     }
 

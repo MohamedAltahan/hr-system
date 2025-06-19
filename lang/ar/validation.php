@@ -179,6 +179,8 @@ return [
     */
 
     'attributes' => [
+        'position_id' => 'المنصب الوظيفي',
+        'number_of_vacancies' => 'عدد الفرص الوظيفية',
         'duration_in_months' => 'مدة الاشتراك',
         'currency_code' => 'العملة',
         'role_ids.*' => 'الدور',

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('requirements')->nullable();
             $table->boolean('is_published')->default(0);
+            $table->foreignId('department_id')->constrained('departments', 'id')->cascadeOnDelete();
             $table->timestamps();
         });
     }

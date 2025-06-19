@@ -1,23 +1,24 @@
 <?php
 
-namespace Modules\System\OpeningPosition\Http\Controllers;
+namespace Modules\System\HiringApplication\Http\Controllers;
 
+use Illuminate\Contracts\Support\ValidatedData;
+use Illuminate\Http\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\OpeningPosition\Http\Requests\OpeningPositionRequest;
-use Modules\System\OpeningPosition\Http\Resources\OpeningPositionListResource;
-use Modules\System\OpeningPosition\Http\Resources\OpeningPositionResource;
-use Modules\System\OpeningPosition\Models\OpeningPosition;
-use Modules\System\OpeningPosition\Services\OpeningPositionService;
+use Modules\System\HiringApplication\Http\Requests\HiringApplicationRequest;
+use Modules\System\HiringApplication\Http\Resources\HiringApplicationResource;
+use Modules\System\HiringApplication\Models\HiringApplication;
+use Modules\System\HiringApplication\Services\HiringApplicationService;
 
-class OpeningPositionController extends ApiController
+class HiringApplicationController extends ApiController
 {
     use ApiResponse;
 
-    public static ?string $model = OpeningPosition::class;
+    public static ?string $model = HiringApplication::class;
 
-    public function __construct(protected OpeningPositionService $service)
+    public function __construct(protected HiringApplicationService $service)
     {
         parent::__construct();
     }
@@ -27,33 +28,33 @@ class OpeningPositionController extends ApiController
         $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            OpeningPositionResource::paginate($data),
+            HiringApplicationResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(OpeningPositionRequest $request)
+    public function store(HiringApplicationRequest $request)
     {
         $data = $this->service->create($request);
 
         return $this->sendResponse(
-            OpeningPositionResource::make($data),
+            HiringApplicationResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
     }
 
-    public function show(OpeningPosition $OpeningPosition)
+    public function show(HiringApplication $HiringApplication)
     {
         return $this->sendResponse(
-            OpeningPositionResource::make($OpeningPosition),
+            HiringApplicationResource::make($HiringApplication),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(OpeningPositionRequest $request, int $id)
+    public function update(HiringApplicationRequest $request, int $id)
     {
         $this->service->update($request, $id);
 
@@ -83,14 +84,23 @@ class OpeningPositionController extends ApiController
         );
     }
 
-    public function getOpeningPositions()
+    public function changeStatus(Request $request)
     {
+        $ValidatedData = $request->validate([
+            'application_id' => 'required|exists:hiring_applications,id',
+            'status' => 'required|in:pending,accepted,rejected',
+            'note' => 'nullable|string|max:5000',
+        ]);
 
-        $openingPositions = OpeningPosition::where('is_published', 1)->get();
+        $data = HiringApplication::findOrFail($ValidatedData['application_id']);
+
+        $data->update([
+            'status' => $ValidatedData['status']
+        ]);
 
         return $this->sendResponse(
-            OpeningPositionListResource::collection($openingPositions),
-            __('Data fetched successfully'),
+            [],
+            __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );
     }

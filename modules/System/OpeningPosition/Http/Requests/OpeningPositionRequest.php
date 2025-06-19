@@ -9,8 +9,6 @@ class OpeningPositionRequest extends ApiRequest
 {
     public function rules(): array
     {
-        $position_id = $this->route('position');
-
         return [
             'position_id' => ['required', 'exists:positions,id'],
             'number_of_vacancies' => 'required|numeric|min:1|max:9999|integer',

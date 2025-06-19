@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
 
-class OpeningPositionResource extends JsonResource
+class OpeningPositionListResource extends JsonResource
 {
     use HasPagination;
 
@@ -14,12 +14,9 @@ class OpeningPositionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'position' => [$this->position?->id, $this->position?->name],
+            'position' => ['id' => $this->position?->id, 'name' => $this->position?->name],
             'number_of_vacancies' => $this->number_of_vacancies,
-            'website' => env('APP_URL') . '/' . 'apply-job?' . 'c=' . tenant()->domain,
             'description' => $this->description,
-            'is_published' => $this->is_published,
-            'department' => ['id' => $this->department?->id, 'name' => $this->department?->name],
             'number_of_new_applications' => $this->new_hiring_applications_count,
             'number_of_all_applications' => $this->hiring_applications_count,
         ];
