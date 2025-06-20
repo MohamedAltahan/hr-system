@@ -11,6 +11,7 @@ class OpeningPosition extends BaseModel
 {
     protected $fillable = [
         'position_id',
+        'department_id',
         'email',
         'number_of_vacancies',
         'type',
