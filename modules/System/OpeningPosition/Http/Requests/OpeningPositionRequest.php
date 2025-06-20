@@ -14,6 +14,7 @@ class OpeningPositionRequest extends ApiRequest
             'number_of_vacancies' => 'required|numeric|min:1|max:9999|integer',
             'description' => 'nullable|max:5000',
             'is_published' => 'boolean',
+            'department_id' => 'required|exists:departments,id',
         ];
     }
 }
