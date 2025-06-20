@@ -12,8 +12,10 @@ class AttendanceRuleRequest extends ApiRequest
 {
     public function rules(): array
     {
+        $attendance_rules_id = $this->route('attendance_rule');
+
         return [
-            'name' => ['required', 'array', 'max:255', new UniqueJson('attendance_rules', 'name')],
+            'name' => ['required', 'array', 'max:255', new UniqueJson('attendance_rules', 'name', $attendance_rules_id)],
             'entry_time' => 'required|date_format:H:i',
             'exit_time' => 'required|date_format:H:i',
             'break_time' => 'required|date_format:H:i',
