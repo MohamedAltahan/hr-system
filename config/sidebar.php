@@ -193,7 +193,7 @@ return [
             ],
             [
                 'name' => ['ar' => 'المسميات الوظيفية', 'en' => 'Job Title'],
-                'slug' => 'positions',
+                'slug' => 'job_titles',
                 'route' => 'system.job-titles.index',
                 'icon' => 'job_title',
                 'permission_name' => 'sidebar_view_job_title',
