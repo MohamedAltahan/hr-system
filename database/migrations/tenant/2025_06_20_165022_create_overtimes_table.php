@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('overtimes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained('users', 'id')->cascadeOnDelete();
-            $table->string('email')->nullable();
-            $table->integer('number_of_vacancies')->nullable();
-            $table->string('type')->nullable();
-            $table->string('website')->nullable();
-            $table->text('description')->nullable();
-            $table->text('requirements')->nullable();
-            $table->boolean('is_published')->default(0);
-            $table->foreignId('department_id')->constrained('departments', 'id')->cascadeOnDelete();
+            $table->date('overtime_date')->nullable();
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
+            $table->decimal('duration_in_hours', 5, 2)->nullable(); // e.g., 2.5 hours
+            $table->decimal('amount', 10, 2)->nullable();
+            $table->string('status')->default('pending');
+            $table->text('reason')->nullable();
+            $table->foreignId('approved_by')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->timestamp('approved_at')->useCurrent();
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace Modules\System\AttendanceRule\Models;
 
 use Modules\Common\Models\BaseModel;
+use Modules\System\AttendanceRule\Enum\WorkTypeEnum;
 use Modules\System\Branch\Models\Branch;
 
 class AttendanceRule extends BaseModel
@@ -28,6 +29,7 @@ class AttendanceRule extends BaseModel
     }
 
     protected $casts = [
+        'work_type' => WorkTypeEnum::class,
         // 'grace_period_minutes' => 'integer',
     ];
 }

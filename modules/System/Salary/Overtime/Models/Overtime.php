@@ -1,43 +1,26 @@
 <?php
 
-namespace Modules\System\Overtime\Models;
+namespace Modules\System\Salary\Overtime\Models;
 
 use Modules\Common\Models\BaseModel;
 use Modules\System\Department\Models\Department;
 use Modules\System\HiringApplication\Models\HiringApplication;
 use Modules\System\Position\Models\Position;
+use Modules\System\User\Models\User;
 
 class Overtime extends BaseModel
 {
-    protected $fillable = [
-        'position_id',
-        'email',
-        'number_of_vacancies',
-        'type',
-        'website',
-        'description',
-        'requirements',
-        'is_published'
-    ];
+    // protected $fillable = [];
+    protected $guarded = [];
 
     //relations
-    public function position()
+    public function employee()
     {
-        return $this->belongsTo(Position::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function hiringApplications()
+    public function reviewedBy()
     {
-        return $this->hasMany(HiringApplication::class);
-    }
-
-    public function newHiringApplications()
-    {
-        return $this->hasMany(HiringApplication::class)->where('status', 'pending');
-    }
-
-    public function department()
-    {
-        return $this->belongsTo(Department::class);
+        return $this->belongsTo(User::class, 'reviewed_by');
     }
 }

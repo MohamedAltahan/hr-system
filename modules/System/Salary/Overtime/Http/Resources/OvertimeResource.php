@@ -1,10 +1,12 @@
 <?php
 
-namespace Modules\System\Overtime\Http\Resources;
+namespace Modules\System\Salary\Overtime\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Carbon;
 use Modules\Common\Traits\HasPagination;
+
 
 class OvertimeResource extends JsonResource
 {
@@ -12,16 +14,28 @@ class OvertimeResource extends JsonResource
 
     public function toArray(Request $request): array
     {
+        // $startTime = Carbon::parse($this->start_time);
+        // $endTime = Carbon::parse($this->end_time);
+
         return [
             'id' => $this->id,
-            'position' => [$this->position?->id, $this->position?->name],
-            'number_of_vacancies' => $this->number_of_vacancies,
-            'website' => env('APP_URL') . '/' . 'apply-job?' . 'c=' . tenant()->domain,
-            'description' => $this->description,
-            'is_published' => $this->is_published,
-            'department' => ['id' => $this->department?->id, 'name' => $this->department?->name],
-            'number_of_new_applications' => $this->new_hiring_applications_count,
-            'number_of_all_applications' => $this->hiring_applications_count,
+            'empoloyee' => [
+                'id' => $this->employee->id,
+                'name' => $this->employee->name,
+                'number' => $this->employee->employee_number,
+                'department' => $this->employee->department?->name,
+                'employment_type' => $this->employee->contract?->attendanceRule?->work_type->label(),
+                'salary' => $this->employee->contract?->salary,
+            ],
+            'manager' => $this->reviewedBy?->name,
+            'reason' => $this->reason,
+            'approved_at' => formatDate($this->approved_at),
+            // 'overtime_hours' => $startTime->diffInHours($endTime),
+            // 'start_time' => formatTime($this->start_time),
+            // 'end_time' => formatTime($this->end_time),
+            'status' => $this->status,
+            'duration_in_hours' => $this->duration_in_hours,
+            'amount' => $this->amount,
         ];
     }
 }

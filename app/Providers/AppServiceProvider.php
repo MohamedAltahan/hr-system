@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Policies\BranchPolicy;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Model::automaticallyEagerLoadRelationships();
         Carbon::setLocale(app()->getLocale());
         Gate::policy(Branch::class, BranchPolicy::class);
     }

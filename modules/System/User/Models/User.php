@@ -11,6 +11,7 @@ use Modules\Common\Traits\Filterable;
 use Modules\System\Branch\Models\Branch;
 use Modules\System\Department\Models\Department;
 use Modules\System\EmployeeAsset\Models\EmployeeAsset;
+use Modules\System\EmployeeContract\Models\EmployeeContract;
 use Modules\System\JobTitle\Models\JobTitle;
 use Modules\System\Position\Models\Position;
 use Spatie\Permission\Traits\HasRoles;
@@ -87,6 +88,11 @@ class User extends Authenticatable
     public function asset()
     {
         return $this->hasOne(EmployeeAsset::class, 'employee_id');
+    }
+
+    public function contract()
+    {
+        return $this->hasOne(EmployeeContract::class, 'employee_id');
     }
 
     // scopes

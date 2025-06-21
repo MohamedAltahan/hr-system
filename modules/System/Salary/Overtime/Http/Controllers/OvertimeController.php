@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\System\Overtime\Http\Controllers;
+namespace Modules\System\Salary\Overtime\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\Overtime\Http\Requests\OvertimeRequest;
-use Modules\System\Overtime\Http\Resources\OvertimeListResource;
-use Modules\System\Overtime\Http\Resources\OvertimeResource;
-use Modules\System\Overtime\Models\Overtime;
-use Modules\System\Overtime\Services\OvertimeService;
+use Modules\System\Salary\Overtime\Http\Requests\OvertimeRequest;
+use Modules\System\Salary\Overtime\Http\Resources\OvertimeListResource;
+use Modules\System\Salary\Overtime\Http\Resources\OvertimeResource;
+use Modules\System\Salary\Overtime\Models\Overtime;
+use Modules\System\Salary\Overtime\Services\OvertimeService;
 
 class OvertimeController extends ApiController
 {
@@ -55,10 +55,10 @@ class OvertimeController extends ApiController
 
     public function update(OvertimeRequest $request, int $id)
     {
-        $this->service->update($request, $id);
+        $data =  $this->service->update($request, $id);
 
         return $this->sendResponse(
-            [],
+            OvertimeResource::make($data),
             __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );

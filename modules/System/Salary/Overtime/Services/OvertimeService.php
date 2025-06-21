@@ -1,20 +1,18 @@
 <?php
 
-namespace Modules\System\Overtime\Services;
+namespace Modules\System\Salary\Overtime\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\Common\Filters\Common\JsonNameSearch;
-use Modules\System\Overtime\Models\Overtime;
+use Modules\System\Salary\Overtime\Models\Overtime;
 use Modules\System\User\Models\User;
 
 class OvertimeService
 {
     public function getPaginatedData($perPage)
     {
-        return Overtime::withCount('position', 'hiringApplications', 'newHiringApplications')
-            ->with('department')
-            ->paginate($perPage);
+        return Overtime::paginate($perPage);
     }
 
     public function create(Request $request): Model
@@ -24,11 +22,12 @@ class OvertimeService
         return Overtime::create($Data);
     }
 
-    public function update(Request $request, int $id): void
+    public function update(Request $request, int $id)
     {
         $model = Overtime::findOrFail($id);
         $data = $request->validated();
         $model->update($data);
+        return $model;
     }
 
     public function destroy(int $id): bool

@@ -1,19 +1,23 @@
 <?php
 
-namespace Modules\System\Overtime\Http\Requests;
+namespace Modules\System\Salary\Overtime\Http\Requests;
 
 use Modules\Common\Http\Requests\ApiRequest;
-use Modules\Common\Rules\UniqueJson;
+
 
 class OvertimeRequest extends ApiRequest
 {
     public function rules(): array
     {
         return [
-            'position_id' => ['required', 'exists:positions,id'],
-            'number_of_vacancies' => 'required|numeric|min:1|max:9999|integer',
-            'description' => 'nullable|max:5000',
-            'is_published' => 'boolean',
+            'employee_id' => 'required|exists:users,id',
+            'overtime_date' => 'nullable|date',
+            'start_time' => 'nullable|date_format:H:i',
+            'end_time' => 'nullable|date_format:H:i',
+            'status' => ['required', 'string', 'in:pending,accepted,rejected'],
+            'reason' => 'nullable|string|max:500',
+            'duration_in_hours' => 'required|numeric|min:0|max:500',
+            'amount' => 'required|numeric|min:0|max:10000000',
         ];
     }
 }

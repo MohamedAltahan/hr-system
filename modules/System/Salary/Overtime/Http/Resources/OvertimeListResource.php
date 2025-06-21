@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\Overtime\Http\Resources;
+namespace Modules\System\Salary\Overtime\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
