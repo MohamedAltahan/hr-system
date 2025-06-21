@@ -5,7 +5,6 @@ namespace Modules\System\Price\Http\Controllers;
 use Illuminate\Support\Facades\App;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
-use Modules\System\Price\Resources\PriceResource;
 
 class CurrencyController extends ApiController
 {

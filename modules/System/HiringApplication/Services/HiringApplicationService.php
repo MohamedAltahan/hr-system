@@ -4,10 +4,8 @@ namespace Modules\System\HiringApplication\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\Common\Filters\Common\JsonNameSearch;
 use Modules\Common\Traits\UploadFile;
 use Modules\System\HiringApplication\Models\HiringApplication;
-use Modules\System\User\Models\User;
 
 class HiringApplicationService
 {
@@ -37,6 +35,8 @@ class HiringApplicationService
     public function destroy(int $id): bool
     {
         $model = HiringApplication::findOrFail($id);
+        $this->deleteFile($model->cv, config('filesystems.default'));
+
         return $model->delete();
     }
 }

@@ -4,7 +4,6 @@ namespace Modules\System\Salary\Overtime\Http\Requests;
 
 use Modules\Common\Http\Requests\ApiRequest;
 
-
 class OvertimeRequest extends ApiRequest
 {
     public function rules(): array

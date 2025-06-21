@@ -306,7 +306,7 @@ return [
         ],
     ],
 
-    //attendance rule
+    // attendance rule
     [
         'name' => ['ar' => 'الحضور والانصراف', 'en' => 'Attendance'],
         'slug' => 'attendance',
@@ -405,7 +405,7 @@ return [
             ],
         ],
     ],
-    //my current subscriptions
+    // my current subscriptions
     [
         'name' => ['ar' => 'الاشتراكات', 'en' => 'Subscriptions'],
         'slug' => 'my_current_subscriptions',

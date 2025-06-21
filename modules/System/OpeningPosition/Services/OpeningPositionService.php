@@ -4,9 +4,7 @@ namespace Modules\System\OpeningPosition\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\Common\Filters\Common\JsonNameSearch;
 use Modules\System\OpeningPosition\Models\OpeningPosition;
-use Modules\System\User\Models\User;
 
 class OpeningPositionService
 {
@@ -34,6 +32,7 @@ class OpeningPositionService
     public function destroy(int $id): bool
     {
         $model = OpeningPosition::findOrFail($id);
+
         return $model->delete();
     }
 }

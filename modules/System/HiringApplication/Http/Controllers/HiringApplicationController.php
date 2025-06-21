@@ -2,7 +2,6 @@
 
 namespace Modules\System\HiringApplication\Http\Controllers;
 
-use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
@@ -95,7 +94,7 @@ class HiringApplicationController extends ApiController
         $data = HiringApplication::findOrFail($ValidatedData['application_id']);
 
         $data->update([
-            'status' => $ValidatedData['status']
+            'status' => $ValidatedData['status'],
         ]);
 
         return $this->sendResponse(

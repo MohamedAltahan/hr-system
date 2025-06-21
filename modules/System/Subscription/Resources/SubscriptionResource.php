@@ -4,8 +4,6 @@ namespace Modules\System\Subscription\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
-use Modules\System\Plan\Models\Plan;
-use Modules\System\Plan\Resources\PlanResource;
 use Modules\System\Price\Models\Price;
 use Modules\System\Price\Resources\PriceResource;
 

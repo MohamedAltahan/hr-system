@@ -18,10 +18,10 @@ class OpeningPosition extends BaseModel
         'website',
         'description',
         'requirements',
-        'is_published'
+        'is_published',
     ];
 
-    //relations
+    // relations
     public function position()
     {
         return $this->belongsTo(Position::class);

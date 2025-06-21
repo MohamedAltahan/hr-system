@@ -7,7 +7,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
 use Modules\Common\Traits\HasPagination;
 
-
 class OvertimeResource extends JsonResource
 {
     use HasPagination;

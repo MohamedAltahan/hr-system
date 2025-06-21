@@ -4,7 +4,6 @@ namespace Modules\System\Subscription\Services;
 
 use Illuminate\Support\Facades\DB;
 use Modules\Common\Traits\Filterable;
-use Modules\System\Plan\Models\Plan;
 use Modules\System\Price\Models\Price;
 use Modules\System\Subscription\Enum\SubscriptionStatus;
 use Modules\System\Subscription\Models\Subscription;
@@ -46,7 +45,7 @@ class SubscriptionService
                 'tenant_id' => $tenant->id,
                 'status' => SubscriptionStatus::ACTIVE->value,
                 'start_date' => now(),
-                'end_date' =>   now()->addMonths($price->duration_in_months),
+                'end_date' => now()->addMonths($price->duration_in_months),
                 'cancel_date' => null,
                 'plan_data' => $price->toArray() + ['currency_translated' => config('currencies')[$price?->currency_code]],
             ]);

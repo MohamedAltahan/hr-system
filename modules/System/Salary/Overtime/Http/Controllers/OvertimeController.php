@@ -55,7 +55,7 @@ class OvertimeController extends ApiController
 
     public function update(OvertimeRequest $request, int $id)
     {
-        $data =  $this->service->update($request, $id);
+        $data = $this->service->update($request, $id);
 
         return $this->sendResponse(
             OvertimeResource::make($data),

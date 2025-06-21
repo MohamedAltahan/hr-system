@@ -54,7 +54,7 @@ trait UploadFile
         }
     }
 
-    public function deleteFile(string $fileName, string $diskName = 'public')
+    public function deleteFile(?string $fileName, string $diskName = 'public')
     {
         if ($fileName == null) {
             return;

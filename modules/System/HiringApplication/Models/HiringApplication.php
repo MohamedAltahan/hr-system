@@ -4,7 +4,6 @@ namespace Modules\System\HiringApplication\Models;
 
 use Modules\Common\Models\BaseModel;
 use Modules\System\OpeningPosition\Models\OpeningPosition;
-use Modules\System\Position\Models\Position;
 
 class HiringApplication extends BaseModel
 {
@@ -26,7 +25,7 @@ class HiringApplication extends BaseModel
         'cv',
     ];
 
-    //relations
+    // relations
     public function openingPosition()
     {
         return $this->belongsTo(OpeningPosition::class);

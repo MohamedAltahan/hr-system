@@ -16,7 +16,7 @@ class AssignPriceToTenantRequest extends ApiRequest
             'price' => 'numeric|max:99999999|min:0|required_if:is_trial,false',
             'price_after_discount' => 'sometimes|nullable|numeric|max:99999999|min:0|lt:price',
             'duration_in_months' => 'required|min:1|max:100|integer',
-            'currency_code' => ["required", "string", "max:4", Rule::in(array_keys(config('currencies')))],
+            'currency_code' => ['required', 'string', 'max:4', Rule::in(array_keys(config('currencies')))],
         ];
     }
 }

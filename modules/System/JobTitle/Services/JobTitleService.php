@@ -18,6 +18,7 @@ class JobTitleService
     public function create(Request $request): Model
     {
         $Data = $request->validated();
+
         return JobTitle::create($Data);
     }
 

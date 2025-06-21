@@ -3,7 +3,6 @@
 namespace Modules\System\OpeningPosition\Http\Requests;
 
 use Modules\Common\Http\Requests\ApiRequest;
-use Modules\Common\Rules\UniqueJson;
 
 class OpeningPositionRequest extends ApiRequest
 {

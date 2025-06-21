@@ -10,7 +10,6 @@ use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Plan\Models\Plan;
 use Modules\System\Price\Models\Price;
-use Modules\System\Price\Resources\PriceResource;
 use Modules\System\Subscription\Enum\SubscriptionStatus;
 use Modules\System\Tenant\Http\Requests\TenantRequest;
 use Modules\System\Tenant\Http\Resources\TenantResource;
@@ -41,7 +40,7 @@ class TenantController extends ApiController
     public function store(TenantRequest $request)
     {
         $tenant = Tenant::create([
-            'tenancy_db_name' => config('app.name') . '_' . $request->domain,
+            'tenancy_db_name' => config('app.name').'_'.$request->domain,
             'user_id' => null,
             'company_name' => $request->company_name,
             'domain' => $request->domain,
@@ -72,7 +71,7 @@ class TenantController extends ApiController
             'status' => SubscriptionStatus::ACTIVE->value,
             'start_date' => now(),
             // 'end_date' => $plan->is_trial ? now()->addDays($plan->trial_days) : now()->addMonths($plan->trial_days),
-            'end_date' => now()->addDays((int)$request->trial_days),
+            'end_date' => now()->addDays((int) $request->trial_days),
             'cancel_date' => null,
             'plan_data' => new Price([
                 'price' => 0,

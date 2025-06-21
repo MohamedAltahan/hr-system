@@ -99,6 +99,7 @@ if (! function_exists('formatDate')) {
         if (! $currency) {
             $currency = config('app.currency', 'SAR');
         }
+
         return $formatter->formatCurrency($amount, $currency);
     }
 }

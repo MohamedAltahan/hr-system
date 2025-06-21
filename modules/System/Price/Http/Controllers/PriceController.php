@@ -6,7 +6,6 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Price\Http\Requests\AssignPriceToTenantRequest;
-use Modules\System\Price\Http\Requests\PriceRequest;
 use Modules\System\Price\Resources\PriceResource;
 use Modules\System\Price\Services\PriceService;
 
