@@ -21,6 +21,7 @@ class HiringApplicationRequest extends ApiRequest
             'religion' => 'nullable|string|max:50',
             'nationality' => 'nullable|string|max:50',
             'birthdate' => 'nullable|date|max:50',
+            'cv' => 'nullable|file|mimes:pdf,doc,docx|max:3000',
         ];
     }
 }

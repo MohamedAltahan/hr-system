@@ -27,6 +27,7 @@ return new class extends Migration
             $table->integer('evaluations')->nullable();
             $table->string('status')->default('pending');
             $table->string('notes')->nullable();
+            $table->text('cv')->nullable();
             $table->timestamps();
         });
     }

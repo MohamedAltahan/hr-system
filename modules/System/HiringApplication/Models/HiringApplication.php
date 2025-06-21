@@ -23,6 +23,7 @@ class HiringApplication extends BaseModel
         'nationality',
         'birthdate',
         'notes',
+        'cv',
     ];
 
     //relations

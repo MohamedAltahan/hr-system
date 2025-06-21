@@ -27,6 +27,7 @@ class HiringApplicationResource extends JsonResource
             'nationality' => $this->nationality,
             'birthdate' => $this->birthdate,
             'notes' => $this->notes,
+            'cv' => url('uploads/' . $this->cv),
             // 'number_of_applications' => $this->applications ?? null,
         ];
     }
