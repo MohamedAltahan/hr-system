@@ -33,6 +33,7 @@ class ModuleRegistry
             'OpeningPosition',
             'HiringApplication',
             'Salary/Overtime',
+            'Salary/FinancialTransaction',
         ];
     }
 
