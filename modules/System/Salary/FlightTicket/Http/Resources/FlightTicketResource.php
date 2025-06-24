@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\System\Salary\Overtime\Http\Resources;
+namespace Modules\System\Salary\FlightTicket\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
 use Modules\Common\Traits\HasPagination;
 
-class OvertimeResource extends JsonResource
+class FlightTicketResource extends JsonResource
 {
     use HasPagination;
 
@@ -23,17 +23,12 @@ class OvertimeResource extends JsonResource
                 'name' => $this->employee->name,
                 'number' => $this->employee->employee_number,
                 'department' => $this->employee->department?->name,
-                'employment_type' => $this->employee->contract?->attendanceRule?->work_type->label(),
-                'salary' => $this->employee->contract?->salary,
             ],
-            'manager' => $this->reviewedBy?->name,
-            'reason' => $this->reason,
-            'approved_at' => formatDate($this->approved_at),
-            // 'overtime_hours' => $startTime->diffInHours($endTime),
-            // 'start_time' => formatTime($this->start_time),
-            // 'end_time' => formatTime($this->end_time),
+            'transaction_name' => $this->transaction_name,
+            'transaction_type' => $this->transaction_type,
+            'date' => formatDate($this->date),
             'status' => $this->status,
-            'duration_in_hours' => $this->duration_in_hours,
+            'notes' => $this->notes,
             'amount' => $this->amount,
         ];
     }

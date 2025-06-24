@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\System\Salary\Overtime\Models;
+namespace Modules\System\Salary\FlightTicket\Models;
 
 use Modules\Common\Models\BaseModel;
 use Modules\System\User\Models\User;
 
-class Overtime extends BaseModel
+class FlightTicket extends BaseModel
 {
     // protected $fillable = [];
     protected $guarded = [];

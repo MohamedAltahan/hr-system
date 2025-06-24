@@ -1,28 +1,27 @@
 <?php
 
-namespace Modules\System\Salary\Overtime\Services;
+namespace Modules\System\Salary\FinancialTransaction\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\System\Salary\Overtime\Models\Overtime;
+use Modules\System\Salary\FinancialTransaction\Models\FinancialTransaction;
 
-class OvertimeService
+class FinancialTransactionService
 {
     public function getPaginatedData($perPage)
     {
-        return Overtime::paginate($perPage);
+        return FinancialTransaction::paginate($perPage);
     }
 
     public function create(Request $request): Model
     {
-        $Data = $request->validated();
-
-        return Overtime::create($Data);
+        $data = $request->validated();
+        return FinancialTransaction::create($data);
     }
 
     public function update(Request $request, int $id)
     {
-        $model = Overtime::findOrFail($id);
+        $model = FinancialTransaction::findOrFail($id);
         $data = $request->validated();
         $model->update($data);
 
@@ -31,7 +30,7 @@ class OvertimeService
 
     public function destroy(int $id): bool
     {
-        $model = Overtime::findOrFail($id);
+        $model = FinancialTransaction::findOrFail($id);
 
         return $model->delete();
     }

@@ -1,23 +1,23 @@
 <?php
 
-namespace Modules\System\Salary\Overtime\Http\Controllers;
+namespace Modules\System\Salary\FlightTicket\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\Salary\Overtime\Http\Requests\OvertimeRequest;
-use Modules\System\Salary\Overtime\Http\Resources\OvertimeListResource;
-use Modules\System\Salary\Overtime\Http\Resources\OvertimeResource;
-use Modules\System\Salary\Overtime\Models\Overtime;
-use Modules\System\Salary\Overtime\Services\OvertimeService;
+use Modules\System\Salary\FlightTicket\Http\Requests\FlightTicketRequest;
+use Modules\System\Salary\FlightTicket\Http\Resources\FlightTicketListResource;
+use Modules\System\Salary\FlightTicket\Http\Resources\FlightTicketResource;
+use Modules\System\Salary\FlightTicket\Models\FlightTicket;
+use Modules\System\Salary\FlightTicket\Services\FlightTicketService;
 
-class OvertimeController extends ApiController
+class FlightTicketController extends ApiController
 {
     use ApiResponse;
 
-    public static ?string $model = Overtime::class;
+    public static ?string $model = FlightTicket::class;
 
-    public function __construct(protected OvertimeService $service)
+    public function __construct(protected FlightTicketService $service)
     {
         parent::__construct();
     }
@@ -27,38 +27,38 @@ class OvertimeController extends ApiController
         $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            OvertimeResource::paginate($data),
+            FlightTicketResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(OvertimeRequest $request)
+    public function store(FlightTicketRequest $request)
     {
         $data = $this->service->create($request);
 
         return $this->sendResponse(
-            OvertimeResource::make($data),
+            FlightTicketResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
     }
 
-    public function show(Overtime $Overtime)
+    public function show(FlightTicket $FlightTicket)
     {
         return $this->sendResponse(
-            OvertimeResource::make($Overtime),
+            FlightTicketResource::make($FlightTicket),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(OvertimeRequest $request, int $id)
+    public function update(FlightTicketRequest $request, int $id)
     {
         $data = $this->service->update($request, $id);
 
         return $this->sendResponse(
-            OvertimeResource::make($data),
+            FlightTicketResource::make($data),
             __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );
@@ -79,18 +79,6 @@ class OvertimeController extends ApiController
         return $this->sendResponse(
             [],
             __('Data deleted successfully'),
-            StatusCodeEnum::Success->value
-        );
-    }
-
-    public function getOvertimes()
-    {
-
-        $openingPositions = Overtime::where('is_published', 1)->get();
-
-        return $this->sendResponse(
-            OvertimeListResource::collection($openingPositions),
-            __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
