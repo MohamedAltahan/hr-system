@@ -56,5 +56,10 @@
     "Subscription is expired": "تم انتهاء الاشتراك",
     "company disabled successfully": "تم ايقاف الشركة بنجاح",
     "Owner can not be disabled": "لا يمكن ايقاف المالك",
-    "Password updated successfully": "تم تحديث كلمة المرور بنجاح"
+    "Password updated successfully": "تم تحديث كلمة المرور بنجاح",
+    "annual_leave": "اجازة سنوية",
+    "sick_leave": "اجازة مرضية",
+    "marriage_leave": "اجازة زواج",
+    "exam_leave": "اجازة امتحان",
+    "unpaid_leave": "اجازة غير مدفوعة"
 }

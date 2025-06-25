@@ -35,6 +35,7 @@ class ModuleRegistry
             'Salary/Overtime',
             'Salary/FinancialTransaction',
             'Salary/FlightTicket',
+            'Leaves/Leaves',
         ];
     }
 

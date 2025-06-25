@@ -6,6 +6,7 @@ use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
 use Modules\System\EmployeeRequest\Enum\EmployeeRequestStatusEnum;
 use Modules\System\EmployeeRequest\Enum\EmployeeRequestTypeEnum;
+use Modules\System\EmployeeRequest\Enum\LeavesTypeEnum;
 
 class EmployeeRequestRequest extends ApiRequest
 {
@@ -24,6 +25,7 @@ class EmployeeRequestRequest extends ApiRequest
             'employee_id' => 'required|exists:users,id',
             'reason' => 'nullable|string',
             'type' => ['required', 'string', Rule::in(EmployeeRequestTypeEnum::cases())],
+            'leave_type' => ['nullable', 'string', Rule::in(LeavesTypeEnum::cases())],
             'loan_amount' => 'nullable|numeric|min:0|max:99999999',
             'from_date' => 'required|date',
             'to_date' => 'required|date',
