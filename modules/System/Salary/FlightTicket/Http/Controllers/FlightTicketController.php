@@ -55,6 +55,7 @@ class FlightTicketController extends ApiController
 
     public function update(FlightTicketRequest $request, int $id)
     {
+
         $data = $this->service->update($request, $id);
 
         return $this->sendResponse(

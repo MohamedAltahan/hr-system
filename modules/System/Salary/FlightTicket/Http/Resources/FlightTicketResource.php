@@ -24,12 +24,11 @@ class FlightTicketResource extends JsonResource
                 'number' => $this->employee->employee_number,
                 'department' => $this->employee->department?->name,
             ],
-            'transaction_name' => $this->transaction_name,
-            'transaction_type' => $this->transaction_type,
-            'date' => formatDate($this->date),
+            'responsible_person_name' => $this->responsible_person_name,
+            'ticket_type' => $this->ticket_type,
+            'ticket_price' => formatCurrency($this->ticket_price),
+            'flight_date' => formatDate($this->flight_date),
             'status' => $this->status,
-            'notes' => $this->notes,
-            'amount' => $this->amount,
         ];
     }
 }

@@ -34,6 +34,7 @@ class ModuleRegistry
             'HiringApplication',
             'Salary/Overtime',
             'Salary/FinancialTransaction',
+            'Salary/FlightTicket',
         ];
     }
 

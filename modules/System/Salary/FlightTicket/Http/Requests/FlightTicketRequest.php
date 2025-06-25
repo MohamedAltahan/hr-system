@@ -11,12 +11,10 @@ class FlightTicketRequest extends ApiRequest
 
         return [
             'employee_id' => 'required|exists:users,id',
-            'transaction_type' => 'string|required|in:increment,decrement',
-            'transaction_name' => 'required|string',
-            'amount' => 'required|numeric|min:0|max:10000000',
-            'date' => 'required|date',
-            'is_outside_salary' => 'boolean|nullable',
-            'notes' => 'nullable|string|max:1000',
+            'ticket_type' => 'string|required|in:round_trip,one_way,return_only',
+            'ticket_price' => 'required|numeric|min:0|max:10000000',
+            'flight_date' => 'required|date',
+            'responsible_person_name' => 'nullable|string|max:1000',
             'status' => ['required', 'string', 'in:pending,accepted,rejected'],
         ];
     }
