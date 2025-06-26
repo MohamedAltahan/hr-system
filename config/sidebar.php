@@ -405,6 +405,40 @@ return [
             ],
         ],
     ],
+
+    // Leaves
+    [
+        'name' => ['ar' => 'الاجازات', 'en' => 'Leaves'],
+        'slug' => 'leaves',
+        'route' => '',
+        'icon' => 'leaves',
+        'permission_name' => 'sidebar_view_leaves',
+        'order' => 4,
+        'is_active' => 1,
+        'visible_for_owner_only' => 0,
+        'children' => [
+            [
+                'name' => ['ar' => 'ادارة الاجازات', 'en' => 'Leave Management'],
+                'slug' => 'leave_management',
+                'route' => 'system.leaves.index',
+                'icon' => 'leave_management',
+                'permission_name' => 'sidebar_view_leave_management',
+                'order' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'name' => ['ar' => 'الأجازات المرحلة', 'en' => 'Carried forward leaves'],
+                'slug' => 'carried_forward_leaves',
+                'route' => '',
+                'icon' => 'carried_forward_leaves',
+                'permission_name' => 'sidebar_view_carried_forward_leaves',
+                'order' => 2,
+                'is_active' => 1,
+            ],
+
+
+        ],
+    ],
     // my current subscriptions
     [
         'name' => ['ar' => 'الاشتراكات', 'en' => 'Subscriptions'],

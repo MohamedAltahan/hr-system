@@ -1,69 +1,66 @@
 <?php
 
-namespace Modules\System\Setting\Http\Controllers;
+namespace Modules\System\Leaves\CarriedForwardLeaves\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\Setting\Http\Requests\SettingRequest;
-use Modules\System\Setting\Http\Resources\SettingResource;
-use Modules\System\Setting\Models\Setting;
-use Modules\System\Setting\Services\SettingService;
+use Modules\System\EmployeeRequest\Models\EmployeeRequest;
+use Modules\System\Leaves\CarriedForwardLeaves\Http\Requests\CarriedForwardLeavesRequest;
+use Modules\System\Leaves\CarriedForwardLeaves\Http\Resources\CarriedForwardLeavesResource;
+use Modules\System\Leaves\CarriedForwardLeaves\Models\CarriedForwardLeaves;
+use Modules\System\Leaves\CarriedForwardLeaves\Services\CarriedForwardLeavesService;
 
-class SettingController extends ApiController
+class CarriedForwardLeavesController extends ApiController
 {
     use ApiResponse;
 
-    public static ?string $model = Setting::class;
+    public static ?string $model = CarriedForwardLeaves::class;
 
-    public function __construct(protected SettingService $service)
+    public function __construct(protected CarriedForwardLeavesService $service)
     {
         parent::__construct();
     }
 
     public function index()
     {
-
-        $key = request('key');
-        $data = getSetting($key);
+        $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            SettingResource::make($data),
+            CarriedForwardLeavesResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(SettingRequest $request)
+    public function store(CarriedForwardLeavesRequest $request)
     {
-        $name = $request->input('name');
-        $key = $request->input('key');
-        $value = $request->input('value');
-
-        setSetting($key, $value, $name);
+        $data = $this->service->create($request);
 
         return $this->sendResponse(
-            [],
+            CarriedForwardLeavesResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
     }
 
-    public function show(Setting $department)
+    public function show(int $id)
     {
+        $data = CarriedForwardLeaves::with('employee')->findOrFail($id);
+
         return $this->sendResponse(
-            SettingResource::make($department),
+            CarriedForwardLeavesResource::make($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(SettingRequest $request, int $id)
+    public function update(CarriedForwardLeavesRequest $request, int $id)
     {
-        $this->service->update($request, $id);
+        $data = $this->service->update($request, $id);
 
         return $this->sendResponse(
-            [],
+            CarriedForwardLeavesResource::make($data),
             __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );

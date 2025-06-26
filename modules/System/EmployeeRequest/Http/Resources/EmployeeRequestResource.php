@@ -34,6 +34,9 @@ class EmployeeRequestResource extends JsonResource
                 'name' => $this->reviewedBy?->name,
             ],
             'reviewed_at' => formatDate($this->reviewed_at),
+            'leave_type' => [
+                $this->leave_type?->value => $this->leave_type?->label(),
+            ],
 
         ];
     }

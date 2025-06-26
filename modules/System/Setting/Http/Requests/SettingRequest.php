@@ -9,12 +9,11 @@ class SettingRequest extends ApiRequest
 {
     public function rules(): array
     {
-        $department_id = $this->route('department');
 
         return [
             'name' => ['required', 'array', 'max:255'],
-            'name' => [new UniqueJson('departments', 'name', $department_id)],
-            'description' => 'nullable|array|max:300',
+            'key' => ['required', 'string', 'max:255'],
+            'value' => 'required|array',
         ];
     }
 }

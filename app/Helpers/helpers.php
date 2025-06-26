@@ -3,6 +3,8 @@
 // Get auth user
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
+use Modules\System\Setting\Models\Setting;
 
 if (! function_exists('user')) {
     function user($attribute = null, $guard = null): \Illuminate\Contracts\Auth\Authenticatable|string|null
@@ -101,5 +103,15 @@ if (! function_exists('formatDate')) {
         }
         // return $formatter->formatCurrency($amount, $currency);
         return preg_replace('/[\x{200E}\x{200F}\x{00A0}]/u', '', $formatter->formatCurrency($amount, $currency));
+    }
+
+    function getSetting(string $key)
+    {
+        return Setting::where('key', $key)->first();
+    }
+
+    function setSetting(string $key, $value, $name): void
+    {
+        Setting::updateOrCreate(['key' => $key], ['value' => $value, 'name' => $name]);
     }
 }

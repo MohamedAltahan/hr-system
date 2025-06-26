@@ -1,28 +1,27 @@
 <?php
 
-namespace Modules\System\Leaves\Leaves\Services;
+namespace Modules\System\Leaves\CarriedForwardLeaves\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\System\EmployeeRequest\Models\EmployeeRequest;
-use Modules\System\Leaves\Leaves\Models\Leaves;
+use Modules\System\Leaves\CarriedForwardLeaves\Models\CarriedForwardLeaves;
 
-class LeavesService
+class CarriedForwardLeavesService
 {
     public function getPaginatedData($perPage)
     {
-        return EmployeeRequest::where('type', 'leave')->paginate($perPage);
+        return CarriedForwardLeaves::paginate($perPage);
     }
 
     public function create(Request $request): Model
     {
         $data = $request->validated();
-        return Leaves::create($data);
+        return CarriedForwardLeaves::create($data);
     }
 
     public function update(Request $request, int $id)
     {
-        $model = Leaves::findOrFail($id);
+        $model = CarriedForwardLeaves::findOrFail($id);
         $data = $request->validated();
         $model->update($data);
 
@@ -31,7 +30,7 @@ class LeavesService
 
     public function destroy(int $id): bool
     {
-        $model = EmployeeRequest::findOrFail($id);
+        $model = CarriedForwardLeaves::findOrFail($id);
 
         return $model->delete();
     }

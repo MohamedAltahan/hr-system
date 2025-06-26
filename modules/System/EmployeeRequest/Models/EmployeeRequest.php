@@ -5,6 +5,7 @@ namespace Modules\System\EmployeeRequest\Models;
 use Modules\Common\Models\BaseModel;
 use Modules\System\AttendanceRule\Models\AttendanceRule;
 use Modules\System\EmployeeRequest\Enum\EmployeeRequestTypeEnum;
+use Modules\System\EmployeeRequest\Enum\LeavesTypeEnum;
 use Modules\System\User\Models\User;
 
 class EmployeeRequest extends BaseModel
@@ -16,6 +17,7 @@ class EmployeeRequest extends BaseModel
 
     protected $casts = [
         'type' => EmployeeRequestTypeEnum::class,
+        'leave_type' => LeavesTypeEnum::class,
     ];
 
     public function employee()

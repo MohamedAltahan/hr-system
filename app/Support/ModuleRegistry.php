@@ -30,12 +30,14 @@ class ModuleRegistry
             'Subscription',
             'Profile',
             'Price',
+            "Setting",
             'OpeningPosition',
             'HiringApplication',
             'Salary/Overtime',
             'Salary/FinancialTransaction',
             'Salary/FlightTicket',
             'Leaves/Leaves',
+            'Leaves/CarriedForwardLeaves',
         ];
     }
 

@@ -5,6 +5,7 @@ namespace Modules\System\Leaves\Leaves\Http\Controllers;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
+use Modules\System\EmployeeRequest\Models\EmployeeRequest;
 use Modules\System\Leaves\Leaves\Http\Requests\LeavesRequest;
 use Modules\System\Leaves\Leaves\Http\Resources\LeavesListResource;
 use Modules\System\Leaves\Leaves\Http\Resources\LeavesResource;
@@ -44,8 +45,10 @@ class LeavesController extends ApiController
         );
     }
 
-    public function show(Leaves $Leaves)
+    public function show(int $id)
     {
+        $Leaves = EmployeeRequest::where('type', 'leave')->with('employee')->findOrFail($id);
+
         return $this->sendResponse(
             LeavesResource::make($Leaves),
             __('Data fetched successfully'),
@@ -55,7 +58,6 @@ class LeavesController extends ApiController
 
     public function update(LeavesRequest $request, int $id)
     {
-
         $data = $this->service->update($request, $id);
 
         return $this->sendResponse(
