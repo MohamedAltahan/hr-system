@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('employee_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->foreignId('branch_id')->constrained('branches')->onDelete('cascade');
             $table->string('action_type');
             $table->decimal('amount', 10, 2)->nullable();
             $table->date('execution_date');

@@ -28,6 +28,7 @@ class ModuleRegistry
             'EmployeeClearance',
             'Attendance/AttendanceRule',
             'Attendance/AttendanceDeparture',
+            'Attendance/DisciplinaryActions',
             'Subscription',
             'Profile',
             'Price',
