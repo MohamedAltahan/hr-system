@@ -2,12 +2,10 @@
 
 namespace Modules\System\OpeningPosition\Models;
 
-use Illuminate\Contracts\Queue\Job;
 use Modules\Common\Models\BaseModel;
 use Modules\System\Department\Models\Department;
 use Modules\System\HiringApplication\Models\HiringApplication;
 use Modules\System\JobTitle\Models\JobTitle;
-use Modules\System\Position\Models\Position;
 
 class OpeningPosition extends BaseModel
 {

@@ -16,6 +16,7 @@ class FinancialTransactionService
     public function create(Request $request): Model
     {
         $data = $request->validated();
+
         return FinancialTransaction::create($data);
     }
 

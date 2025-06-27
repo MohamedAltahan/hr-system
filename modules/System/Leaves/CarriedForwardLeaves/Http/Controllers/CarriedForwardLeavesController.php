@@ -5,7 +5,6 @@ namespace Modules\System\Leaves\CarriedForwardLeaves\Http\Controllers;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\EmployeeRequest\Models\EmployeeRequest;
 use Modules\System\Leaves\CarriedForwardLeaves\Http\Requests\CarriedForwardLeavesRequest;
 use Modules\System\Leaves\CarriedForwardLeaves\Http\Resources\CarriedForwardLeavesResource;
 use Modules\System\Leaves\CarriedForwardLeaves\Models\CarriedForwardLeaves;

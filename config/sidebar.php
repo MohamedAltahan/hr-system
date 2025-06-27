@@ -436,7 +436,6 @@ return [
                 'is_active' => 1,
             ],
 
-
         ],
     ],
     // my current subscriptions

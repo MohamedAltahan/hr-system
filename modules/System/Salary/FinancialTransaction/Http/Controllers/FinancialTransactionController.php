@@ -6,7 +6,6 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Salary\FinancialTransaction\Http\Requests\FinancialTransactionRequest;
-use Modules\System\Salary\FinancialTransaction\Http\Resources\FinancialTransactionListResource;
 use Modules\System\Salary\FinancialTransaction\Http\Resources\FinancialTransactionResource;
 use Modules\System\Salary\FinancialTransaction\Models\FinancialTransaction;
 use Modules\System\Salary\FinancialTransaction\Services\FinancialTransactionService;

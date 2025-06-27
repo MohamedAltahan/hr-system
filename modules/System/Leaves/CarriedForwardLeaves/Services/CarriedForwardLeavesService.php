@@ -16,6 +16,7 @@ class CarriedForwardLeavesService
     public function create(Request $request): Model
     {
         $data = $request->validated();
+
         return CarriedForwardLeaves::create($data);
     }
 

@@ -6,7 +6,6 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Salary\FlightTicket\Http\Requests\FlightTicketRequest;
-use Modules\System\Salary\FlightTicket\Http\Resources\FlightTicketListResource;
 use Modules\System\Salary\FlightTicket\Http\Resources\FlightTicketResource;
 use Modules\System\Salary\FlightTicket\Models\FlightTicket;
 use Modules\System\Salary\FlightTicket\Services\FlightTicketService;

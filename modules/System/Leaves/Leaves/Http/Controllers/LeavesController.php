@@ -7,7 +7,6 @@ use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\EmployeeRequest\Models\EmployeeRequest;
 use Modules\System\Leaves\Leaves\Http\Requests\LeavesRequest;
-use Modules\System\Leaves\Leaves\Http\Resources\LeavesListResource;
 use Modules\System\Leaves\Leaves\Http\Resources\LeavesResource;
 use Modules\System\Leaves\Leaves\Models\Leaves;
 use Modules\System\Leaves\Leaves\Services\LeavesService;

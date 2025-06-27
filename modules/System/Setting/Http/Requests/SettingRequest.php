@@ -3,7 +3,6 @@
 namespace Modules\System\Setting\Http\Requests;
 
 use Modules\Common\Http\Requests\ApiRequest;
-use Modules\Common\Rules\UniqueJson;
 
 class SettingRequest extends ApiRequest
 {

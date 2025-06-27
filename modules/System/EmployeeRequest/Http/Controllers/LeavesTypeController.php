@@ -4,9 +4,7 @@ namespace Modules\System\EmployeeRequest\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\EmployeeRequest\Enum\EmployeeRequestTypeEnum;
 use Modules\System\EmployeeRequest\Enum\LeavesTypeEnum;
-use Modules\System\Leaves\Leaves\Models\Leaves;
 
 class LeavesTypeController
 {

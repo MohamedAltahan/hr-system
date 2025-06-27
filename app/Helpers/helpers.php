@@ -3,7 +3,6 @@
 // Get auth user
 
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Cache;
 use Modules\System\Setting\Models\Setting;
 
 if (! function_exists('user')) {
@@ -101,6 +100,7 @@ if (! function_exists('formatDate')) {
         if (! $currency) {
             $currency = config('app.currency', 'SAR');
         }
+
         // return $formatter->formatCurrency($amount, $currency);
         return preg_replace('/[\x{200E}\x{200F}\x{00A0}]/u', '', $formatter->formatCurrency($amount, $currency));
     }

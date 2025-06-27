@@ -61,5 +61,6 @@
     "sick_leave": "اجازة مرضية",
     "marriage_leave": "اجازة زواج",
     "exam_leave": "اجازة امتحان",
-    "unpaid_leave": "اجازة غير مدفوعة"
+    "unpaid_leave": "اجازة غير مدفوعة",
+    "You can not add more than one departure per day": "لا يمكنك اضافة اكثر من مغادرة في يوم واحد"
 }

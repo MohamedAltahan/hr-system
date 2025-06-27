@@ -17,6 +17,7 @@ class LeavesService
     public function create(Request $request): Model
     {
         $data = $request->validated();
+
         return Leaves::create($data);
     }
 

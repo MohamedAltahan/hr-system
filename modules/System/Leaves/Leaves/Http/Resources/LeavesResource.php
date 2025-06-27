@@ -15,6 +15,7 @@ class LeavesResource extends JsonResource
     {
         $startDate = Carbon::parse($this->from_date);
         $endDate = Carbon::parse($this->to_date);
+
         return [
             'id' => $this->id,
             'empoloyee' => [

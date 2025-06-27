@@ -4,7 +4,6 @@ namespace Modules\System\Leaves\CarriedForwardLeaves\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Carbon;
 use Modules\Common\Traits\HasPagination;
 
 class CarriedForwardLeavesResource extends JsonResource

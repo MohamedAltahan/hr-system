@@ -16,6 +16,7 @@ class FlightTicketService
     public function create(Request $request): Model
     {
         $data = $request->validated();
+
         return FlightTicket::create($data);
     }
 

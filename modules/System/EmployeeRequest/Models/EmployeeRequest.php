@@ -3,7 +3,7 @@
 namespace Modules\System\EmployeeRequest\Models;
 
 use Modules\Common\Models\BaseModel;
-use Modules\System\AttendanceRule\Models\AttendanceRule;
+use Modules\System\Attendance\AttendanceRule\Models\AttendanceRule;
 use Modules\System\EmployeeRequest\Enum\EmployeeRequestTypeEnum;
 use Modules\System\EmployeeRequest\Enum\LeavesTypeEnum;
 use Modules\System\User\Models\User;
