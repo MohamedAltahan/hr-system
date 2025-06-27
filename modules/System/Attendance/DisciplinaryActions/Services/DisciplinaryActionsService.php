@@ -32,6 +32,7 @@ class DisciplinaryActionsService
         $model = DisciplinaryActions::findOrFail($id);
         $data = $request->validated();
         $model->update($data);
+
         return $model;
     }
 

@@ -5,7 +5,6 @@ namespace Modules\System\Attendance\DisciplinaryActions\Http\Controllers;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Attendance\DisciplinaryActions\Enum\DisciplinaryActionsEnum;
-use Modules\System\EmployeeRequest\Enum\LeavesTypeEnum;
 
 class DisciplinaryActionsListController
 {

@@ -6,7 +6,6 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Attendance\DisciplinaryActions\Http\Requests\DisciplinaryActionsRequest;
-use Modules\System\Attendance\DisciplinaryActions\Http\Requests\DisciplinaryActionsUpdateRequest;
 use Modules\System\Attendance\DisciplinaryActions\Http\Resources\DisciplinaryActionsResource;
 use Modules\System\Attendance\DisciplinaryActions\Models\DisciplinaryActions;
 use Modules\System\Attendance\DisciplinaryActions\Services\DisciplinaryActionsService;

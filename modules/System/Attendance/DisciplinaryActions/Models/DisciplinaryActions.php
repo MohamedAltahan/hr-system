@@ -15,7 +15,7 @@ class DisciplinaryActions extends BaseModel
     protected $guarded = [];
 
     protected $casts = [
-        'action_type' => DisciplinaryActionsEnum::class
+        'action_type' => DisciplinaryActionsEnum::class,
     ];
 
     public function branch()
