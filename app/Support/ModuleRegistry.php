@@ -38,7 +38,7 @@ class ModuleRegistry
             'Salary/Overtime',
             'Salary/FinancialTransaction',
             'Salary/FlightTicket',
-            'Salary/LeavesSalary',
+            // 'Salary/LeavesSalary',
             'Leaves/Leaves',
             'Leaves/CarriedForwardLeaves',
         ];

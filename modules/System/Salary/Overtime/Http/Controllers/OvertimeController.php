@@ -82,16 +82,4 @@ class OvertimeController extends ApiController
             StatusCodeEnum::Success->value
         );
     }
-
-    public function getOvertimes()
-    {
-
-        $openingPositions = Overtime::where('is_published', 1)->get();
-
-        return $this->sendResponse(
-            OvertimeListResource::collection($openingPositions),
-            __('Data fetched successfully'),
-            StatusCodeEnum::Success->value
-        );
-    }
 }
