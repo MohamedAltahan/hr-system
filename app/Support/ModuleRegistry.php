@@ -29,6 +29,7 @@ class ModuleRegistry
             'Attendance/AttendanceRule',
             'Attendance/AttendanceDeparture',
             'Attendance/DisciplinaryActions',
+            'Attendance/AttendanceDapartureRequests',
             'Subscription',
             'Profile',
             'Price',
