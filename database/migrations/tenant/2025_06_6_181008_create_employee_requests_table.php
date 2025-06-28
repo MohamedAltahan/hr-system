@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('employee_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->string('type'); // (e.g., Loan, Leave)
             $table->decimal('loan_amount', 10, 2)->nullable();
+            $table->foreignId('branch_id')->constrained('branches')->cascadeOnDelete();
             $table->string('leave_type')->nullable();
             $table->date('from_date')->nullable();
             $table->date('to_date')->nullable();

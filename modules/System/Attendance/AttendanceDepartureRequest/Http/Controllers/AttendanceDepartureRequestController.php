@@ -10,6 +10,8 @@ use Modules\System\Attendance\AttendanceDepartureRequest\Http\Requests\Attendanc
 use Modules\System\Attendance\AttendanceDepartureRequest\Http\Resources\AttendanceDepartureRequestResource;
 use Modules\System\Attendance\AttendanceDepartureRequest\Models\AttendanceDepartureRequest;
 use Modules\System\Attendance\AttendanceDepartureRequest\Services\AttendanceDepartureRequestService;
+use Modules\System\EmployeeRequest\Http\Resources\EmployeeRequestResource;
+
 
 class AttendanceDepartureRequestController extends ApiController
 {
@@ -27,28 +29,9 @@ class AttendanceDepartureRequestController extends ApiController
         $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            AttendanceDepartureRequestResource::paginate($data),
+            EmployeeRequestResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
-        );
-    }
-
-    public function store(AttendanceDepartureRequestRequest $request)
-    {
-        $data = $this->service->create($request);
-
-        if (! $data) {
-            return $this->sendResponse(
-                [],
-                __('You can not add more than one departure per day'),
-                StatusCodeEnum::CONFlICT->value
-            );
-        }
-
-        return $this->sendResponse(
-            AttendanceDepartureRequestResource::make($data),
-            __('Data created successfully'),
-            StatusCodeEnum::Created_successfully->value
         );
     }
 
@@ -59,17 +42,6 @@ class AttendanceDepartureRequestController extends ApiController
         return $this->sendResponse(
             AttendanceDepartureRequestResource::make($data),
             __('Data fetched successfully'),
-            StatusCodeEnum::Success->value
-        );
-    }
-
-    public function update(AttendanceDepartureRequestUpdateRequest $request, int $id)
-    {
-        $this->service->update($request, $id);
-
-        return $this->sendResponse(
-            [],
-            __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );
     }
