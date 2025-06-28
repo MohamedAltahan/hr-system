@@ -32,6 +32,7 @@ return [
             // ],
         ],
     ],
+
     // my services
     [
         'name' => ['ar' => 'خدماتي', 'en' => 'My Services'],
@@ -126,6 +127,7 @@ return [
             ],
         ],
     ],
+
     // employees
     [
         'name' => ['ar' => 'الموظفون', 'en' => 'Employees'],
@@ -344,15 +346,15 @@ return [
                 'order' => 3,
                 'is_active' => 1,
             ],
-            // [
-            //     'name' => ['ar' => 'طلبات الحضور والانصراف', 'en' => 'Attendance Requests'],
-            //     'slug' => 'attendance_setup',
-            //     'route' => 'system.attendance-rules.index',
-            //     'icon' => 'attendance_setup',
-            //     'permission_name' => 'sidebar_view_attendance_setup',
-            //     'order' => 4,
-            //     'is_active' => 1,
-            // ],
+            [
+                'name' => ['ar' => 'طلبات الحضور والانصراف', 'en' => 'Attendance Departure Requests'],
+                'slug' => 'attendance_departure_requests',
+                'route' => 'system.attendance-departure-requests.index',
+                'icon' => 'attendance_departure_requests',
+                'permission_name' => 'sidebar_view_attendance_departure_requests',
+                'order' => 4,
+                'is_active' => 1,
+            ],
         ],
     ],
 
