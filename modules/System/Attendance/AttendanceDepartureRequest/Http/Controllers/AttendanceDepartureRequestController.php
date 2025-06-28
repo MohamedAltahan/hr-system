@@ -40,7 +40,7 @@ class AttendanceDepartureRequestController extends ApiController
         $data = $this->service->show($id);
 
         return $this->sendResponse(
-            AttendanceDepartureRequestResource::make($data),
+            EmployeeRequestResource::make($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
