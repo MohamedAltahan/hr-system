@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\System\Attendance\AttendanceDeparture\Models;
+namespace Modules\System\Attendance\AttendanceDepartureRequest\Models;
 
 use Modules\Common\Models\BaseModel;
 use Modules\System\Branch\Models\Branch;
 use Modules\System\User\Models\User;
 
-class AttendanceDeparture extends BaseModel
+class AttendanceDepartureRequest extends BaseModel
 {
     protected $translatable = ['name'];
 

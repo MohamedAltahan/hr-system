@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\System\Attendance\AttendanceDeparture\Http\Requests;
+namespace Modules\System\Attendance\AttendanceDepartureRequest\Http\Requests;
 
 use Modules\Common\Http\Requests\ApiRequest;
 
-class AttendanceDepartureRequest extends ApiRequest
+class AttendanceDepartureRequestRequest extends ApiRequest
 {
     public function rules(): array
     {

@@ -1,32 +1,32 @@
 <?php
 
-namespace Modules\System\Attendance\AttendanceDeparture\Services;
+namespace Modules\System\Attendance\AttendanceDepartureRequest\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Common\Filters\Common\JsonNameSearch;
-use Modules\System\Attendance\AttendanceDeparture\Models\AttendanceDeparture;
+use Modules\System\Attendance\AttendanceDepartureRequest\Models\AttendanceDepartureRequest;
 use Modules\System\EmployeeContract\Models\EmployeeContract;
 
-class AttendanceDepartureService
+class AttendanceDepartureRequestService
 {
     public function getPaginatedData($perPage)
     {
-        return AttendanceDeparture::with('branch')->filter([JsonNameSearch::class])->paginate($perPage);
+        return AttendanceDepartureRequest::with('branch')->filter([JsonNameSearch::class])->paginate($perPage);
     }
 
     public function create($request)
     {
         $data = $request->validated();
 
-        $checkIn = AttendanceDeparture::where('employee_id', $data['employee_id'])
+        $checkIn = AttendanceDepartureRequest::where('employee_id', $data['employee_id'])
             ->where('date', $data['date'])
             ->whereNull('check_in')->first();
 
-        $checkOut = AttendanceDeparture::where('employee_id', $data['employee_id'])
+        $checkOut = AttendanceDepartureRequest::where('employee_id', $data['employee_id'])
             ->where('date', $data['date'])
             ->whereNull('check_out')->first();
 
-        $checkExists = AttendanceDeparture::where('employee_id', $data['employee_id'])->where('date', $data['date'])->first();
+        $checkExists = AttendanceDepartureRequest::where('employee_id', $data['employee_id'])->where('date', $data['date'])->first();
 
         if ($checkIn) {
             $checkIn->update(['check_in' => $data['time']]);
@@ -40,7 +40,7 @@ class AttendanceDepartureService
             return false;
         }
 
-        return AttendanceDeparture::create([
+        return AttendanceDepartureRequest::create([
             'employee_id' => $data['employee_id'],
             'date' => $data['date'],
             'check_in' => $data['time'],
@@ -49,19 +49,19 @@ class AttendanceDepartureService
 
     public function show($id): Model
     {
-        return AttendanceDeparture::with('branch')->findOrFail($id);
+        return AttendanceDepartureRequest::with('branch')->findOrFail($id);
     }
 
     public function update($request, $id): void
     {
-        $model = AttendanceDeparture::findOrFail($id);
+        $model = AttendanceDepartureRequest::findOrFail($id);
         $data = $request->validated();
         $model->update($data);
     }
 
     public function destroy(int $id): bool
     {
-        $model = AttendanceDeparture::findOrFail($id);
+        $model = AttendanceDepartureRequest::findOrFail($id);
 
         $checkExists = EmployeeContract::where('attendance_rule_id', $model->id)->first();
 

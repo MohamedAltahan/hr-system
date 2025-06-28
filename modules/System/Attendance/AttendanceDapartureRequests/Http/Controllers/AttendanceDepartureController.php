@@ -1,23 +1,23 @@
 <?php
 
-namespace Modules\System\Attendance\AttendanceDeparture\Http\Controllers;
+namespace Modules\System\Attendance\AttendanceDepartureRequest\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\Attendance\AttendanceDeparture\Http\Requests\AttendanceDepartureRequest;
-use Modules\System\Attendance\AttendanceDeparture\Http\Requests\AttendanceDepartureUpdateRequest;
-use Modules\System\Attendance\AttendanceDeparture\Http\Resources\AttendanceDepartureResource;
-use Modules\System\Attendance\AttendanceDeparture\Models\AttendanceDeparture;
-use Modules\System\Attendance\AttendanceDeparture\Services\AttendanceDepartureService;
+use Modules\System\Attendance\AttendanceDepartureRequest\Http\Requests\AttendanceDepartureRequestRequest;
+use Modules\System\Attendance\AttendanceDepartureRequest\Http\Requests\AttendanceDepartureRequestUpdateRequest;
+use Modules\System\Attendance\AttendanceDepartureRequest\Http\Resources\AttendanceDepartureRequestResource;
+use Modules\System\Attendance\AttendanceDepartureRequest\Models\AttendanceDepartureRequest;
+use Modules\System\Attendance\AttendanceDepartureRequest\Services\AttendanceDepartureRequestService;
 
-class AttendanceDepartureController extends ApiController
+class AttendanceDepartureRequestController extends ApiController
 {
     use ApiResponse;
 
-    public static ?string $model = AttendanceDeparture::class;
+    public static ?string $model = AttendanceDepartureRequest::class;
 
-    public function __construct(protected AttendanceDepartureService $service)
+    public function __construct(protected AttendanceDepartureRequestService $service)
     {
         parent::__construct();
     }
@@ -27,13 +27,13 @@ class AttendanceDepartureController extends ApiController
         $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            AttendanceDepartureResource::paginate($data),
+            AttendanceDepartureRequestResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(AttendanceDepartureRequest $request)
+    public function store(AttendanceDepartureRequestRequest $request)
     {
         $data = $this->service->create($request);
 
@@ -46,7 +46,7 @@ class AttendanceDepartureController extends ApiController
         }
 
         return $this->sendResponse(
-            AttendanceDepartureResource::make($data),
+            AttendanceDepartureRequestResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
@@ -57,13 +57,13 @@ class AttendanceDepartureController extends ApiController
         $data = $this->service->show($id);
 
         return $this->sendResponse(
-            AttendanceDepartureResource::make($data),
+            AttendanceDepartureRequestResource::make($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(AttendanceDepartureUpdateRequest $request, int $id)
+    public function update(AttendanceDepartureRequestUpdateRequest $request, int $id)
     {
         $this->service->update($request, $id);
 

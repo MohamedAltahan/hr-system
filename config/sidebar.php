@@ -243,7 +243,7 @@ return [
             [
                 'name' => ['ar' => 'العمل الاضافي', 'en' => 'Overtime'],
                 'slug' => 'overtime',
-                'route' => '',
+                'route' => 'system.overtime.index',
                 'icon' => 'overtime',
                 'permission_name' => 'sidebar_view_overtime',
                 'order' => 2,
@@ -252,7 +252,7 @@ return [
             [
                 'name' => ['ar' => 'الحركات المالية', 'en' => 'Financial Transactions'],
                 'slug' => 'financial_transactions',
-                'route' => '',
+                'route' => 'system.financial-transactions.index',
                 'icon' => 'financial_transactions',
                 'permission_name' => 'sidebar_view_financial_transaction',
                 'order' => 3,
@@ -261,7 +261,7 @@ return [
             [
                 'name' => ['ar' => 'تذاكر الطيران', 'en' => 'Airline Tickets'],
                 'slug' => 'airline_tickets',
-                'route' => '',
+                'route' => 'system.flight-tickets.index',
                 'icon' => 'airline_tickets',
                 'permission_name' => 'sidebar_view_airline_tickets',
                 'order' => 4,

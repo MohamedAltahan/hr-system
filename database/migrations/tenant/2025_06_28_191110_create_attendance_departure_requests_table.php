@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attendance_daparture_requests', function (Blueprint $table) {
+        Schema::create('attendance_departure_requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained('users')->onDelete('cascade');
             $table->enum('type', ['attendance', 'departure']);
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attendance_daparture_requests');
+        Schema::dropIfExists('attendance_departure_requests');
     }
 };

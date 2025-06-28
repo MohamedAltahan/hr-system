@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\System\Attendance\AttendanceDeparture\Http\Resources;
+namespace Modules\System\Attendance\AttendanceDepartureRequest\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
 
-class AttendanceDepartureResource extends JsonResource
+class AttendanceDepartureRequestResource extends JsonResource
 {
     use HasPagination;
 
