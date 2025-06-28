@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('leave_type')->nullable();
             $table->date('from_date')->nullable();
             $table->date('to_date')->nullable();
+            $table->time('time')->nullable();
             $table->text('reason')->nullable();
             $table->string('file_path')->nullable();
             $table->string('status'); // (Pending, Approved, Rejected)

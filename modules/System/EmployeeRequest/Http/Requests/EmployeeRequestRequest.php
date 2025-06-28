@@ -34,6 +34,7 @@ class EmployeeRequestRequest extends ApiRequest
             'manager_comment' => 'nullable|string',
             'reviewed_by' => 'nullable|exists:users,id',
             'reviewed_at' => 'nullable|date',
+            'time' => 'nullable|date_format:H:i',
         ];
     }
 }
