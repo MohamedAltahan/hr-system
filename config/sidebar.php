@@ -21,15 +21,6 @@ return [
                 'order' => 1,
                 'is_active' => 1,
             ],
-            // [
-            //     'name' => ['ar' => 'الباقات', 'en' => 'Plans'],
-            //     'slug' => 'plans',
-            //     'route' => 'system.plans.index',
-            //     'icon' => 'plans',
-            //     'permission_name' => 'sidebar_view_plan',
-            //     'order' => 4,
-            //     'is_active' => 1,
-            // ],
         ],
     ],
 
@@ -458,7 +449,7 @@ return [
             [
                 'name' => ['ar' => 'الأجازات المرحلة', 'en' => 'Carried forward leaves'],
                 'slug' => 'carried_forward_leaves',
-                'route' => '',
+                'route' => 'system.carried-forward-leaves.index',
                 'icon' => 'carried_forward_leaves',
                 'permission_name' => 'sidebar_view_carried_forward_leaves',
                 'order' => 2,
