@@ -8,7 +8,7 @@ return [
         'route' => '',
         'icon' => 'companies_and_plans',
         'permission_name' => 'sidebar_view_companies_and_plans',
-        'order' => 5,
+        'order' => 1,
         'is_active' => 1,
         'visible_for_owner_only' => 1,
         'children' => [
@@ -31,7 +31,7 @@ return [
         'route' => '',
         'icon' => 'my_services',
         'permission_name' => 'sidebar_view_my_services',
-        'order' => 1,
+        'order' => 2,
         'is_active' => 1,
         'visible_for_owner_only' => 0,
         'children' => [
@@ -126,7 +126,7 @@ return [
         'route' => '',
         'icon' => 'employees',
         'permission_name' => 'sidebar_view_employee',
-        'order' => 2,
+        'order' => 3,
         'is_active' => 1,
         'visible_for_owner_only' => 0,
         'children' => [
@@ -220,7 +220,7 @@ return [
         'route' => '',
         'icon' => 'salary',
         'permission_name' => 'sidebar_view_salary',
-        'order' => 3,
+        'order' => 4,
         'is_active' => 1,
         'visible_for_owner_only' => 0,
         'children' => [
@@ -349,6 +349,39 @@ return [
         ],
     ],
 
+    // Leaves
+    [
+        'name' => ['ar' => 'الاجازات', 'en' => 'Leaves'],
+        'slug' => 'leaves',
+        'route' => '',
+        'icon' => 'leaves',
+        'permission_name' => 'sidebar_view_leaves',
+        'order' => 6,
+        'is_active' => 1,
+        'visible_for_owner_only' => 0,
+        'children' => [
+            [
+                'name' => ['ar' => 'ادارة الاجازات', 'en' => 'Leave Management'],
+                'slug' => 'leave_management',
+                'route' => 'system.leaves.index',
+                'icon' => 'leave_management',
+                'permission_name' => 'sidebar_view_leave_management',
+                'order' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'name' => ['ar' => 'الأجازات المرحلة', 'en' => 'Carried forward leaves'],
+                'slug' => 'carried_forward_leaves',
+                'route' => 'system.carried-forward-leaves.index',
+                'icon' => 'carried_forward_leaves',
+                'permission_name' => 'sidebar_view_carried_forward_leaves',
+                'order' => 2,
+                'is_active' => 1,
+            ],
+
+        ],
+    ],
+
     // settings
     [
         'name' => ['ar' => 'الاعدادات العامة', 'en' => 'Genaral Settings'],
@@ -356,7 +389,7 @@ return [
         'route' => '',
         'icon' => 'settings',
         'permission_name' => 'sidebar_view_general_settings',
-        'order' => 4,
+        'order' => 10,
         'is_active' => 1,
         'visible_for_owner_only' => 0,
         'children' => [
@@ -426,38 +459,6 @@ return [
         ],
     ],
 
-    // Leaves
-    [
-        'name' => ['ar' => 'الاجازات', 'en' => 'Leaves'],
-        'slug' => 'leaves',
-        'route' => '',
-        'icon' => 'leaves',
-        'permission_name' => 'sidebar_view_leaves',
-        'order' => 4,
-        'is_active' => 1,
-        'visible_for_owner_only' => 0,
-        'children' => [
-            [
-                'name' => ['ar' => 'ادارة الاجازات', 'en' => 'Leave Management'],
-                'slug' => 'leave_management',
-                'route' => 'system.leaves.index',
-                'icon' => 'leave_management',
-                'permission_name' => 'sidebar_view_leave_management',
-                'order' => 1,
-                'is_active' => 1,
-            ],
-            [
-                'name' => ['ar' => 'الأجازات المرحلة', 'en' => 'Carried forward leaves'],
-                'slug' => 'carried_forward_leaves',
-                'route' => 'system.carried-forward-leaves.index',
-                'icon' => 'carried_forward_leaves',
-                'permission_name' => 'sidebar_view_carried_forward_leaves',
-                'order' => 2,
-                'is_active' => 1,
-            ],
-
-        ],
-    ],
     // my current subscriptions
     [
         'name' => ['ar' => 'الاشتراكات', 'en' => 'Subscriptions'],
@@ -465,7 +466,7 @@ return [
         'route' => '',
         'icon' => 'my_current_subscriptions',
         'permission_name' => 'sidebar_view_my_current_subscriptions',
-        'order' => 6,
+        'order' => 11,
         'is_active' => 1,
         'visible_for_owner_only' => 0,
         'children' => [
