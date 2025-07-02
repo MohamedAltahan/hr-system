@@ -6,7 +6,6 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Salary\Overtime\Http\Requests\OvertimeRequest;
-use Modules\System\Salary\Overtime\Http\Resources\OvertimeListResource;
 use Modules\System\Salary\Overtime\Http\Resources\OvertimeResource;
 use Modules\System\Salary\Overtime\Models\Overtime;
 use Modules\System\Salary\Overtime\Services\OvertimeService;

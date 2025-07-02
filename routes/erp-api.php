@@ -17,7 +17,7 @@ foreach (ModuleRegistry::erp() as $module) {
                 App\Http\Middleware\InitializeTenancyByRequestData::class,
                 // InitializeTenancyByDomainOrSubdomain::class,
                 // PreventAccessFromCentralDomains::class,
-                UpdateLastSeen::class
+                UpdateLastSeen::class,
             ],
             'as' => Str::of('system')->snake('-')->lower()->append('.')->toString(),
         ], function () use ($path) {

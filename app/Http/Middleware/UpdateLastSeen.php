@@ -5,8 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -21,12 +19,12 @@ class UpdateLastSeen
     {
         if ($user = user()) {
 
-            $cacheKey = 'user_last_seen_' . $user->id;
+            $cacheKey = 'user_last_seen_'.$user->id;
 
             // Get cache store directly without tags
             $cache = app(CacheManager::class)->store(config('cache.default'));
 
-            if (!$cache->has($cacheKey)) {
+            if (! $cache->has($cacheKey)) {
                 $user->update(['last_seen' => now()]);
                 $cache->put($cacheKey, true, now()->addMinutes(15));
             }

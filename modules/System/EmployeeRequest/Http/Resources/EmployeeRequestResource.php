@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Common\Traits\HasPagination;
 
-use function Laravel\Prompts\form;
-
 class EmployeeRequestResource extends JsonResource
 {
     use HasPagination;
@@ -39,7 +37,7 @@ class EmployeeRequestResource extends JsonResource
             'leave_type' => [
                 $this->leave_type?->value => $this->leave_type?->label(),
             ],
-            'time' => formatTime($this->time)
+            'time' => formatTime($this->time),
 
         ];
     }
