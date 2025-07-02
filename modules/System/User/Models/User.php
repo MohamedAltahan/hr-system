@@ -52,6 +52,7 @@ class User extends Authenticatable
         'is_owner',
         'is_super_admin',
         'birthday',
+        'last_seen'
     ];
 
     protected $casts = [

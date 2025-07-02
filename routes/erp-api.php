@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\UpdateLastSeen;
 use App\Support\ModuleRegistry;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -16,6 +17,7 @@ foreach (ModuleRegistry::erp() as $module) {
                 App\Http\Middleware\InitializeTenancyByRequestData::class,
                 // InitializeTenancyByDomainOrSubdomain::class,
                 // PreventAccessFromCentralDomains::class,
+                UpdateLastSeen::class
             ],
             'as' => Str::of('system')->snake('-')->lower()->append('.')->toString(),
         ], function () use ($path) {

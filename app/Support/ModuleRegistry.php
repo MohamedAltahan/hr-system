@@ -42,6 +42,8 @@ class ModuleRegistry
             // 'Salary/LeavesSalary',
             'Leaves/Leaves',
             'Leaves/CarriedForwardLeaves',
+            'MyService/Profile',
+            'MyService/FinancialProfile',
         ];
     }
 
