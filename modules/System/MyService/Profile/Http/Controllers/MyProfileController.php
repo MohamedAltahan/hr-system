@@ -14,7 +14,7 @@ use Modules\System\Profile\Http\Resources\ProfileResource;
 use Modules\System\User\Http\Resources\UserResource;
 use Modules\System\User\Models\User;
 
-class MyFinancialController extends ApiController
+class MyProfileController extends ApiController
 {
     use ApiResponse, UploadFile;
 
