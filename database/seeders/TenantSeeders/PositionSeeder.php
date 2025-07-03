@@ -3,7 +3,7 @@
 namespace Database\Seeders\TenantSeeders;
 
 use Illuminate\Database\Seeder;
-use Modules\System\Position\Models\Position;
+use Modules\System\Employee\Position\Models\Position;
 
 class PositionSeeder extends Seeder
 {

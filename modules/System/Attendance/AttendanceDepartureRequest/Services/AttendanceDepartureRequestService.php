@@ -3,7 +3,7 @@
 namespace Modules\System\Attendance\AttendanceDepartureRequest\Services;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\System\EmployeeRequest\Models\EmployeeRequest;
+use Modules\System\Employee\EmployeeRequest\Models\EmployeeRequest;
 
 class AttendanceDepartureRequestService
 {

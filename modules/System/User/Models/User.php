@@ -10,10 +10,10 @@ use Laravel\Sanctum\HasApiTokens;
 use Modules\Common\Traits\Filterable;
 use Modules\System\Branch\Models\Branch;
 use Modules\System\Department\Models\Department;
-use Modules\System\EmployeeAsset\Models\EmployeeAsset;
-use Modules\System\EmployeeContract\Models\EmployeeContract;
-use Modules\System\JobTitle\Models\JobTitle;
-use Modules\System\Position\Models\Position;
+use Modules\System\Employee\EmployeeAsset\Models\EmployeeAsset;
+use Modules\System\Employee\EmployeeContract\Models\EmployeeContract;
+use Modules\System\Employee\JobTitle\Models\JobTitle;
+use Modules\System\Employee\Position\Models\Position;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Translatable\HasTranslations;
 

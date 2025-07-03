@@ -4,7 +4,7 @@ namespace Modules\System\Leaves\Leaves\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\System\EmployeeRequest\Models\EmployeeRequest;
+use Modules\System\Employee\EmployeeRequest\Models\EmployeeRequest;
 use Modules\System\Leaves\Leaves\Models\Leaves;
 
 class LeavesService

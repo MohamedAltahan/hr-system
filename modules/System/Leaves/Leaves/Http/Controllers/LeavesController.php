@@ -5,7 +5,7 @@ namespace Modules\System\Leaves\Leaves\Http\Controllers;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\EmployeeRequest\Models\EmployeeRequest;
+use Modules\System\Employee\EmployeeRequest\Models\EmployeeRequest;
 use Modules\System\Leaves\Leaves\Http\Requests\LeavesRequest;
 use Modules\System\Leaves\Leaves\Http\Resources\LeavesResource;
 use Modules\System\Leaves\Leaves\Models\Leaves;

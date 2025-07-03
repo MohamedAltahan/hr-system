@@ -7,7 +7,7 @@ use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Attendance\AttendanceDepartureRequest\Models\AttendanceDepartureRequest;
 use Modules\System\Attendance\AttendanceDepartureRequest\Services\AttendanceDepartureRequestService;
-use Modules\System\EmployeeRequest\Http\Resources\EmployeeRequestResource;
+use Modules\System\Employee\EmployeeRequest\Http\Resources\EmployeeRequestResource;
 
 class AttendanceDepartureRequestController extends ApiController
 {

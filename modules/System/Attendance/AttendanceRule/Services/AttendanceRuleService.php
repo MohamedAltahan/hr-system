@@ -5,7 +5,7 @@ namespace Modules\System\Attendance\AttendanceRule\Services;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Common\Filters\Common\JsonNameSearch;
 use Modules\System\Attendance\AttendanceRule\Models\AttendanceRule;
-use Modules\System\EmployeeContract\Models\EmployeeContract;
+use Modules\System\Employee\EmployeeContract\Models\EmployeeContract;
 
 class AttendanceRuleService
 {
