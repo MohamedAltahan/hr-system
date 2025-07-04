@@ -24,7 +24,6 @@ class UserRequest extends ApiRequest
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:3000',
             'is_active' => 'boolean|nullable', // if not entered it will be true
             'birthday' => 'nullable|date',
-            'hire_date' => 'nullable|date',
             'gender' => 'nullable|in:male,female',
             'social_status' => 'nullable|in:single,married',
             'national_id' => ['nullable', 'string', 'max:30', Rule::unique('users', 'national_id')->ignore($user_id)],
@@ -35,6 +34,10 @@ class UserRequest extends ApiRequest
             'role_ids' => 'required|array',
             'role_ids.*' => 'exists:roles,id',
 
+            'attendance_rule_id' => 'nullable|exists:attendance_rules,id',
+            'salary' => 'nullable|numeric|min:0|max:99999999',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date',
         ];
     }
 }

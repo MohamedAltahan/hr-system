@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Modules\Common\Traits\Filterable;
+use Modules\System\Attendance\AttendanceRule\Models\AttendanceRule;
 use Modules\System\Branch\Models\Branch;
 use Modules\System\Department\Models\Department;
 use Modules\System\Employee\EmployeeAsset\Models\EmployeeAsset;
@@ -53,6 +54,10 @@ class User extends Authenticatable
         'is_super_admin',
         'birthday',
         'last_seen',
+        'attendance_rule_id',
+        'salary',
+        'start_date',
+        'end_date',
     ];
 
     protected $casts = [
@@ -61,6 +66,10 @@ class User extends Authenticatable
     ];
 
     // relations
+    public function attendanceRule()
+    {
+        return $this->belongsTo(AttendanceRule::class, 'attendance_rule_id');
+    }
     public function branch()
     {
         return $this->belongsTo(Branch::class);

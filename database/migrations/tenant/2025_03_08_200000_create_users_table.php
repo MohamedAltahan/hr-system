@@ -49,6 +49,12 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
+
+
+            $table->foreignId('attendance_rule_id')->nullable()->constrained('attendance_rules')->onDelete('cascade');
+            $table->decimal('salary', 10, 2)->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

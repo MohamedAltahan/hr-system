@@ -55,6 +55,13 @@ class UserResource extends JsonResource
                 'id' => $this?->position?->id,
                 'name' => $this?->position?->name,
             ],
+            'attendance_rule' => [
+                'id' => $this->attendanceRule?->id,
+                'name' => $this->attendanceRule?->name,
+            ],
+            'salary' => $this->salary,
+            'start_date' => formatDate($this->start_date),
+            'end_date' => formatDate($this->end_date),
             'roles' => RoleResource::collection($this->roles),
             'translations' => $this->getTranslations(),
         ];
