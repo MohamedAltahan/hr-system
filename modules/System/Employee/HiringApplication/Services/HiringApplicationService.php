@@ -13,7 +13,9 @@ class HiringApplicationService
 
     public function getPaginatedData($perPage)
     {
-        return HiringApplication::where('opening_position_id', request('opening_position_id'))->paginate($perPage);
+        return HiringApplication::where('opening_position_id', request('opening_position_id'))
+            ->where('status', request('status'))
+            ->paginate($perPage);
     }
 
     public function create(Request $request): Model

@@ -20,7 +20,7 @@ class DisciplinaryActionsResource extends JsonResource
                 'name' => $this->employee->name,
                 'number' => $this->employee->employee_number,
                 'department' => $this->employee->department?->name,
-                'salary' => $this->employee->contract?->salary,
+                'salary' => $this->employee->salary,
             ],
             'execution_date' => formatDate($this->execution_date),
             'amount' => $this->amount,

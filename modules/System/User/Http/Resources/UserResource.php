@@ -32,9 +32,9 @@ class UserResource extends JsonResource
             'address' => $this?->address,
             'last_seen' => formatDate($this->last_seen),
             'is_active' => $this->is_active,
-            'contract_start_date' => $this->contract?->start_date,
-            'contract_end_date' => $this->contract?->end_date,
-            'working_nature' => $this->contract?->attendanceRule?->work_type->label(),
+            'contract_start_date' => $this->start_date,
+            'contract_end_date' => $this->end_date,
+            'working_nature' => $this->attendanceRule?->work_type->label(),
             'branch' => [
                 'id' => $this->branch->id,
                 'name' => $this->branch->name,
