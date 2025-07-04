@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\OpeningPosition\Http\Resources;
+namespace Modules\System\Employee\OpeningPosition\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -16,7 +16,7 @@ class OpeningPositionResource extends JsonResource
             'id' => $this->id,
             'position' => [$this->position?->id, $this->position?->name],
             'number_of_vacancies' => $this->number_of_vacancies,
-            'website' => env('APP_URL').'/'.'apply-job?'.'c='.tenant()->domain,
+            'website' => env('APP_URL') . '/' . 'apply-job?' . 'c=' . tenant()->domain,
             'description' => $this->description,
             'is_published' => $this->is_published,
             'department' => ['id' => $this->department?->id, 'name' => $this->department?->name],

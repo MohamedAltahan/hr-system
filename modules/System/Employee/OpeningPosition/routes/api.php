@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\System\OpeningPosition\Http\Controllers\OpeningPositionController;
+use Modules\System\Employee\OpeningPosition\Http\Controllers\OpeningPositionController;
 
 Route::prefix('v1')->group(function () {
     Route::get('get-opening-positions-list', [OpeningPositionController::class, 'getOpeningPositions'])

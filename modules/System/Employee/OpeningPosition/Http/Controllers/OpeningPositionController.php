@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\System\OpeningPosition\Http\Controllers;
+namespace Modules\System\Employee\OpeningPosition\Http\Controllers;
 
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\OpeningPosition\Http\Requests\OpeningPositionRequest;
-use Modules\System\OpeningPosition\Http\Resources\OpeningPositionListResource;
-use Modules\System\OpeningPosition\Http\Resources\OpeningPositionResource;
-use Modules\System\OpeningPosition\Models\OpeningPosition;
-use Modules\System\OpeningPosition\Services\OpeningPositionService;
+use Modules\System\Employee\OpeningPosition\Http\Requests\OpeningPositionRequest;
+use Modules\System\Employee\OpeningPosition\Http\Resources\OpeningPositionListResource;
+use Modules\System\Employee\OpeningPosition\Http\Resources\OpeningPositionResource;
+use Modules\System\Employee\OpeningPosition\Models\OpeningPosition;
+use Modules\System\Employee\OpeningPosition\Services\OpeningPositionService;
 
 class OpeningPositionController extends ApiController
 {

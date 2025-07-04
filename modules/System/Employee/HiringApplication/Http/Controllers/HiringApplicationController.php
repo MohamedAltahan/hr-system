@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\System\HiringApplication\Http\Controllers;
+namespace Modules\System\Employee\HiringApplication\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\HiringApplication\Http\Requests\HiringApplicationRequest;
-use Modules\System\HiringApplication\Http\Resources\HiringApplicationResource;
-use Modules\System\HiringApplication\Models\HiringApplication;
-use Modules\System\HiringApplication\Services\HiringApplicationService;
+use Modules\System\Employee\HiringApplication\Http\Requests\HiringApplicationRequest;
+use Modules\System\Employee\HiringApplication\Http\Resources\HiringApplicationResource;
+use Modules\System\Employee\HiringApplication\Models\HiringApplication;
+use Modules\System\Employee\HiringApplication\Services\HiringApplicationService;
 
 class HiringApplicationController extends ApiController
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\System\OpeningPosition\Services;
+namespace Modules\System\Employee\OpeningPosition\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\System\OpeningPosition\Models\OpeningPosition;
+use Modules\System\Employee\OpeningPosition\Models\OpeningPosition;
 
 class OpeningPositionService
 {

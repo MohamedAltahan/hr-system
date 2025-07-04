@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\HiringApplication\Http\Requests;
+namespace Modules\System\Employee\HiringApplication\Http\Requests;
 
 use Modules\Common\Http\Requests\ApiRequest;
 

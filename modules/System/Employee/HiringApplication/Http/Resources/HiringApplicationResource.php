@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\HiringApplication\Http\Resources;
+namespace Modules\System\Employee\HiringApplication\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -27,7 +27,7 @@ class HiringApplicationResource extends JsonResource
             'nationality' => $this->nationality,
             'birthdate' => $this->birthdate,
             'notes' => $this->notes,
-            'cv' => url('uploads/'.$this->cv),
+            'cv' => url('uploads/' . $this->cv),
             // 'number_of_applications' => $this->applications ?? null,
         ];
     }

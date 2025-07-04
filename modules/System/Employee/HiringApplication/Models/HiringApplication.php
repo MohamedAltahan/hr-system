@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\System\HiringApplication\Models;
+namespace Modules\System\Employee\HiringApplication\Models;
 
 use Modules\Common\Models\BaseModel;
-use Modules\System\OpeningPosition\Models\OpeningPosition;
+use Modules\System\Employee\OpeningPosition\Models\OpeningPosition;
 
 class HiringApplication extends BaseModel
 {

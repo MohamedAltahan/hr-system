@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\System\OpeningPosition\Models;
+namespace Modules\System\Employee\OpeningPosition\Models;
 
 use Modules\Common\Models\BaseModel;
 use Modules\System\Department\Models\Department;
-use Modules\System\HiringApplication\Models\HiringApplication;
+use Modules\System\Employee\HiringApplication\Models\HiringApplication;
 use Modules\System\Employee\JobTitle\Models\JobTitle;
 
 class OpeningPosition extends BaseModel

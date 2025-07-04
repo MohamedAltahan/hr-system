@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\System\HiringApplication\Services;
+namespace Modules\System\Employee\HiringApplication\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\Common\Traits\UploadFile;
-use Modules\System\HiringApplication\Models\HiringApplication;
+use Modules\System\Employee\HiringApplication\Models\HiringApplication;
 
 class HiringApplicationService
 {

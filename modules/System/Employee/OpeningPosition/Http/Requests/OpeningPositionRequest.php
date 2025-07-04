@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\OpeningPosition\Http\Requests;
+namespace Modules\System\Employee\OpeningPosition\Http\Requests;
 
 use Modules\Common\Http\Requests\ApiRequest;
 
