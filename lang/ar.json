@@ -67,5 +67,11 @@
     "deduction": "خصم",
     "nothing": "لا شيء",
     "late_arrival": "وصول متأخر",
-    "early_departure": "رحيل مبكر"
+    "early_departure": "رحيل مبكر",
+    "attendance_correction": "تصحيح البصمة",
+    "advance": "طلب سلفة",
+    "over_time": "طلب عمل اضافي",
+    "resignation": "طلب استقالة",
+    "asset": "طلب عهدة",
+    "asset_clearance": "طلب اخلاء عهدة"
 }
