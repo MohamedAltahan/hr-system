@@ -15,6 +15,7 @@ use Modules\System\Employee\EmployeeAsset\Models\EmployeeAsset;
 use Modules\System\Employee\EmployeeContract\Models\EmployeeContract;
 use Modules\System\Employee\JobTitle\Models\JobTitle;
 use Modules\System\Employee\Position\Models\Position;
+use Modules\System\Salary\SalaryStructure\Models\EmployeeSalary;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Translatable\HasTranslations;
 
@@ -55,7 +56,6 @@ class User extends Authenticatable
         'birthday',
         'last_seen',
         'attendance_rule_id',
-        'salary',
         'start_date',
         'end_date',
     ];
@@ -66,6 +66,17 @@ class User extends Authenticatable
     ];
 
     // relations
+
+    public function salary()
+    {
+        return $this->hasMany(EmployeeSalary::class, 'employee_id', 'id');
+    }
+
+    public function currentSalary()
+    {
+        return $this->hasOne(EmployeeSalary::class, 'employee_id', 'id')->latest();
+    }
+
     public function attendanceRule()
     {
         return $this->belongsTo(AttendanceRule::class, 'attendance_rule_id');

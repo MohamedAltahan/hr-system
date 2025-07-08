@@ -13,8 +13,7 @@ class UserResource extends JsonResource
 
     public function toArray(Request $request): array
     {
-        $userPermissions = $this->permissions->pluck('name');
-
+        // $userPermissions = $this->permissions->pluck('name');
         return [
             'company_id' => tenant()->id,
             'id' => $this->id,
@@ -59,9 +58,17 @@ class UserResource extends JsonResource
                 'id' => $this->attendanceRule?->id,
                 'name' => $this->attendanceRule?->name,
             ],
-            'salary' => $this->salary,
-            'start_date' => formatDate($this->start_date),
-            'end_date' => formatDate($this->end_date),
+
+            'salary_data' => [
+                'id' => $this->currentSalary?->id,
+                'salary_structure' => $this->currentSalary?->SalaryStructure?->name,
+                'basic_salary' => $this->currentSalary?->basic_salary,
+                'payment_method' => $this->currentSalary?->payment_method,
+                'pay_type' => $this->currentSalary?->pay_type,
+                'start_date' => formatDate($this->currentSalary?->start_date),
+                'end_date' => formatDate($this->currentSalary?->end_date),
+            ],
+
             'roles' => RoleResource::collection($this->roles),
             'translations' => $this->getTranslations(),
         ];

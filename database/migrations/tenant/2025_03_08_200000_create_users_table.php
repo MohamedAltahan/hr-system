@@ -50,8 +50,8 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
 
-
-            $table->foreignId('attendance_rule_id')->nullable()->constrained('attendance_rules')->onDelete('cascade');
+            // $table->foreignId('salary_structure_id')->nullable()->constrained('salary_structures')->nullOnDelete();
+            $table->foreignId('attendance_rule_id')->nullable()->constrained('attendance_rules')->nullOnDelete();
             $table->decimal('salary', 10, 2)->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();

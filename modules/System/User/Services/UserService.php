@@ -11,6 +11,7 @@ use Modules\Common\Filters\Employee\EmployeeNumberFilter;
 use Modules\Common\Filters\Employee\EmployeePositionFilter;
 use Modules\Common\Traits\UploadFile;
 use Modules\System\Permission\Models\Role;
+use Modules\System\Salary\SalaryStructure\Models\EmployeeSalary;
 use Modules\System\User\Http\Requests\UserRequest;
 use Modules\System\User\Models\User;
 
@@ -26,12 +27,12 @@ class UserService
             EmployeePositionFilter::class,
             DepartmentFilter::class,
             BranchFilter::class,
-        ])->paginate($perPage);
+        ])->with('currentSalary')->paginate($perPage);
     }
 
     public function getUser($id)
     {
-        return User::with('branch', 'department', 'jobTitle', 'directManager')->find($id);
+        return User::with('roles', 'branch', 'department', 'jobTitle', 'directManager', 'currentSalary')->find($id);
     }
 
     public function create(UserRequest $request)
@@ -41,6 +42,16 @@ class UserService
 
         $userData['avatar'] = $this->uploadFile('avatar', 'avatar', config('filesystems.default'), ImageQuality::Low->value);
         $user = User::create($userData);
+
+        $salaryData['basic_salary'] = Arr::pull($userData, 'salary');
+        $salaryData['start_date'] = Arr::pull($userData, 'start_date');
+        $salaryData['end_date'] = Arr::pull($userData, 'end_date');
+        $salaryData['salary_structure_id'] = Arr::pull($userData, 'salary_structure_id');
+        $salaryData['pay_type'] = Arr::pull($userData, 'pay_type');
+        $salaryData['payment_method'] = Arr::pull($userData, 'payment_method');
+        $salaryData['employee_id'] = $user->id;
+
+        EmployeeSalary::create($salaryData);
 
         $roles = Role::whereIn('id', $roles)->get();
         $user->syncRoles($roles);
@@ -58,6 +69,17 @@ class UserService
         $userData = $request->validated();
         $userData['avatar'] = $this->fileUpdate('avatar', 'avatar', config('filesystems.default'), $user->avatar, ImageQuality::Low->value);
         $userData['employee_number'] = $user->id;
+
+        $salaryData['basic_salary'] = Arr::pull($userData, 'salary');
+        $salaryData['start_date'] = Arr::pull($userData, 'start_date');
+        $salaryData['end_date'] = Arr::pull($userData, 'end_date');
+        $salaryData['salary_structure_id'] = Arr::pull($userData, 'salary_structure_id');
+        $salaryData['pay_type'] = Arr::pull($userData, 'pay_type');
+        $salaryData['payment_method'] = Arr::pull($userData, 'payment_method');
+        $salaryData['employee_id'] = $user->id;
+
+        EmployeeSalary::create($salaryData);
+
         $user->update($userData);
     }
 

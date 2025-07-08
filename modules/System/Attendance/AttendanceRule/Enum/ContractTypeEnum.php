@@ -2,7 +2,7 @@
 
 namespace Modules\System\Attendance\AttendanceRule\Enum;
 
-enum WorkTypeEnum: string
+enum ContractTypeEnum: string
 {
     case FULLTIME = 'full-time';
     case PARTTIME = 'part-time';

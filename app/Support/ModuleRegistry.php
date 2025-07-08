@@ -38,6 +38,7 @@ class ModuleRegistry
             'Salary/Overtime',
             'Salary/FinancialTransaction',
             'Salary/FlightTicket',
+            'Salary/SalaryStructure',
             'Leaves/Leaves',
             'Leaves/CarriedForwardLeaves',
             'MyService/Profile',

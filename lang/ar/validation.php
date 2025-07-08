@@ -179,6 +179,8 @@ return [
     */
 
     'attributes' => [
+        'salary_structure_id' => 'هيكلة الراتب',
+        'salary_component_id' => 'بند الراتب',
         'position_id' => 'المنصب الوظيفي',
         'number_of_vacancies' => 'عدد الفرص الوظيفية',
         'duration_in_months' => 'مدة الاشتراك',

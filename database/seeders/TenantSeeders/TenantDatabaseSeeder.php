@@ -23,6 +23,7 @@ class TenantDatabaseSeeder extends Seeder
                 UserSeeder::class,
                 DepartmentSeeder::class,
                 SettingSeeder::class,
+                SalaryStructureSeeder::class,
                 // PlanSeeder::class,
             ]
         );

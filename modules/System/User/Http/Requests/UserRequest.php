@@ -34,10 +34,13 @@ class UserRequest extends ApiRequest
             'role_ids' => 'required|array',
             'role_ids.*' => 'exists:roles,id',
 
+            'salary_structure_id' => 'nullable|exists:salary_structures,id',
             'attendance_rule_id' => 'nullable|exists:attendance_rules,id',
             'salary' => 'nullable|numeric|min:0|max:99999999',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date',
+            'pay_type' => ['required', Rule::in(['yearly', 'monthly', 'daily'])],
+            'payment_method' => ['required', Rule::in(['cash', 'bank_transfer'])],
         ];
     }
 }

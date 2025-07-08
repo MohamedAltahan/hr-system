@@ -37,7 +37,7 @@ class UserController extends ApiController
         $data = $this->userService->create($request);
 
         return $this->sendResponse(
-            UserResource::make($data),
+            [],
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
