@@ -13,8 +13,6 @@ class FlightTicketResource extends JsonResource
 
     public function toArray(Request $request): array
     {
-        // $startTime = Carbon::parse($this->start_time);
-        // $endTime = Carbon::parse($this->end_time);
 
         return [
             'id' => $this->id,
