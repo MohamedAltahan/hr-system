@@ -4,15 +4,12 @@ namespace Database\Seeders\TenantSeeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Modules\System\Salary\SalaryStructure\Models\SalaryComponent;
 use Modules\System\Salary\SalaryStructure\Models\SalaryStructure;
 use Modules\System\Salary\SalaryStructure\Models\StructureComponent;
-use Modules\System\User\Models\User;
 
 class SalaryStructureSeeder extends Seeder
 {
-
     public function run(): void
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -41,7 +38,6 @@ class SalaryStructureSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ], ['slug'], ['name', 'slug', 'created_at', 'updated_at']);
-
 
         SalaryComponent::upsert([
             [

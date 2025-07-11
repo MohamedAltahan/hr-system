@@ -5,8 +5,8 @@ namespace Modules\System\Attendance\AttendanceRule\Http\Requests;
 use Illuminate\Validation\Rule;
 use Modules\Common\Http\Requests\ApiRequest;
 use Modules\Common\Rules\UniqueJson;
-use Modules\System\Attendance\AttendanceRule\Enum\ShiftTimeEmum as EnumShiftTimeEmum;
 use Modules\System\Attendance\AttendanceRule\Enum\ContractTypeEnum as EnumContractTypeEnum;
+use Modules\System\Attendance\AttendanceRule\Enum\ShiftTimeEmum as EnumShiftTimeEmum;
 
 class AttendanceRuleRequest extends ApiRequest
 {

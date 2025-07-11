@@ -4,7 +4,6 @@ namespace Modules\System\Salary\SalaryStructure\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\System\Salary\SalaryStructure\Models\SalaryStructure;
 use Modules\System\Salary\SalaryStructure\Models\StructureComponent;
 use Modules\System\User\Models\User;
 

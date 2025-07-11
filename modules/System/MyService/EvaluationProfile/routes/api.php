@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\System\MyService\DisciplinaryActionProfile\Http\Controllers\MyDisciplinaryActionProfileController;
 use Modules\System\MyService\EvaluationProfile\Http\Controllers\MyEvaluationProfileController;
 
 Route::prefix('v1')->group(function () {

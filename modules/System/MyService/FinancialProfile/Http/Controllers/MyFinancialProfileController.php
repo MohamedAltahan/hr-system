@@ -8,9 +8,7 @@ use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\Common\Traits\UploadFile;
 use Modules\System\MyService\FinancialProfile\Http\Resources\FinancialProfileResource;
-use Modules\System\Salary\FinancialTransaction\Models\FinancialTransaction;
 use Modules\System\Salary\Payslip\Models\Payslip;
-use Modules\System\Salary\SalaryStructure\Services\SalaryCalculator;
 
 class MyFinancialProfileController extends ApiController
 {

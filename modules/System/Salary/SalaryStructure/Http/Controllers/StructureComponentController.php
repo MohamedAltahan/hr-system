@@ -7,7 +7,6 @@ use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\System\Salary\SalaryStructure\Http\Requests\StructureComponentRequest;
 use Modules\System\Salary\SalaryStructure\Http\Resources\StructureComponentResource;
-use Modules\System\Salary\SalaryStructure\Models\SalaryStructure;
 use Modules\System\Salary\SalaryStructure\Models\StructureComponent;
 use Modules\System\Salary\SalaryStructure\Services\StructureComponentService;
 
@@ -36,6 +35,7 @@ class StructureComponentController extends ApiController
     public function store(StructureComponentRequest $request)
     {
         $data = $this->service->create($request);
+
         return $this->sendResponse(
             [],
             __('Data created successfully'),

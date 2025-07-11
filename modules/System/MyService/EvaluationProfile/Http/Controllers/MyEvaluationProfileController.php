@@ -7,12 +7,7 @@ use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\Common\Traits\UploadFile;
-use Modules\System\Attendance\AttendanceDeparture\Models\AttendanceDeparture;
-use Modules\System\Attendance\AttendanceRule\Models\AttendanceRule;
-use Modules\System\Attendance\DisciplinaryActions\Models\DisciplinaryActions;
 use Modules\System\Employee\EmployeeEvaluation\Models\EmployeeEvaluation;
-use Modules\System\MyService\AttendanceProfile\Http\Resources\AttendanceProfileResource;
-use Modules\System\MyService\DisciplinaryActionProfile\Http\Resources\DisciplinaryActionProfileResource;
 use Modules\System\MyService\EvaluationProfile\Http\Resources\EvaluationProfileResource;
 
 class MyEvaluationProfileController extends ApiController

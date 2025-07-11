@@ -8,11 +8,7 @@ use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
 use Modules\Common\Traits\UploadFile;
 use Modules\System\Attendance\AttendanceDeparture\Models\AttendanceDeparture;
-use Modules\System\Attendance\AttendanceRule\Models\AttendanceRule;
 use Modules\System\MyService\AttendanceProfile\Http\Resources\AttendanceProfileResource;
-use Modules\System\Salary\FinancialTransaction\Models\FinancialTransaction;
-use Modules\System\Salary\Payslip\Models\Payslip;
-use Modules\System\Salary\SalaryStructure\Services\SalaryCalculator;
 
 class MyAttendanceProfileController extends ApiController
 {

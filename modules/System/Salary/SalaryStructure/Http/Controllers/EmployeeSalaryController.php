@@ -9,11 +9,8 @@ use Modules\Common\Traits\ApiResponse;
 use Modules\System\Salary\SalaryStructure\Http\Requests\EmployeeSalaryRequest;
 use Modules\System\Salary\SalaryStructure\Http\Requests\StructureComponentRequest;
 use Modules\System\Salary\SalaryStructure\Http\Resources\StructureComponentResource;
-use Modules\System\Salary\SalaryStructure\Models\SalaryStructure;
 use Modules\System\Salary\SalaryStructure\Models\StructureComponent;
-use Modules\System\Salary\SalaryStructure\Services\SalaryCalculator;
 use Modules\System\Salary\SalaryStructure\Services\StructureComponentService;
-use Modules\System\User\Models\User;
 
 class EmployeeSalaryController extends ApiController
 {
