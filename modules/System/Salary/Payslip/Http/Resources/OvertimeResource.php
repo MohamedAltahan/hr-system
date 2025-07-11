@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\System\MyService\FinancialProfile\Http\Resources;
+namespace Modules\System\Salary\Overtime\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
 use Modules\Common\Traits\HasPagination;
 
-class FinancialProfileResource extends JsonResource
+class OvertimeResource extends JsonResource
 {
     use HasPagination;
 
@@ -23,13 +23,18 @@ class FinancialProfileResource extends JsonResource
                 'name' => $this->employee->name,
                 'number' => $this->employee->employee_number,
                 'department' => $this->employee->department?->name,
+                'employment_type' => $this->employee->attendanceRule?->work_type->label(),
+                'salary' => $this->employee->salary,
             ],
-            'transaction_name' => $this->transaction_name,
-            'transaction_type' => $this->transaction_type,
-            'date' => formatDate($this->date),
+            'manager' => $this->reviewedBy?->name,
+            'reason' => $this->reason,
+            'approved_at' => formatDate($this->approved_at),
             'status' => $this->status,
-            'notes' => $this->notes,
+            'duration_in_hours' => $this->duration_in_hours,
             'amount' => $this->amount,
+            // 'overtime_hours' => $startTime->diffInHours($endTime),
+            // 'start_time' => formatTime($this->start_time),
+            // 'end_time' => formatTime($this->end_time),
         ];
     }
 }

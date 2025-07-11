@@ -4,20 +4,18 @@ namespace Modules\System\Salary\SalaryStructure\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\System\Salary\SalaryStructure\Models\SalaryComponent;
 use Modules\System\Salary\SalaryStructure\Models\SalaryStructure;
 use Modules\System\Salary\SalaryStructure\Models\StructureComponent;
-
+use Modules\System\User\Models\User;
 
 class StructureComponentService
 {
-    public function getPaginatedData($perPage)
+    public function getPaginatedData($employeeId, $perPage)
     {
-        $salaryStructure = SalaryStructure::findOrFail(2);
+        $salary = new SalaryCalculator(User::find($employeeId));
+        $salary = $salary->calculate();
 
-        $salaryComponents = $salaryStructure->salaryComponents()->paginate($perPage);
-
-        return $salaryComponents;
+        return $salary;
     }
 
     public function create(Request $request): Model

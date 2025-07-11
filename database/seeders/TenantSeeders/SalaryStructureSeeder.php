@@ -89,6 +89,33 @@ class SalaryStructureSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'خصومات الغياب',
+                'slug' => 'absence_deductions',
+                'type' => 'deduction',
+                'is_basic_salary' => false,
+                'is_taxable' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'خصومات التاخيرات',
+                'slug' => 'late_deductions',
+                'type' => 'deduction',
+                'is_basic_salary' => false,
+                'is_taxable' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'خصومات العقوبات',
+                'slug' => 'punishments_deductions',
+                'type' => 'deduction',
+                'is_basic_salary' => false,
+                'is_taxable' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ], ['slug'], ['name', 'slug', 'type', 'is_basic_salary', 'is_taxable', 'created_at', 'updated_at']);
 
         $structure = SalaryStructure::where('slug', 'employee')->first();
@@ -97,6 +124,10 @@ class SalaryStructureSeeder extends Seeder
         $transport = SalaryComponent::where('slug', 'transport_allowance')->first();
         $insurance = SalaryComponent::where('slug', 'social_insurance')->first();
         $tax = SalaryComponent::where('slug', 'income_tax')->first();
+
+        $absence = SalaryComponent::where('slug', 'absence_deductions')->first();
+        $late = SalaryComponent::where('slug', 'late_deductions')->first();
+        $punishments = SalaryComponent::where('slug', 'punishments_deductions')->first();
 
         StructureComponent::upsert(
             [
@@ -137,6 +168,31 @@ class SalaryStructureSeeder extends Seeder
                     'salary_component_id' => $tax->id,
                     'value_type' => 'percentage',
                     'value' => 10, // 10% of basic
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+
+                [
+                    'salary_structure_id' => $structure->id,
+                    'salary_component_id' => $absence->id,
+                    'value_type' => 'system',
+                    'value' => 0,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'salary_structure_id' => $structure->id,
+                    'salary_component_id' => $late->id,
+                    'value_type' => 'system',
+                    'value' => 0,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'salary_structure_id' => $structure->id,
+                    'salary_component_id' => $punishments->id,
+                    'value_type' => 'system',
+                    'value' => 0,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],

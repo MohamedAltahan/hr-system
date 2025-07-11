@@ -14,13 +14,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('structure_components', function (Blueprint $table) {
+        Schema::create('payslip_components', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('salary_structure_id')->constrained()->onDelete('cascade');
+
+            $table->foreignId('payslip_id')->constrained()->onDelete('cascade');
             $table->foreignId('salary_component_id')->constrained()->onDelete('cascade');
-            $table->enum('value_type', ['fixed', 'percentage', 'system']);
-            $table->decimal('value', 10, 2); // If percentage, it's % of basic
-            $table->foreignId('base_component_id')->nullable(); // if percentage of another component like "Basic"
+
+            $table->decimal('amount', 10, 2); // positive or negative
+
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('structure_components');
+        Schema::dropIfExists('payslip_components');
     }
 };

@@ -27,4 +27,9 @@ class DisciplinaryActions extends BaseModel
     {
         return $this->belongsTo(User::class, 'employee_id');
     }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

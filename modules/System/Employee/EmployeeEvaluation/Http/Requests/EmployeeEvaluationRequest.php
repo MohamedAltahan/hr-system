@@ -14,6 +14,7 @@ class EmployeeEvaluationRequest extends ApiRequest
             'evaluation_to' => 'required|date',
             'score' => 'required|numeric|min:0|max:100',
             'evaluator_id' => 'required|exists:users,id',
+            'comment' => 'nullable|string|max:1000',
         ];
     }
 }

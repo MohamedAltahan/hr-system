@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('evaluation_to');
             $table->decimal('score', 5, 2);
             $table->foreignId('evaluator_id')->constrained('users', 'id')->cascadeOnDelete();
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

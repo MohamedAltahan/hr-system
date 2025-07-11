@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('salary_structures', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('e.g., Employee, Manager');
+            $table->integer('working_days')->default(20);
             $table->string('slug')->nullable();
             $table->timestamps();
         });

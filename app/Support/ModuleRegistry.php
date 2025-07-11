@@ -39,10 +39,14 @@ class ModuleRegistry
             'Salary/FinancialTransaction',
             'Salary/FlightTicket',
             'Salary/SalaryStructure',
+            'Salary/Payslip',
             'Leaves/Leaves',
             'Leaves/CarriedForwardLeaves',
             'MyService/Profile',
             'MyService/FinancialProfile',
+            'MyService/AttendanceProfile',
+            'MyService/DisciplinaryActionProfile',
+            'MyService/EvaluationProfile',
         ];
     }
 

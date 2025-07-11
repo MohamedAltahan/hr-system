@@ -1,68 +1,63 @@
 <?php
 
-namespace Modules\System\Salary\SalaryStructure\Http\Controllers;
+namespace Modules\System\Salary\Overtime\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Modules\Common\Enums\StatusCodeEnum;
 use Modules\Common\Http\Controllers\ApiController;
 use Modules\Common\Traits\ApiResponse;
-use Modules\System\Salary\SalaryStructure\Http\Requests\EmployeeSalaryRequest;
-use Modules\System\Salary\SalaryStructure\Http\Requests\StructureComponentRequest;
-use Modules\System\Salary\SalaryStructure\Http\Resources\StructureComponentResource;
-use Modules\System\Salary\SalaryStructure\Models\SalaryStructure;
-use Modules\System\Salary\SalaryStructure\Models\StructureComponent;
-use Modules\System\Salary\SalaryStructure\Services\SalaryCalculator;
-use Modules\System\Salary\SalaryStructure\Services\StructureComponentService;
-use Modules\System\User\Models\User;
+use Modules\System\Salary\Overtime\Http\Requests\OvertimeRequest;
+use Modules\System\Salary\Overtime\Http\Resources\OvertimeResource;
+use Modules\System\Salary\Overtime\Models\Overtime;
+use Modules\System\Salary\Overtime\Services\OvertimeService;
 
-class EmployeeSalaryController extends ApiController
+class OvertimeController extends ApiController
 {
     use ApiResponse;
 
-    public static ?string $model = StructureComponent::class;
+    public static ?string $model = Overtime::class;
 
-    public function __construct(protected StructureComponentService $service)
+    public function __construct(protected OvertimeService $service)
     {
         parent::__construct();
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        $data = $this->service->getPaginatedData($request->employee_id, $this->perPage);
+        $data = $this->service->getPaginatedData($this->perPage);
 
         return $this->sendResponse(
-            StructureComponentResource::paginate($data),
+            OvertimeResource::paginate($data),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function store(EmployeeSalaryRequest $request)
+    public function store(OvertimeRequest $request)
     {
         $data = $this->service->create($request);
 
         return $this->sendResponse(
-            [],
+            OvertimeResource::make($data),
             __('Data created successfully'),
             StatusCodeEnum::Created_successfully->value
         );
     }
 
-    public function show(StructureComponent $StructureComponent)
+    public function show(Overtime $Overtime)
     {
         return $this->sendResponse(
-            StructureComponentResource::make($StructureComponent),
+            OvertimeResource::make($Overtime),
             __('Data fetched successfully'),
             StatusCodeEnum::Success->value
         );
     }
 
-    public function update(StructureComponentRequest $request, int $id)
+    public function update(OvertimeRequest $request, int $id)
     {
         $data = $this->service->update($request, $id);
 
         return $this->sendResponse(
-            [],
+            OvertimeResource::make($data),
             __('Data updated successfully'),
             StatusCodeEnum::Success->value
         );

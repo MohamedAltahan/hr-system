@@ -7,40 +7,76 @@ use Modules\System\User\Models\User;
 
 class SalaryCalculator
 {
-    public static function calculate(User $employee)
+    protected $salary;
+    protected $structure;
+    protected $basic;
+
+    public function __construct(User $employee)
     {
-        $salary = $employee->currentSalary;
-        $structure = $salary->salaryStructure;
-        $basic = $salary->basic_salary;
-        // dd($salary, $structure, $basic);
+        $this->salary = $employee->currentSalary;
+        $this->structure = $this->salary->salaryStructure;
+        $this->basic = $this->salary->basic_salary;
+    }
+
+    public  function calculate()
+    {
         $components = [];
 
-        // dd($structure->salaryComponents);
+        foreach ($this->structure->salaryComponents as $component) {
 
-        foreach ($structure->salaryComponents as $component) {
-            if ($component->value_type === 'fixed') {
+            if ($component->pivot->value_type == 'fixed') {
+
                 $amount = $component->pivot->value;
-            } else {
-                $amount = $basic * ($component->pivot->value / 100);
+            } else if ($component->pivot->value_type == 'percentage') {
+
+                $amount = $this->basic * ($component->pivot->value / 100);
+            } else if ($component->pivot->value_type == 'system') {
+
+                if ($component->slug == 'absence_deductions') {
+
+                    $amount = $this->calculateAbsence();
+                } else if ($component->slug == 'late_deductions') {
+
+                    $amount = $this->calculateLate();
+                } else if ($component->slug == 'punishments_deductions') {
+
+                    $amount = $this->calculatePunishments();
+                }
             }
 
+            // if (!$component->is_basic_salary) {
             $components[] = [
                 'name' => $component->name,
                 'type' => $component->type,
                 'amount' => $amount,
             ];
+            // }
         }
 
-        $gross = $basic + collect($components)->where('type', 'allowance')->sum('amount');
+        $gross = $this->basic + collect($components)->where('type', 'allowance')->sum('amount');
         $deductions = collect($components)->where('type', 'deduction')->sum('amount');
 
         $net = $gross - $deductions;
 
         return [
-            'basic' => $basic,
-            'gross' => $gross,
-            'net' => $net,
+            'basic' =>  $this->basic,
+            // 'gross' => $gross,
+            'net_salary' => $net,
+            'deductions' => $deductions,
             'components' => $components,
         ];
+    }
+
+    public  function calculateAbsence()
+    {
+        return 0;
+    }
+    public  function calculateLate()
+    {
+        return 0;
+    }
+    public  function calculatePunishments()
+    {
+        return 0;
     }
 }
