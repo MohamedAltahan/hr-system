@@ -12,9 +12,15 @@ class EmployeeRequestRequest extends ApiRequest
 {
     protected function prepareForValidation(): void
     {
-        if (! $this->has('status') || $this->input('status') == null) {
+        if (!$this->has('status') || $this->input('status') == null) {
             $this->merge([
                 'status' => EmployeeRequestStatusEnum::PENDING->value,
+            ]);
+        }
+
+        if (!$this->has('employee_id') || $this->input('employee_id') == null) {
+            $this->merge([
+                'employee_id' => request()->user()->id,
             ]);
         }
     }
@@ -28,7 +34,7 @@ class EmployeeRequestRequest extends ApiRequest
             'leave_type' => ['nullable', 'string', Rule::in(LeavesTypeEnum::cases())],
             'loan_amount' => 'nullable|numeric|min:0|max:99999999',
             'from_date' => 'required|date',
-            'to_date' => 'required|date',
+            'to_date' => 'nullable|date',
             'file_path' => 'nullable|string',
             'status' => ['nullable', 'string', Rule::in(EmployeeRequestStatusEnum::cases())],
             'manager_comment' => 'nullable|string',
